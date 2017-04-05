@@ -14,24 +14,40 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                        <a href="index.php?page=1">Główna</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
+                        <a href="index.php?page=2">O nas</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 
+    <br />
+    <br />
+    <br />
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Logo Nav by Start Bootstrap</h1>
-                <p>Note: You may need to adjust some CSS based on the size of your logo. The default logo size is 150x50 pixels.</p>
+                <?php
+                    include 'Controllers/ControlerFactory.php';
+                    $page_content;
+
+                    if (isset($_GET["page"]))
+                    {
+                        $page_id = $_GET["page"];
+                        $page = ControllerFactory::GetControllerById($page_id);
+                        $page_content = ControllerFactory::GetViewContent($page);
+                    }
+                    else
+                    {
+                        $page_content = ControllerFactory::GetViewContent('Views/main.php');
+                    }
+
+                    echo $page_content;
+                ?>
             </div>
         </div>
     </div>
