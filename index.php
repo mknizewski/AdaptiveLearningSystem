@@ -14,10 +14,10 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.php?page=1">Główna</a>
+                        <a href="index.php?con=1&page=1">Główna</a>
                     </li>
                     <li>
-                        <a href="index.php?page=2">O nas</a>
+                        <a href="index.php?con=2&page=1">O nas</a>
                     </li>
                 </ul>
             </div>
@@ -32,21 +32,26 @@
         <div class="row">
             <div class="col-lg-12">
                 <?php
-                    include 'Controllers/ControlerFactory.php';
-                    $page_content;
+                    include_once 'Controllers/ControlerFactory.php';
+                    include_once 'Controllers/ControlerDictionary.php';
 
-                    if (isset($_GET["page"]))
+                    if (isset($_GET["con"]))
                     {
-                        $page_id = $_GET["page"];
-                        $page = ControllerFactory::GetControllerById($page_id);
-                        $page_content = ControllerFactory::GetViewContent($page);
+                        $con_id = $_GET["con"];
+                        $page_id;
+                        
+                        if (isset($_GET["page"]))
+                        {
+                            $page_id = $_GET["page"];
+                            $controller = ControllerFactory::GetControllerById($con_id);
+                            $controller -> GetViewById($page_id);
+                        }
                     }
                     else
                     {
-                        $page_content = ControllerFactory::GetViewContent('Views/main.php');
+                        $mainController = ControllerFactory::GetControllerById(ControllerDictionary::MAIN_CONTROLLER_ID);
+                        $mainController -> GetViewById(ControllerDictionary::MAIN_PAGE_ID);
                     }
-
-                    echo $page_content;
                 ?>
             </div>
         </div>

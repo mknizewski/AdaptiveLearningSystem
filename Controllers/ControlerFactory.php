@@ -1,18 +1,17 @@
 <?php
-    include 'ControlerDictionary.php';
+    include_once 'ControlerDictionary.php';
+    include_once 'MainController.php';
 
     class ControllerFactory
     {
-        public static function GetControllerById($id)
+        public static function GetControllerById($con_id)
         {
-            switch ($id)
+            switch ($con_id)
             {
-                case ControllerDictionary::MAIN_PAGE_ID:
-                    return ControllerDictionary::MAIN_PAGE;
-                case ControllerDictionary::ABOUT_US_ID:
-                    return ControllerDictionary::ABOUT_US;
-                default:
-                    return ControllerDictionary::MAIN_PAGE;
+                case ControllerDictionary::MAIN_CONTROLLER_ID:
+                    return new MainController();
+                case ControllerDictionary::ABOUT_US_CONTROLLER_ID:
+                    break;
             }
         }
 
