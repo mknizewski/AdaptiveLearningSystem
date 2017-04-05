@@ -1,6 +1,7 @@
 <?php
     include_once 'ControlerDictionary.php';
     include_once 'MainController.php';
+    include_once 'AboutController.php';
 
     class ControllerFactory
     {
@@ -11,7 +12,7 @@
                 case ControllerDictionary::MAIN_CONTROLLER_ID:
                     return new MainController();
                 case ControllerDictionary::ABOUT_US_CONTROLLER_ID:
-                    break;
+                    return new AboutController();
             }
         }
 
