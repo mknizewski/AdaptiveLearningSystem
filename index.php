@@ -17,8 +17,15 @@
                         <a href="index.php?con=1&page=1">Główna</a>
                     </li>
                     <li>
+                        <a href="#">Kursy</a>
+                    </li>
+                    <li>
                         <a href="index.php?con=2&page=1">O nas</a>
                     </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.php?con=3&page=2"><span class="glyphicon glyphicon-user"></span> Rejestracja</a></li>
+                    <li><a href="index.php?con=3&page=1"><span class="glyphicon glyphicon-log-in"></span> Logowanie</a></li>
                 </ul>
             </div>
         </div>

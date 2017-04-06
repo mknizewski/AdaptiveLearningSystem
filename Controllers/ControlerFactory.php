@@ -2,6 +2,7 @@
     include_once 'ControlerDictionary.php';
     include_once 'MainController.php';
     include_once 'AboutController.php';
+    include_once 'SignController.php';
 
     class ControllerFactory
     {
@@ -13,6 +14,8 @@
                     return new MainController();
                 case ControllerDictionary::ABOUT_US_CONTROLLER_ID:
                     return new AboutController();
+                case ControllerDictionary::SIGN_CONTROLLER_ID:
+                    return new SignController();
             }
         }
 
