@@ -41,7 +41,11 @@
                 <?php
                     include_once 'Controllers/ControlerFactory.php';
                     include_once 'Controllers/ControlerDictionary.php';
-                    
+                    include_once 'config.php';
+
+                    $session = Session::getInstance();
+                    $session -> startSession();
+
                     if (isset($_GET["con"]))
                     {
                         $con_id = $_GET["con"];
