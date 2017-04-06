@@ -1,6 +1,7 @@
 <?php
     include_once 'ControlerDictionary.php';
     include_once 'ControlerFactory.php';
+    include_once 'Models/RegisterModel.php';
 
     class SignController
     {
@@ -40,7 +41,25 @@
 
         public function RegisterPost()
         {
-            
+            $name = $_POST["name"];
+            $surname = $_POST["surname"];
+            $email = $_POST["email"];
+            $pwd = $_POST["password"];
+
+            $registerModel = new RegisterModel();
+            $registerModel -> Name = $name;
+            $registerModel -> Surname = $surname;
+            $registerModel -> Email = $email;
+            $registerModel -> Password = $pwd;
+
+            if ($registerModel -> ValidateData())
+            {
+                echo "OK";
+            }
+            else
+            {
+                //TODO: Error
+            }
         }
     }
 ?>
