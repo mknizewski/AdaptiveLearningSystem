@@ -34,7 +34,7 @@
                 <?php
                     include_once 'Controllers/ControlerFactory.php';
                     include_once 'Controllers/ControlerDictionary.php';
-
+                    
                     if (isset($_GET["con"]))
                     {
                         $con_id = $_GET["con"];
