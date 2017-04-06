@@ -44,6 +44,8 @@
 
         public function RegisterPost()
         {
+            $alert = new Alert();
+
             $name = $_POST["name"];
             $surname = $_POST["surname"];
             $email = $_POST["email"];
@@ -57,11 +59,17 @@
 
             if ($registerModel -> ValidateData())
             {
-                echo "OK";
+                //TODO: Zapis w bazie
+                $alert -> Message = "Poprawnie zarejestrowano konto " . $email . "!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+
+                $session = Session::getInstance();
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::MAIN_CONTROLLER_ID, ControllerDictionary::MAIN_PAGE_ID);
             }
             else
             {
-                $alert = new Alert();
                 $alert -> Message = "Popraw błędy";
                 $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
 
