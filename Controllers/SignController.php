@@ -2,7 +2,7 @@
     include_once 'ControlerDictionary.php';
     include_once 'ControlerFactory.php';
     include_once 'Models/RegisterModel.php';
-    include_once 'config.php';
+    include_once 'Enviroment/DbContext.php';
 
     class SignController
     {

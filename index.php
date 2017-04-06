@@ -1,3 +1,13 @@
+<?php
+    include_once 'Controllers/ControlerFactory.php';
+    include_once 'Controllers/ControlerDictionary.php';
+    include_once 'Enviroment/Session.php';
+    include_once 'Enviroment/Alert.php';
+
+    $session = Session::getInstance();
+    $session -> startSession();
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
   <head>
@@ -39,12 +49,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <?php
-                    include_once 'Controllers/ControlerFactory.php';
-                    include_once 'Controllers/ControlerDictionary.php';
-                    include_once 'config.php';
+                    if ($session -> __isset("alert"))
+                    {
+                        $alert = unserialize($session -> __get("alert"));
+                        Alert::MakeAlert($alert);
 
-                    $session = Session::getInstance();
-                    $session -> startSession();
+                        $session -> __unset("alert");
+                    }
 
                     if (isset($_GET["con"]))
                     {
