@@ -62,6 +62,11 @@
                 ?>
             </div>
         </div>
+
+            <footer>
+                <hr />
+                <h6>Wszystkie prawa zastrzeżone - 2017</h6>
+            </footer>
     </div>
 
     <script src="Content/js/jquery.js"></script>
