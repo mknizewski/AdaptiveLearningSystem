@@ -3,6 +3,8 @@
     include_once 'ControlerFactory.php';
     include_once 'Models/RegisterModel.php';
     include_once 'Enviroment/DbContext.php';
+    include_once 'Enviroment/Alert.php';
+    include_once 'Enviroment/Session.php';
 
     class SignController
     {
@@ -59,7 +61,14 @@
             }
             else
             {
-                //TODO: Error
+                $alert = new Alert();
+                $alert -> Message = "Popraw błędy";
+                $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+
+                $session = Session::getInstance();
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::SIGN_CONTROLLER_ID, ControllerDictionary::REGISTER_ID);
             }
         }
     }

@@ -32,7 +32,7 @@
                     break;
             }
 
-            $html = $html . $typeOfAlert . '">' . $message . '</div>';
+            $html = $html . $cssClass . '">' . $message . '</div>';
             echo $html;
         }
     }

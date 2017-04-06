@@ -30,5 +30,11 @@
 
             return false;
         }
+
+        public static function Redirect($controller_id, $page_id)
+        {
+            $location = "Location: index.php?con=$controller_id&page=$page_id";
+            header($location);
+        }
     }
 ?>
