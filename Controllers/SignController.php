@@ -2,9 +2,11 @@
     include_once 'ControlerDictionary.php';
     include_once 'ControlerFactory.php';
     include_once 'Models/RegisterModel.php';
+    include_once 'Models/LoginModel.php';
     include_once 'Enviroment/DbContext.php';
     include_once 'Enviroment/Alert.php';
     include_once 'Enviroment/Session.php';
+    include_once 'Enviroment/User.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
     include_once 'Dictionaries/ExceptionDictionary.php';
 
@@ -36,7 +38,57 @@
 
         public function LoginPost()
         {
+            $user = new User();
+            $pwdFromDb = "";
 
+            $email = $_POST["email"];
+            $pwd = $_POST["password"];
+            $rememberMe = $_POST["remember"];
+
+            $loginModel = new LoginModel();
+            $loginModel -> Email = $email;
+            $loginModel -> Password = $pwd;
+            $loginModel -> RememberMe = $rememberMe;
+
+            $dbResult = $this -> GetUserFromDb($loginModel);
+            if ($dbResult -> num_rows > 0)
+            {
+                while ($row = $dbResult -> fetch_assoc())
+                {
+                    $user -> Name = $row["name"];
+                    $user -> Surname = $row["surname"];
+                    $user -> Email = $row["email"];
+                    $user -> RoleId = $row["role_id"];
+
+                    $pwdFromDb = $row["password"];
+                }
+
+                if (strcmp($pwd, $pwdFromDb) === 0)
+                {
+                    $session = Session::getInstance();
+                    $session -> __set("user", serialize($user));
+                }
+                else
+                {
+                    $alert = new Alert();
+                    $alert -> Message = ExceptionDictionary::LOGIN_DB_FAILED;
+                    $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+
+                    $session = Session::getInstance();
+                    $session -> __set("alert", serialize($alert));
+                }
+            }
+            else
+            {
+                $alert = new Alert();
+                $alert -> Message = ExceptionDictionary::LOGIN_DB_NOT_FOUND;
+                $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+
+                $session = Session::getInstance();
+                $session -> __set("alert", serialize($alert));
+            }
+
+            ControllerFactory::Redirect(ControllerDictionary::MAIN_CONTROLLER_ID, ControllerDictionary::MAIN_PAGE_ID);
         }
 
         public function Register()
@@ -92,6 +144,15 @@
 
                 ControllerFactory::Redirect(ControllerDictionary::SIGN_CONTROLLER_ID, ControllerDictionary::REGISTER_ID);
             }
+        }
+
+        private function GetUserFromDb($loginModel)
+        {
+            $email = $loginModel -> Email;
+            $selectStatement = "SELECT * FROM users WHERE email LIKE '$email'";
+
+            $dbContext = new DbContext();
+            return $dbContext -> Select($selectStatement);
         }
 
         private function RegisterUserDbStatement($registerModel)
