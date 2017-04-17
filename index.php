@@ -44,7 +44,7 @@
                         
                         echo '<ul class="dropdown-menu">';
                         echo '<li><a href="#">Moje konto</a></li>';
-                        echo '<li><a href="#">Kursy</a></li>';
+                        echo '<li><a href="#">Moje kursy</a></li>';
                         echo '<li role="separator" class="divider"></li>';
                         echo '<li><a href="index.php?con=3&page=5">Wyloguj się</a></li>';
                         echo '</ul>';
