@@ -5,6 +5,8 @@
     include_once 'Enviroment/DbContext.php';
     include_once 'Enviroment/Alert.php';
     include_once 'Enviroment/Session.php';
+    include_once 'Dictionaries/UserRolesDictionary.php';
+    include_once 'Dictionaries/ExceptionDictionary.php';
 
     class SignController
     {
@@ -59,9 +61,21 @@
 
             if ($registerModel -> ValidateData())
             {
-                //TODO: Zapis w bazie
-                $alert -> Message = "Poprawnie zarejestrowano konto " . $email . "!";
-                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $insertStatement = $this -> RegisterUserDbStatement($registerModel);
+                $dbContext = new DbContext();
+
+                $inserted = $dbContext -> MakeStatement($insertStatement, DbContext::INSERT_STATEMENT);
+
+                if ($inserted)
+                {
+                    $alert -> Message = "Poprawnie zarejestrowano konto " . $email . "!";
+                    $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                }
+                else
+                {
+                    $alert -> Message = ExceptionDictionary::REGISTER_DB_FAILED;
+                    $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+                }
 
                 $session = Session::getInstance();
                 $session -> __set("alert", serialize($alert));
@@ -82,7 +96,16 @@
 
         private function RegisterUserDbStatement($registerModel)
         {
-            $insertStatement = "INSERT INTO users VALUES (";
+            $name = $registerModel -> Name;
+            $surname = $registerModel -> Surname;
+            $email = $registerModel -> Email;
+            $password = $registerModel -> Password;
+
+            $insertStatement = "INSERT INTO users (role_id, name, surname, email, password) VALUES (" . UserRolesDictionary::GUEST . ",";
+            $insertStatement = $insertStatement . "'$name', " . "'$surname', ";
+            $insertStatement = $insertStatement . "'$email', " . "'$password')";
+
+            return $insertStatement;
         }
     }
 ?>

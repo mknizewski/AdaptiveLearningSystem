@@ -1,5 +1,5 @@
 <?php
-    class DBContext
+    class DbContext
     {
         const INSERT_STATEMENT = 1;
         const UPDATE_STATEMENT = 2;
@@ -17,7 +17,7 @@
 
         public function __construct()
         {
-            $this -> connection = new mysqli($this -> db_host, $this -> db_user, $this -> db_password, $this -> db_name);
+            $this -> connection = new mysqli(DbContext::db_host, DbContext::db_user, DbContext::db_password, DbContext::db_name);
 
             if ($connection -> connect_error)
             {
