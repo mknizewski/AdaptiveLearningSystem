@@ -28,9 +28,24 @@
                 case ControllerDictionary::REGISTER_POST_ID:
                     $this -> RegisterPost();
                     break;
+                case ControllerDictionary::LOGOUT_ID:
+                    $this -> LogOut();
+                    break;
             }
         }
         
+        public function LogOut()
+        {
+            $session = Session::getInstance();
+            
+            if ($session -> __isset("user"))
+            {
+                $session -> __unset("user");
+            }
+
+            ControllerFactory::Redirect(ControllerDictionary::MAIN_CONTROLLER_ID, ControllerDictionary::MAIN_PAGE_ID);
+        }
+
         public function Login()
         {
             echo ControllerFactory::GetViewContent(ControllerDictionary::LOGIN_PAGE);

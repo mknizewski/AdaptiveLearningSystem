@@ -21,5 +21,7 @@
         const REGISTER_ID = 2;
         const REGISTER_POST_ID = 4;
         const REGISTER_PAGE = "Views/Sign/register.php";
+
+        const LOGOUT_ID = 5;
     }
 ?>
