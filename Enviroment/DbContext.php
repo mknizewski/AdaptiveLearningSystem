@@ -5,13 +5,13 @@
         const UPDATE_STATEMENT = 2;
         const DELETE_STATEMENT = 3;
 
-        const db_name = "";
-        const db_host = "";
-        const db_user = "";
+        const db_name = "als";
+        const db_host = "localhost";
+        const db_user = "root";
         const db_password = "";
     
-        const host_name = "";
-        const website_name = "";
+        const host_name = "ALS";
+        const website_name = "Adaptacyjny System Uczący";
 
         private $connection;
 

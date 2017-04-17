@@ -79,5 +79,10 @@
                 ControllerFactory::Redirect(ControllerDictionary::SIGN_CONTROLLER_ID, ControllerDictionary::REGISTER_ID);
             }
         }
+
+        private function RegisterUserDbStatement($registerModel)
+        {
+            $insertStatement = "INSERT INTO users VALUES (";
+        }
     }
 ?>
