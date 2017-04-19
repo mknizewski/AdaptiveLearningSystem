@@ -68,15 +68,14 @@
             $dbResult = $this -> GetUserFromDb($loginModel);
             if ($dbResult -> num_rows > 0)
             {
-                while ($row = $dbResult -> fetch_assoc())
-                {
-                    $user -> Name = $row["name"];
-                    $user -> Surname = $row["surname"];
-                    $user -> Email = $row["email"];
-                    $user -> RoleId = $row["role_id"];
+                $row = $dbResult -> fetch_assoc();
 
-                    $pwdFromDb = $row["password"];
-                }
+                $user -> Name = $row["name"];
+                $user -> Surname = $row["surname"];
+                $user -> Email = $row["email"];
+                $user -> RoleId = $row["role_id"];
+
+                $pwdFromDb = $row["password"];
 
                 if (strcmp($pwd, $pwdFromDb) === 0)
                 {
