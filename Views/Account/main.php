@@ -1,5 +1,6 @@
 <?php 
     include_once 'Enviroment/Session.php';
+    include_once 'Dictionaries/UserRolesDictionary.php';
 
     $session = Session::getInstance();
     $user = unserialize($session -> __get("user"));
@@ -13,9 +14,14 @@
         <div class="panel-heading">Nawigacja</div>
         <div class="panel-body"> 
               <ul>
-                <li><a href="#">Opcja 1</a></li>
-                <li><a href="#">Opcja 1</a></li>
-                <li><a href="#">Opcja 1</a></li>
+                <li><a href="#">Dostępne kursy</a></li>
+                <li><a href="#">Kontakt</a></li>
+                <?php
+                    if ($user -> RoleId === UserRolesDictionary::ADMIN)
+                    {
+                        echo '<li><a href="#">Panel administracyjny</a></li>';
+                    }
+                ?>
             </ul> 
         </div>
     </div>
@@ -44,7 +50,7 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Wyszukiwarka</div>
         <div class="panel-body">
-            <form class="form-inline">
+            <form class="form-inline" method="POST" action="">
                 <div class="form-group">
                     <input type="text" placeholder="Wpisz szukaną frazę" name"search" class="form-control" />
                 </div>
