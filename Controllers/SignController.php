@@ -31,6 +31,8 @@
                 case ControllerDictionary::LOGOUT_ID:
                     $this -> LogOut();
                     break;
+                default:
+                    return false;
             }
         }
         

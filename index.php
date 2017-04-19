@@ -4,6 +4,7 @@
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/Alert.php';
     include_once 'Enviroment/User.php';
+    include_once 'Dictionaries/ExceptionDictionary.php';
 
     $session = Session::getInstance();
     $session -> startSession();
@@ -89,7 +90,24 @@
                         {
                             $page_id = $_GET["page"];
                             $controller = ControllerFactory::GetControllerById($con_id);
-                            $controller -> GetViewById($page_id);
+
+                            if ($controller !== false)
+                            {
+                                $status = $controller -> GetViewById($page_id);
+
+                                if ($status === false)
+                                {
+                                    echo ControllerFactory::GetViewContent(ExceptionDictionary::PAGE_404);
+                                }
+                            }
+                            else
+                            {
+                                echo ControllerFactory::GetViewContent(ExceptionDictionary::PAGE_404);
+                            }
+                        }
+                        else
+                        {
+                            echo ControllerFactory::GetViewContent(ExceptionDictionary::PAGE_404);
                         }
                     }
                     else
