@@ -29,7 +29,7 @@
 
         public function Main()
         {
-
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ACCOUNT_MAIN_PAGE);
         }
 
         private function CheckAuth()

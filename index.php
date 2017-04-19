@@ -26,7 +26,16 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.php?con=1&page=1">Główna</a>
+                        <?php
+                            if ($session -> __isset("user"))
+                            {
+                                echo '<a href="index.php?con=4&page=1">Główna</a>';
+                            }
+                            else
+                            {
+                                echo '<a href="index.php?con=1&page=1">Główna</a>';
+                            }
+                        ?>
                     </li>
                     <li>
                         <a href="#">Kursy</a>
@@ -44,8 +53,8 @@
                         echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $user -> Email . ' <span class="caret"></span></a>';
                         
                         echo '<ul class="dropdown-menu">';
-                        echo '<li><a href="#">Moje konto</a></li>';
-                        echo '<li><a href="#">Moje kursy</a></li>';
+                        echo '<li><a href="index.php?con=4&page=1">Moje konto</a></li>';
+                        echo '<li><a href="#">Ustawienia</a></li>';
                         echo '<li role="separator" class="divider"></li>';
                         echo '<li><a href="index.php?con=3&page=5">Wyloguj się</a></li>';
                         echo '</ul>';

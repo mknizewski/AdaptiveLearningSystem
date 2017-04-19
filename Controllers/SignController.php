@@ -104,7 +104,7 @@
                 $session -> __set("alert", serialize($alert));
             }
 
-            ControllerFactory::Redirect(ControllerDictionary::MAIN_CONTROLLER_ID, ControllerDictionary::MAIN_PAGE_ID);
+            ControllerFactory::Redirect(ControllerDictionary::ACCOUNT_CONTROLLER_ID, ControllerDictionary::ACCOUNT_MAIN_ID);
         }
 
         public function Register()
