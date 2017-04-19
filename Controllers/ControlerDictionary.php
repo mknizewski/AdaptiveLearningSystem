@@ -34,6 +34,9 @@
 
         const ACCOUNT_MAIN_ID = 1;
         const ACCOUNT_MAIN_PAGE = "Views/Account/main.php";
+
+        const ACCOUNT_PERMISSIONS_ID = 2;
+        const ACCOUNT_PERMISSIONS_PAGE = "Views/Account/permission.php";
         //-------------------------//
     }
 ?>

@@ -17,6 +17,9 @@
                     case ControllerDictionary::ACCOUNT_MAIN_ID:
                         $this -> Main();
                         break;
+                    case ControllerDictionary::ACCOUNT_PERMISSIONS_ID:
+                        $this -> Permission();
+                        break;
                     default:
                         return false;
                 }
@@ -30,6 +33,11 @@
         public function Main()
         {
             echo ControllerFactory::GetViewContent(ControllerDictionary::ACCOUNT_MAIN_PAGE);
+        }
+
+        public function Permission()
+        {
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ACCOUNT_PERMISSIONS_PAGE);
         }
 
         private function CheckAuth()

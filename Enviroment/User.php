@@ -1,5 +1,5 @@
 <?php
-    include_once 'Enviroment/DbContext.php';
+    include_once 'DbContext.php';
 
     class User
     {
@@ -16,18 +16,23 @@
 
             $result = $dbContext -> Select($statment);
 
-            if ($dbResult -> num_rows > 0)
+            if ($result -> num_rows > 0)
             {
-                $row = $dbResult -> fetch_assoc();
+                $row = $result -> fetch_assoc();
                 $role = $row["name"];
             }
 
-            return $role;
+            if ($role === "admin")
+                return "Administrator";
+            else if ($role === "student")
+                return "Student";
+            else
+                return "Gość";
         }
 
         private function RoleStatement()
         {
-            $roleStatment = "SELECT * FROM roles WHERE role_id = '$RoleId'";
+            $roleStatment = "SELECT * FROM roles WHERE id = " . $this -> RoleId;
             return $roleStatment;
         }
     }

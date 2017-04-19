@@ -19,8 +19,9 @@
         {
             $this -> connection = new mysqli(DbContext::db_host, DbContext::db_user, DbContext::db_password, DbContext::db_name);
 
-            if ($connection -> connect_error)
+            if ($this -> connection -> connect_error)
             {
+                echo $this -> connection -> connect_error;
                 die($this -> connection -> connect_error);
             }
         }
