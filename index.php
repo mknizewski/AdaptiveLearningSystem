@@ -150,7 +150,7 @@
 				</script>
 
 			<hr/>
-			<div>
+			<div class="container-about">
 				<ul class="contact-container">
 					<li>
 						<img src="Content/img/grafik.jpg">
