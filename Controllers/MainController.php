@@ -12,8 +12,7 @@
                     $this -> MainPage();
                     break;
                 default:
-                    $this -> MainPage();
-                    break;
+                    return false;
             }
         }
 

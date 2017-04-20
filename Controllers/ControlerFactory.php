@@ -3,6 +3,7 @@
     include_once 'MainController.php';
     include_once 'AboutController.php';
     include_once 'SignController.php';
+    include_once 'AccountController.php';
 
     class ControllerFactory
     {
@@ -16,6 +17,10 @@
                     return new AboutController();
                 case ControllerDictionary::SIGN_CONTROLLER_ID:
                     return new SignController();
+                case ControllerDictionary::ACCOUNT_CONTROLLER_ID:
+                    return new AccountController();
+                default:
+                    return false;
             }
         }
 
