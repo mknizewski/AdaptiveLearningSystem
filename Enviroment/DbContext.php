@@ -13,7 +13,7 @@
         const host_name = "ALS";
         const website_name = "Adaptacyjny System Uczący";
 
-        private $connection;
+        public $connection;
 
         public function __construct()
         {

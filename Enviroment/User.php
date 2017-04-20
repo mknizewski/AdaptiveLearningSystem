@@ -3,6 +3,7 @@
 
     class User
     {
+        public $Id;
         public $Name;
         public $Surname;
         public $Email;

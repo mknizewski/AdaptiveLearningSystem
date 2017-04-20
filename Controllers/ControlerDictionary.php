@@ -37,6 +37,10 @@
 
         const ACCOUNT_PERMISSIONS_ID = 2;
         const ACCOUNT_PERMISSIONS_PAGE = "Views/Account/permission.php";
+
+        const ACCOUNT_FORM_ID = 3;
+        const ACCOUNT_FORM_POST_ID = 4;
+        const ACCOUNT_FORM_PAGE = "Views/Account/form.php";
         //-------------------------//
     }
 ?>

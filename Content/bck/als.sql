@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 17 Kwi 2017, 13:23
+-- Czas generowania: 20 Kwi 2017, 20:56
 -- Wersja serwera: 10.1.21-MariaDB
 -- Wersja PHP: 5.6.30
 
@@ -50,6 +50,7 @@ INSERT INTO `roles` (`id`, `name`, `insert_time`) VALUES
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
+  `learning_style_id` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `surname` varchar(50) COLLATE utf8_polish_ci NOT NULL,
   `email` varchar(150) COLLATE utf8_polish_ci NOT NULL,

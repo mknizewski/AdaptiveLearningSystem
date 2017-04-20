@@ -72,6 +72,7 @@
             {
                 $row = $dbResult -> fetch_assoc();
 
+                $user -> Id = $row["id"];
                 $user -> Name = $row["name"];
                 $user -> Surname = $row["surname"];
                 $user -> Email = $row["email"];
