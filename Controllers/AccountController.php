@@ -5,6 +5,7 @@
     include_once 'Enviroment/DbContext.php';
     include_once 'Enviroment/Alert.php';
     include_once 'Dictionaries/ExceptionDictionary.php';
+    include_once 'Dictionaries/LearningStyleDictionary.php';
 
     class AccountController
     {
@@ -43,7 +44,68 @@
 
         public function FormPost()
         {
+            $alert = new Alert();
+            $session = Session::getInstance();
 
+            $numOfQuestions = 7;
+            $visualPoints = 0;
+            $auralPoints = 0;
+            $kinestheticPoints = 0;
+
+            for ($i = 0; $i < $numOfQuestions; $i++)
+            {
+                $vCheckBox = "p" . $i . "v";
+                $aCheckBox = "p" . $i . "a";
+                $kCheckBox = "p" . $i . "k";
+
+                if (isset($_POST[$vCheckBox]))
+                    $visualPoints++;
+
+                if (isset($_POST[$aCheckBox]))
+                    $auralPoints++;
+
+                if (isset($_POST[$kCheckBox]))
+                    $kinestheticPoints++;
+            }
+
+            $max = max(array($visualPoints, $auralPoints, $kinestheticPoints));
+            $learningId = 0;
+            $learingText = "";
+            
+            switch ($max)
+            {
+                case $visualPoints:
+                    $learningId = LearningStyleDictionary::VISUAL;
+                    $learingText = LearningStyleDictionary::VISUAL_TEXT;
+                    break;
+                case $auralPoints:
+                    $learningId = LearningStyleDictionary::AURAL;
+                    $learingText = LearningStyleDictionary::AURAL_TEXT;
+                    break;
+                case $kinestheticPoints:
+                    $learingId = LearningStyleDictionary::KINESTHETIC;
+                    $learingText = LearningStyleDictionary::KINESTHETIC_TEXT;
+                    break;
+            }
+
+            $alert -> Message = "Dziękujemy za wypełnienie ankiety. Według ankiety jesteś: <b>" . $learingText . "</b>";
+            $alert -> TYPE_OF_ALERT = Alert::INFO_ALERT;
+            $session -> __set("alert", serialize($alert));
+
+            $this -> UpdateUserLearningStyle();
+
+            ControllerFactory::Redirect(ControllerDictionary::ACCOUNT_CONTROLLER_ID, ControllerDictionary::ACCOUNT_MAIN_ID);
+        }
+
+        public function UpdateUserLearningStyle($learingStyleId)
+        {
+            $session = Session::getInstance();
+            $user = $session -> __get("user");
+
+            $dbContext = new DbContext();
+            $updateStatement = "UPDATE users SET learning_style_id = " . $learingStyleId . " WHERE id = " . $user -> Id;
+
+            $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT); 
         }
 
         public function Main()
