@@ -20,6 +20,12 @@
                     case ControllerDictionary::ACCOUNT_PERMISSIONS_ID:
                         $this -> Permission();
                         break;
+                    case ControllerDictionary::ACCOUNT_FORM_ID:
+                        $this -> Form();
+                        break;
+                    case ControllerDictionary::ACCOUNT_FORM_POST_ID:
+                        $this -> FormPost();
+                        break;
                     default:
                         return false;
                 }
@@ -28,6 +34,16 @@
             {
                 echo ControllerFactory::GetViewContent(ExceptionDictionary::PAGE_403);
             }
+        }
+
+        public function Form()
+        {
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ACCOUNT_FORM_PAGE);
+        }
+
+        public function FormPost()
+        {
+
         }
 
         public function Main()

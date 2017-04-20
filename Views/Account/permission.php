@@ -23,6 +23,10 @@
                     {
                         echo '<li><a href="#">Panel administracyjny</a></li>';
                     }
+                    else
+                    {
+                        echo '<li><a href="index.php?con=4&page=3">Ankieta adaptacyjna</a></li>';
+                    }
                 ?>
             </ul> 
         </div>

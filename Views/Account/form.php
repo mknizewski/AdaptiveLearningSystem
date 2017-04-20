@@ -6,9 +6,12 @@
     $session = Session::getInstance();
     $user = unserialize($session -> __get("user"));
 
-    echo "<h2> Twoje Konto - " . $user -> Name . " " . $user -> Surname . "</h2>";
+    echo "<h2> Ankieta adaptacyjna - " . $user -> Name . " " . $user -> Surname . "</h2>";
 ?>
 <hr />
+<div class="alert alert-info">
+    Przed zaczęciem kursu prosimy o wypełnienie krótkiej ankiety. Pozwoli to sytemowi spersonalizować kurs specjalnie pod Ciebie.
+</div>
 <div class="row">
   <div class="col-sm-3">
     <div class="panel panel-primary">
@@ -45,9 +48,10 @@
 
   <div class="col-sm-6">
     <div class="panel panel-primary">
-        <div class="panel-heading">Przegląd moich kursów</div>
+        <div class="panel-heading">Ankieta adaptacyjna</div>
         <div class="panel-body">
-            Panel Content
+            <form>
+            </form>
         </div>
     </div>
   </div>
