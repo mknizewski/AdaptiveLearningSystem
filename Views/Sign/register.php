@@ -40,6 +40,6 @@
             </div>
         </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-2">
     </div>
 </div>

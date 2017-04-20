@@ -14,6 +14,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="Shortcut icon" href="Content\img\learning.png" />
     <title>Adaptacyjny system uczący</title>
     <link href="Content/css/bootstrap.css" rel="stylesheet">
     <link href="Content/css/footer.css" rel="stylesheet">
