@@ -1,5 +1,5 @@
 <?php
-    class LearningStyle
+    class LearningStyleDictionary
     {
         const VISUAL = 1;
         const AURAL = 2;

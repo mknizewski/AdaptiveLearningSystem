@@ -69,7 +69,7 @@
             }
 
             $max = max(array($visualPoints, $auralPoints, $kinestheticPoints));
-            $learningId = 0;
+            $learningId = "";
             $learingText = "";
             
             switch ($max)
@@ -88,24 +88,18 @@
                     break;
             }
 
+            $user = unserialize($session -> __get("user"));
+            $userId = $user -> Id;
+
+            $dbContext = new DbContext();
+            $updateStatement = "UPDATE users SET learning_style_id = $learingId WHERE id = $userId";
+            $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+            
             $alert -> Message = "Dziękujemy za wypełnienie ankiety. Według ankiety jesteś: <b>" . $learingText . "</b>";
             $alert -> TYPE_OF_ALERT = Alert::INFO_ALERT;
             $session -> __set("alert", serialize($alert));
 
-            $this -> UpdateUserLearningStyle();
-
             ControllerFactory::Redirect(ControllerDictionary::ACCOUNT_CONTROLLER_ID, ControllerDictionary::ACCOUNT_MAIN_ID);
-        }
-
-        public function UpdateUserLearningStyle($learingStyleId)
-        {
-            $session = Session::getInstance();
-            $user = $session -> __get("user");
-
-            $dbContext = new DbContext();
-            $updateStatement = "UPDATE users SET learning_style_id = " . $learingStyleId . " WHERE id = " . $user -> Id;
-
-            $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT); 
         }
 
         public function Main()
