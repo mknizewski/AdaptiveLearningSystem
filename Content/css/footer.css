@@ -1,0 +1,93 @@
+ul.contact-container
+{
+	margin: 0;
+	padding: 0;
+	
+	list-style: none;
+	width: 100%;
+	
+	text-align: center;
+	
+	margin-bottom: 50px;
+}
+
+ul.contact-container li
+{
+	display: inline-block;
+	
+	margin-right: 10%;
+	
+	cursor: pointer;
+}
+
+ul.contact-container li img
+{
+	width: 100px;
+	height: 100px;
+	background-size: cover;
+	border-radius: 50px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .5);
+	opacity: 0.8;
+	
+	vertical-align: 0;
+}
+
+ul.contact-container li img:hover
+{
+	box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+	opacity: 1;
+}
+
+ul.contact-container li .about-info
+{
+	display: none;
+
+	position: absolute;
+	
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 70px;
+	
+	max-width: 350px;
+}
+
+ul.contact-container li:first-child span
+{
+	/* background-image: url(../img/grafik.jpg);	 */
+	/* height: 100px; */
+	/* width: 100px; */
+	/* background-size: cover; */
+	
+
+}
+
+ul.contact-container li:nth-child(2)
+{
+	/* background-image: url(../img/mlodzyszProgramista.jpg);	 */
+	/* height: 100px; */
+	/* width: 100px; */
+	/* background-size: cover; */
+}
+
+ul.contact-container li:last-child
+{
+	margin-right: 0;
+	
+	/* background-image: url(../img/starszyProgramista.jpg);	 */
+	/* height: 100px; */
+	/* width: 100px; */
+	/* background-size: cover; */
+}
+
+footer
+{
+	z-index: 9999999;
+	background: white;
+}
+
+footer h6
+{
+	text-align: center;
+	
+	padding-bottom: 10px;
+}
