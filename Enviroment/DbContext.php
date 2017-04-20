@@ -1,26 +1,27 @@
 <?php
-    class DBContext
+    class DbContext
     {
         const INSERT_STATEMENT = 1;
         const UPDATE_STATEMENT = 2;
         const DELETE_STATEMENT = 3;
 
-        const db_name = "";
-        const db_host = "";
-        const db_user = "";
+        const db_name = "als";
+        const db_host = "localhost";
+        const db_user = "root";
         const db_password = "";
     
-        const host_name = "";
-        const website_name = "";
+        const host_name = "ALS";
+        const website_name = "Adaptacyjny System Uczący";
 
         private $connection;
 
         public function __construct()
         {
-            $this -> connection = new mysqli($this -> db_host, $this -> db_user, $this -> db_password, $this -> db_name);
+            $this -> connection = new mysqli(DbContext::db_host, DbContext::db_user, DbContext::db_password, DbContext::db_name);
 
-            if ($connection -> connect_error)
+            if ($this -> connection -> connect_error)
             {
+                echo $this -> connection -> connect_error;
                 die($this -> connection -> connect_error);
             }
         }

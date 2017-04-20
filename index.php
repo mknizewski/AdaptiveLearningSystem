@@ -3,6 +3,8 @@
     include_once 'Controllers/ControlerDictionary.php';
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/Alert.php';
+    include_once 'Enviroment/User.php';
+    include_once 'Dictionaries/ExceptionDictionary.php';
 
     $session = Session::getInstance();
     $session -> startSession();
@@ -24,7 +26,16 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.php?con=1&page=1">Główna</a>
+                        <?php
+                            if ($session -> __isset("user"))
+                            {
+                                echo '<a href="index.php?con=4&page=1">Główna</a>';
+                            }
+                            else
+                            {
+                                echo '<a href="index.php?con=1&page=1">Główna</a>';
+                            }
+                        ?>
                     </li>
                     <li>
                         <a href="#">Kursy</a>
@@ -33,10 +44,32 @@
                         <a href="index.php?con=2&page=1">O nas</a>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.php?con=3&page=2"><span class="glyphicon glyphicon-user"></span> Rejestracja</a></li>
-                    <li><a href="index.php?con=3&page=1"><span class="glyphicon glyphicon-log-in"></span> Logowanie</a></li>
-                </ul>
+                <?php
+                    if ($session -> __isset("user"))
+                    {
+                        $user =  unserialize($session -> __get("user"));
+                        echo '<ul class="nav navbar-nav navbar-right">';
+                        echo '<li class="dropdown">';
+                        echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $user -> Email . ' <span class="caret"></span></a>';
+                        
+                        echo '<ul class="dropdown-menu">';
+                        echo '<li><a href="index.php?con=4&page=1">Moje konto</a></li>';
+                        echo '<li><a href="#">Ustawienia</a></li>';
+                        echo '<li role="separator" class="divider"></li>';
+                        echo '<li><a href="index.php?con=3&page=5">Wyloguj się</a></li>';
+                        echo '</ul>';
+
+                        echo '</li>';
+                        echo '</ul>';
+                    }
+                    else
+                    {
+                        echo '<ul class="nav navbar-nav navbar-right">';
+                        echo '<li><a href="index.php?con=3&page=2"><span class="glyphicon glyphicon-user"></span> Rejestracja</a></li>';
+                        echo '<li><a href="index.php?con=3&page=1"><span class="glyphicon glyphicon-log-in"></span> Logowanie</a></li>';
+                        echo '</ul>';
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -66,7 +99,24 @@
                         {
                             $page_id = $_GET["page"];
                             $controller = ControllerFactory::GetControllerById($con_id);
-                            $controller -> GetViewById($page_id);
+
+                            if ($controller !== false)
+                            {
+                                $status = $controller -> GetViewById($page_id);
+
+                                if ($status === false)
+                                {
+                                    echo ControllerFactory::GetViewContent(ExceptionDictionary::PAGE_404);
+                                }
+                            }
+                            else
+                            {
+                                echo ControllerFactory::GetViewContent(ExceptionDictionary::PAGE_404);
+                            }
+                        }
+                        else
+                        {
+                            echo ControllerFactory::GetViewContent(ExceptionDictionary::PAGE_404);
                         }
                     }
                     else
