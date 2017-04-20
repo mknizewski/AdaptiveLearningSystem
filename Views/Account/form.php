@@ -50,7 +50,113 @@
     <div class="panel panel-primary">
         <div class="panel-heading">Ankieta adaptacyjna</div>
         <div class="panel-body">
-            <form>
+             <form method="POST" action="index.php?con=4&page=4">
+                <div>
+                    <div class="form-group">
+                        <b>Kiedy pierwszy raz posługuję się nowym dla mnie sprzętem...</b>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p0v"> Czytam instrukcję.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p0a"> Słucham, ewentualnie dopytuję.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p0k"> Uczę się obsługi na zasadzie prób i błędów.</label>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <div class="form-group">
+                        <b>Kiedy zgubiłem/am drogę…</b>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p1v"> Patrzę na mapę.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p1a"> Pytam ludzi o wskazówki.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p1k"> Idę 'na czuja' ewentualnie używam kompasu.</label>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <div class="form-group">
+                        <b>Najłatwiej zapamiętuję…</b>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p2v"> Twarze.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p2a"> Imiona.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p2k"> Rzeczy które robiłem/robiłam.</label>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <div class="form-group">
+                        <b>Większość wolnego czasu spędzam…</b>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p3v"> Oglądając telewizję.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p3a"> Rozmawiając ze znajomymi.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p3k"> Na aktywności fizycznej.</label>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <div class="form-group">
+                        <b>Podejrzewam, że ktoś kłamie…</b>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p4v"> Widzę, że unika wzroku.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p4a"> Słyszę zmianę w tonie głosu.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p4k"> Czuję to.</label>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <div class="form-group">
+                        <b>Kiedy powtarzam materiał na egzamin…</b>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p5v"> Robię mnóstwo notatek.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p5a"> Czytam notatki sobie lub znajomym.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p5k"> Wyobrażam sobie, jak piszę różne sformułowania.</label>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <div class="form-group">
+                        <b>Przy pierwszym kontakcie…</b>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p6v"> Jak osoba wygląda i jak jest.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p6a"> Jaki ktoś ma głos i jak mówi.</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" name="p6k"> Jaką osoba ma postawę i jak się.</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-default" style="float: right;">Zatwierdź</button>
             </form>
         </div>
     </div>
