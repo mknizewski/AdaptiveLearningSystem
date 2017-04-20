@@ -151,23 +151,6 @@
     <script src="Content/js/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="Content/js/bootstrap.js"></script>
-	
-	<script>
-		$( "ul.contact-container li img" ).click(function() 
-		{
-			$("ul.contact-container li img").css("opacity", 0.7);
-			$(this).css("opacity", 1);
-			
-			$(this).parent().parent().find("li").find(".about-info").css("display", "none");		
-			$(this).parent().find(".about-info").fadeIn( "slow" ).css("display", "block");		
-			jumpToPageBottom();
-		});
-		
-		
-		function jumpToPageBottom() 
-		{
-			$('html, body').scrollTop( $(document).height() - $(window).height() );	
-		}
-	</script>
+    <script src="Content/js/jq_footer.js"></script>
   </body>
 </html>
