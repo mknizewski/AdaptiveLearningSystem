@@ -20,12 +20,22 @@
     <title>Adaptacyjny system uczący</title>
     <link href="Content/css/bootstrap.css" rel="stylesheet">
     <link href="Content/css/footer.css" rel="stylesheet">
+    <link href="Content/css/override-bootstrap.css" rel="stylesheet">
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+ 	<nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#naviagtion" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.php?con=4&page=1">ALS</a>
+			</div>
 
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse" id="naviagtion">
                 <ul class="nav navbar-nav">
                     <li>
                         <?php
@@ -74,7 +84,7 @@
                 ?>
             </div>
         </div>
-    </div>
+    </nav>
 
     <br />
     <br />
