@@ -16,7 +16,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="Shortcut icon" href="Content\img\learning.png" />
+	<link rel="Shortcut icon" href="Content/img/learning.png" />
     <title>Adaptacyjny system uczący</title>
     <link href="Content/css/bootstrap.css" rel="stylesheet">
     <link href="Content/css/footer.css" rel="stylesheet">
@@ -27,12 +27,11 @@
         <div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#naviagtion" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.php?con=4&page=1">ALS</a>
+				<span class="navbar-brand" >ALS</span>
 			</div>
 
             <div class="collapse navbar-collapse" id="naviagtion">
