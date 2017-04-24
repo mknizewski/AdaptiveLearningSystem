@@ -22,9 +22,9 @@
                 <li><a href="#">Dostępne kursy</a></li>
                 <li><a href="#">Kontakt</a></li>
                 <?php
-                    if ($user -> RoleId === UserRolesDictionary::ADMIN)
+                    if ($user -> RoleId == UserRolesDictionary::ADMIN)
                     {
-                        echo '<li><a href="#">Panel administracyjny</a></li>';
+                        echo '<li><a href="index.php?con=5&page=1">Panel administracyjny</a></li>';
                     }
                     else
                     {

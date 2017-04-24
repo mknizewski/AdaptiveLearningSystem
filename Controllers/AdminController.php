@@ -39,7 +39,7 @@
             $session -> Session::getInstance();
             $user -> unserialize($session -> __get("user"));
 
-            if ($user -> RoleId === UserRolesDictionary::ADMIN)
+            if ($user -> RoleId == UserRolesDictionary::ADMIN)
                 return true;
             
             return false;
