@@ -36,8 +36,8 @@
 
         public function CheckAuth()
         {
-            $session -> Session::getInstance();
-            $user -> unserialize($session -> __get("user"));
+            $session = Session::getInstance();
+            $user = unserialize($session -> __get("user"));
 
             if ($user -> RoleId == UserRolesDictionary::ADMIN)
                 return true;

@@ -202,6 +202,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="Content/js/bootstrap.js"></script>
 	
+    <!--
 	<script>
 		$( "ul.contact-container li img" ).click(function() 
 		{
@@ -219,5 +220,6 @@
 			$('html, body').scrollTop( $(document).height() - $(window).height() );	
 		}
 	</script>
+    -->
   </body>
 </html>
