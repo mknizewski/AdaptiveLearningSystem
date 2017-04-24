@@ -50,6 +50,7 @@
         const ADMIN_MAIN_PAGE = "Views/Admin/main.php";
 
         const ADMIN_COURSE_ADD_ID = 2;
+        const ADMIN_COURSE_ADD_POST_ID = 6;
         const ADMIN_COURSE_ADD_PAGE = "Views/Admin/addcourse.php";
 
         const ADMIN_COURSE_LIST_ID = 3;

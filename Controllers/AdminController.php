@@ -22,6 +22,9 @@
                     case ControllerDictionary::ADMIN_COURSE_ADD_ID:
                         $this -> AddCourse();
                         break;
+                    case ControllerDictionary::ADMIN_COURSE_ADD_POST_ID:
+                        $this -> AddCoursePost();
+                        break;
                     case ControllerDictionary::ADMIN_COURSE_EDIT_ID:
                         $this -> EditCourse();
                         break;
@@ -47,6 +50,11 @@
         }
 
         public function AddCourse()
+        {
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_COURSE_ADD_PAGE);
+        }
+
+        public function AddCoursePost()
         {
 
         }

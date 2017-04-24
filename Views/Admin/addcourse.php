@@ -43,6 +43,31 @@
   </div>
     <div class="col-md-9">
         <div class="panel panel-info">
+             <div class="panel-heading">Formularz dodania nowego kursu</div>
+             <div class="panel-body">
+                <form method="POST" action="index.php?con=5&page=6">
+                    <div class="form-group">
+                        <label class="control-label" for="courseName">Nazwa:</label>
+                        <input type="courseName" class="form-control" id="courseName" placeholder="Wprowadź nazwę kursu">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="courseDetails">Opis kursu:</label>
+                        <textarea id="courseDetails"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" style="float: right;" class="btn btn-primary">Dodaj kurs</button> 
+                        <a href="index.php?con=5&page=1" type="button" style="float: right; margin-right: 5px;" class="btn btn-default">Cofnij</a> 
+                    </div> 
+                </form>  
+             </div>  
         </div>
     </div>
 </div>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script>
+	tinymce.init({ selector:'textarea',  
+	plugins: "textcolor colorpicker link insertdatetime table image media  autoresize autolink wordcount",
+	toolbar: "forecolor backcolor link insertdatetime table image media " });
+</script>
