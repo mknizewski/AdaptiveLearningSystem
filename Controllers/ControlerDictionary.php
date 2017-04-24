@@ -48,6 +48,18 @@
 
         const ADMIN_MAIN_ID = 1;
         const ADMIN_MAIN_PAGE = "Views/Admin/main.php";
+
+        const ADMIN_COURSE_ADD_ID = 2;
+        const ADMIN_COURSE_ADD_PAGE = "Views/Admin/addcourse.php";
+
+        const ADMIN_COURSE_LIST_ID = 3;
+        const ADMIN_COURSE_LIST_PAGE = "Views/Admin/courseslist.php";
+
+        const ADMIN_COURSE_EDIT_ID = 4;
+        const ADMIN_COURSE_EDIT_PAGE = "Views/Admin/editcourse.php";
+
+        const ADMIN_COURSE_DELETE_ID = 5;
+        const ADMIN_COURSE_DELETE_PAGE = "Views/Admin/deletecourse.php";
         //-------------------------//
     }
 ?>

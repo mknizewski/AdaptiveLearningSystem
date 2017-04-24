@@ -19,6 +19,18 @@
                     case ControllerDictionary::ADMIN_MAIN_ID:
                         $this -> Main();
                         break;
+                    case ControllerDictionary::ADMIN_COURSE_ADD_ID:
+                        $this -> AddCourse();
+                        break;
+                    case ControllerDictionary::ADMIN_COURSE_EDIT_ID:
+                        $this -> EditCourse();
+                        break;
+                    case ControllerDictionary::ADMIN_COURSE_DELETE_ID:
+                        $this -> DeleteCourse();
+                        break;
+                    case ControllerDictionary::ADMIN_COURSE_LIST_ID:
+                        $this -> CoursesList();
+                        break;
                     default:
                         return false;
                 }
@@ -32,6 +44,26 @@
         public function Main()
         {
             echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_MAIN_PAGE);
+        }
+
+        public function AddCourse()
+        {
+
+        }
+
+        public function CoursesList()
+        {
+
+        }
+
+        public function EditCourse()
+        {
+
+        }
+
+        public function DeleteCourse()
+        {
+
         }
 
         public function CheckAuth()
