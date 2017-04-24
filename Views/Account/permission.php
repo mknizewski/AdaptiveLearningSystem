@@ -44,7 +44,7 @@
   </div>
 
   <div class="col-sm-6">
-    <div class="panel panel-primary">
+    <div class="panel panel-info">
         <div class="panel-heading">Twoje uprawnienia</div>
         <div class="panel-body">
             <?php
