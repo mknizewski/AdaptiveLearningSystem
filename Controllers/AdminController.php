@@ -6,6 +6,7 @@
     include_once 'Enviroment/Alert.php';
     include_once 'Dictionaries/ExceptionDictionary.php';
     include_once 'Dictionaries/LearningStyleDictionary.php';
+    include_once 'Dictionaries/UserRolesDictionary.php';
 
     class AdminController
     {
@@ -15,7 +16,9 @@
             {
                 switch ($view_id)
                 {
-                    
+                    case ControllerDictionary::ADMIN_MAIN_ID:
+                        $this -> Main();
+                        break;
                     default:
                         return false;
                 }
@@ -26,9 +29,20 @@
             }
         }
 
+        public function Main()
+        {
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_MAIN_PAGE);
+        }
+
         public function CheckAuth()
         {
+            $session -> Session::getInstance();
+            $user -> unserialize($session -> __get("user"));
 
+            if ($user -> RoleId === UserRolesDictionary::ADMIN)
+                return true;
+            
+            return false;
         }
     }
 ?>

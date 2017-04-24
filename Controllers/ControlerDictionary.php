@@ -42,5 +42,12 @@
         const ACCOUNT_FORM_POST_ID = 4;
         const ACCOUNT_FORM_PAGE = "Views/Account/form.php";
         //-------------------------//
+
+        //-------------------------//
+        const ADMIN_CONTROLLER_ID = 5;
+
+        const ADMIN_MAIN_ID = 1;
+        const ADMIN_MAIN_PAGE = "Views/Admin/main.php";
+        //-------------------------//
     }
 ?>
