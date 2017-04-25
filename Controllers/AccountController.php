@@ -50,12 +50,14 @@
             $numOfQuestions = 7;
             $visualPoints = 0;
             $auralPoints = 0;
+			$readingPoints = 0;
             $kinestheticPoints = 0;
 
             for ($i = 0; $i < $numOfQuestions; $i++)
             {
                 $vCheckBox = "p" . $i . "v";
                 $aCheckBox = "p" . $i . "a";
+				$rCheckBox = "p" . $i . "r";
                 $kCheckBox = "p" . $i . "k";
 
                 if (isset($_POST[$vCheckBox]))
@@ -63,12 +65,15 @@
 
                 if (isset($_POST[$aCheckBox]))
                     $auralPoints++;
+				
+				if (isset($_POST[$rCheckBox]))
+                    $readingPoints++;
 
                 if (isset($_POST[$kCheckBox]))
                     $kinestheticPoints++;
             }
 
-            $max = max(array($visualPoints, $auralPoints, $kinestheticPoints));
+            $max = max(array($visualPoints, $auralPoints, $readingPoints, $kinestheticPoints));
             $learningId = "";
             $learingText = "";
             
@@ -81,6 +86,10 @@
                 case $auralPoints:
                     $learningId = LearningStyleDictionary::AURAL;
                     $learingText = LearningStyleDictionary::AURAL_TEXT;
+                    break;
+				case $readingPoints:
+                    $learningId = LearningStyleDictionary::READING;
+                    $learingText = LearningStyleDictionary::READING_TEXT;
                     break;
                 case $kinestheticPoints:
                     $learingId = LearningStyleDictionary::KINESTHETIC;
