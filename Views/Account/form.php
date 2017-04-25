@@ -22,9 +22,9 @@
                 <li><a href="#">Dostępne kursy</a></li>
                 <li><a href="#">Kontakt</a></li>
                 <?php
-                    if ($user -> RoleId === UserRolesDictionary::ADMIN)
+                    if ($user -> RoleId == UserRolesDictionary::ADMIN)
                     {
-                        echo '<li><a href="#">Panel administracyjny</a></li>';
+                        echo '<li><a href="index.php?con=5&page=1">Panel administracyjny</a></li>';
                     }
                     else
                     {
@@ -47,7 +47,7 @@
   </div>
 
   <div class="col-sm-6">
-    <div class="panel panel-primary">
+    <div class="panel panel-info">
         <div class="panel-heading">Ankieta adaptacyjna</div>
         <div class="panel-body">
              <form method="POST" action="index.php?con=4&page=4">

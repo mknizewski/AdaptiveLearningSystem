@@ -129,7 +129,7 @@
             </div>
         </div>
 		
-						<!-- editor -->
+				<!--
 				<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 				<script>
 					tinymce.init({ selector:'textarea',  
@@ -147,6 +147,7 @@
 						alert(tinyMCE.get('getText').getContent());
 				}
 				</script>
+                
 
 			<hr/>
 			<div>
@@ -189,6 +190,7 @@
 					</li>
 				</ul>
 			</div>
+            -->
 				
             <footer class="footer navbar-fixed-bottom">
                 <hr />
