@@ -100,7 +100,7 @@
 
         public function CoursesList()
         {
-
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_COURSE_LIST_PAGE);
         }
 
         public function EditCourse()
