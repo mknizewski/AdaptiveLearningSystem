@@ -57,6 +57,7 @@
                         <tr>
                             <th>Tytuł</th>
                             <th>Data utworzenia</th>
+                            <th>Dodaj użytkownika</th>
                             <th>Opis</th>
                             <th>Edycja</th>
                             <th>Usun</th>
@@ -76,6 +77,7 @@
                                     echo "<tr>";
                                     echo "<td>" . $row["title"] . "</td>";
                                     echo "<td>" . $row["insert_time"] . "</td>";
+                                    echo '<td> <a href="#" class="btn btn-success">Dodaj</a> </td>';
                                     echo '<td> <a href="#" ' . $onClick . ' class="btn btn-primary">Opis</a> </td>';
                                     echo '<td> <a href="#" class="btn btn-warning">Edycja</a> </td>';
                                     echo '<td> <a href="#" class="btn btn-danger">Usun</a> </td>';
