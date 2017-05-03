@@ -60,7 +60,7 @@
             $alert = new Alert();
             $session = Session::getInstance();
             $courseModel = new CourseModel();
-            $title = $_POST["courseTitle"];
+            $title = $_POST["courseName"];
             $description = $_POST["courseDetails"];
 
             $courseModel -> SetCourseModel($title, $description);
