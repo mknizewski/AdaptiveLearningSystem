@@ -53,7 +53,7 @@
 
                     <div class="form-group">
                         <label class="control-label" for="courseDetails">Opis kursu:</label>
-                        <textarea id="courseDetails" name="courseName"></textarea>
+                        <textarea id="courseDetails" name="courseDetails"></textarea>
                     </div>
 
                     <div class="form-group">
