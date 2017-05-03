@@ -73,7 +73,7 @@
                 $result = $dbContext -> MakeStatement($insertStatement, DbContext::INSERT_STATEMENT);
                 if ($result)
                 {
-                    $alert -> Message = ExceptionDictionary::ADD_COURSE_FAILED;
+                    $alert -> Message = "Poprawnie dodano nowy kurs!";
                     $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
                     $session -> __set("alert", serialize($alert));
 
