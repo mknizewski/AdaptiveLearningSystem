@@ -47,7 +47,7 @@
             $alert = new Alert();
             $session = Session::getInstance();
 
-            $numOfQuestions = 7;
+            $numOfQuestions = 9;
             $visualPoints = 0;
             $auralPoints = 0;
 			$readingPoints = 0;

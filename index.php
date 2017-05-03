@@ -201,7 +201,9 @@
 				</ul>
 			</div>
             -->
-				
+			
+            <br />
+            <br />
             <footer class="footer navbar-fixed-bottom">
                 <hr />
 				<h6>&copy; Wszystkie prawa zastrzeżone - 2017</h6>

@@ -7,6 +7,7 @@
     include_once 'Dictionaries/ExceptionDictionary.php';
     include_once 'Dictionaries/LearningStyleDictionary.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
+    include_once 'Models/CourseModel.php';
 
     class AdminController
     {
@@ -56,12 +57,50 @@
 
         public function AddCoursePost()
         {
+            $alert = new Alert();
+            $session = Session::getInstance();
+            $courseModel = new CourseModel();
+            $title = $_POST["courseName"];
+            $description = $_POST["courseDetails"];
 
+            $courseModel -> SetCourseModel($title, $description);
+            if ($courseModel -> ValidateData())
+            {
+                $dbContext = new DbContext();
+                $currentDate = date('Y-m-d');
+                $insertStatement = "INSERT INTO courses (title, description, insert_time) VALUES ('$title', '$description', '$currentDate')";
+
+                $result = $dbContext -> MakeStatement($insertStatement, DbContext::INSERT_STATEMENT);
+                if ($result)
+                {
+                    $alert -> Message = "Poprawnie dodano nowy kurs!";
+                    $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                    $session -> __set("alert", serialize($alert));
+
+                    ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_MAIN_ID);
+                }
+                else
+                {
+                    $alert -> Message = ExceptionDictionary::DB_FAILED;
+                    $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+                    $session -> __set("alert", serialize($alert));
+
+                    ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_COURSE_ADD_ID);
+                }
+            }
+            else
+            {
+                $alert -> Message = ExceptionDictionary::ADD_COURSE_FAILED;
+                $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_COURSE_ADD_ID);
+            }
         }
 
         public function CoursesList()
         {
-
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_COURSE_LIST_PAGE);
         }
 
         public function EditCourse()
