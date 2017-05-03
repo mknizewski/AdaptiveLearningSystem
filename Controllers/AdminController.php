@@ -57,6 +57,8 @@
         public function AddCoursePost()
         {
 
+            
+            ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_MAIN_ID);
         }
 
         public function CoursesList()

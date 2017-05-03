@@ -48,12 +48,12 @@
                 <form method="POST" action="index.php?con=5&page=6">
                     <div class="form-group">
                         <label class="control-label" for="courseName">Nazwa:</label>
-                        <input type="courseName" class="form-control" id="courseName" placeholder="Wprowadź nazwę kursu">
+                        <input type="courseName" class="form-control" name="courseName" id="courseName" placeholder="Wprowadź nazwę kursu">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label" for="courseDetails">Opis kursu:</label>
-                        <textarea id="courseDetails"></textarea>
+                        <textarea id="courseDetails" name="courseName"></textarea>
                     </div>
 
                     <div class="form-group">
