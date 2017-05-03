@@ -28,6 +28,7 @@ ul.contact-container li img
 	border-radius: 50px;
 	box-shadow: 0 0 8px rgba(0, 0, 0, .5);
 	opacity: 0.8;
+	padding: 2px;
 	
 	vertical-align: 0;
 }
@@ -90,4 +91,16 @@ footer h6
 	text-align: center;
 	
 	padding-bottom: 10px;
+}
+
+footer hr
+{
+	margin: 0;
+	padding: 0;
+	padding-bottom: 10px;
+}
+
+.container-about
+{
+	margin-bottom: 80px;
 }
