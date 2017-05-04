@@ -86,7 +86,11 @@
                                     echo "<td>" . $row["name"] . "</td>";
                                     echo "<td>" . $row["surname"] . "</td>";
                                     echo "<td> <a href = 'mailto:". $row["email"] ."'>". $row["email"] ."</a> </td>";
-                                    echo "<td>" . $role  . "</td>";
+                                    echo "<td> $role"; 
+									echo "</br><b>Zmień:</b>  
+										<input type = 'text'  name = 'role_change' size = '5'> 
+										<input type = 'submit' size = '1' value = 'ok' > 
+										</td>";
                                     echo "<td>". $learning_style . "</td>";
                                     echo "</tr>";
                                 }
