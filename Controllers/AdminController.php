@@ -35,6 +35,9 @@
                     case ControllerDictionary::ADMIN_COURSE_LIST_ID:
                         $this -> CoursesList();
                         break;
+					case ControllerDictionary::ADMIN_VIEW_USERS_ID:
+						$this -> ViewUsers();
+						break;
                     default:
                         return false;
                 }
@@ -111,6 +114,11 @@
         public function DeleteCourse()
         {
 
+        }
+		
+		public function ViewUsers()
+        {
+			echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_VIEW_USERS_PAGE);
         }
 
         public function CheckAuth()

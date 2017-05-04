@@ -67,7 +67,7 @@
                         <h4><span class="glyphicon glyphicon-user"></span> Użytkownicy</h4>
                         <hr />
                         <ul>
-                            <li><a href='#'>Przeglądaj użytkowników</a></li>
+                            <li><a href='index.php?con=5&page=9'>Przeglądaj użytkowników</a></li>
                         </ul>
                         <br />
                         <br />
