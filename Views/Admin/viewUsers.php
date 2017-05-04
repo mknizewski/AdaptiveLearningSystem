@@ -57,6 +57,7 @@
                             <th>Email</th>
                             <th>Rola</th>
                             <th>Styl uczenia</th>
+                            <th>Kursy</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,6 +66,7 @@
                             {
                                 while ($row = $usersList -> fetch_assoc())
                                 {
+									$id = "'" . $row["id"] . "'";
                                     $role_id = "'" . $row["role_id"] . "'";
                                     $learning_style_id = "'" . $row["learning_style_id"] . "'";			
 
@@ -88,6 +90,38 @@
                                     echo "<td>" . $row["email"] . "</td>";
                                     echo "<td>" . $role  . "</td>";
                                     echo "<td>". $learning_style . "</td>";
+									
+                                    echo "<td>";
+													
+														$selectStatement = "SELECT * FROM courses_users WHERE id_user = ".$id;
+														$signToCourseList = $dbContext -> Select($selectStatement);
+														if ($signToCourseList -> num_rows > 0)
+															while ($rowIdCourses = $signToCourseList -> fetch_assoc())
+															{
+																$id_course = $rowIdCourses["id_course"];
+																
+																$selectStatement = "SELECT * FROM courses WHERE id = ".$id_course;
+																$coursesList = $dbContext -> Select($selectStatement);
+																if ($coursesList -> num_rows > 0)
+																{
+																	echo '<div class="dropdown disabled">
+																			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Zapisany do ...
+																			<span class="caret disabled"></span></button>
+																			<ul class="dropdown-menu " >';
+																	while ($rowCourses = $coursesList -> fetch_assoc())
+																	{
+																		$courseName = $rowCourses["title"];
+																		
+																		echo '<li><a style="display:inline;" href="#">'. $courseName .'</a><a href="#" style="display:inline;">Usuń</a></li>';
+																	}
+																}
+															}
+														else
+															echo 'Jeszcze nie zapisany...';
+														
+									echo'			</ul>
+												  </div>'. 
+										"</td>";
                                     echo "</tr>";
                                 }
                             }
