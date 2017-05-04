@@ -10,7 +10,7 @@
 	$selectStatement = "SELECT * FROM users";
     $usersList = $dbContext -> Select($selectStatement);
 ?>
-<h2>Lista u¿ytkowników</h2>
+<h2>Lista uÅ¼ytkownikÃ³w</h2>
 <hr />
 <div class="row">
     <div class="col-sm-3">
@@ -18,8 +18,8 @@
         <div class="panel-heading">Nawigacja</div>
         <div class="panel-body"> 
               <ul>
-                <li><a href="index.php?con=4&page=1">G³ówna</a></li>
-                <li><a href="#">Dostêpne kursy</a></li>
+                <li><a href="index.php?con=4&page=1">GÅ‚Ã³wna</a></li>
+                <li><a href="#">DostÄ™pne kursy</a></li>
                 <li><a href="#">Kontakt</a></li>
                 <?php
                     if ($user -> RoleId == UserRolesDictionary::ADMIN)
@@ -39,20 +39,20 @@
         <div class="panel-heading">Ustawienia konta</div>
         <div class="panel-body">
             <ul>
-                <li><a href="#">Zmiana has³a</a></li>
-                <li><a href="index.php?con=4&page=2">SprawdŸ uprawnienia</a></li>
+                <li><a href="#">Zmiana hasÅ‚a</a></li>
+                <li><a href="index.php?con=4&page=2">SprawdÅº uprawnienia</a></li>
             </ul> 
         </div>
     </div>
   </div>
     <div class="col-md-9">
 		<div class="panel panel-info">
-            <div class="panel-heading">U¿ytkownicy w serwisie</div>
+            <div class="panel-heading">UÅ¼ytkownicy w serwisie</div>
             <div class="panel-body">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-							<th>Imiê</th>
+							<th>ImiÄ™</th>
                             <th>Nazwisko</th>
                             <th>Email</th>
                             <th>Rola</th>
