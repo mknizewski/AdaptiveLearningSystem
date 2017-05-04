@@ -65,27 +65,29 @@
                             {
                                 while ($row = $usersList -> fetch_assoc())
                                 {
-                                    $name = "'" . $row["name"] . "'";
-                                    $surname = "'" . $row["surname"] . "'";
-                                    $email = "'" . $row["email"] . "'";
                                     $role_id = "'" . $row["role_id"] . "'";
-                                    $learning_style = "'" . $row["learning_style_id"] . "'";
-									
-	
+                                    $learning_style_id = "'" . $row["learning_style_id"] . "'";			
 
-										/*$selectStatement = "SELECT * FROM users";
-										$roleExist = $dbContext -> Select($selectStatement);
-										
-											$role = "'" . $row["name"] . "'";*/
-										
-						
+									$selectStatement = "SELECT * FROM roles WHERE id = ".$role_id;
+									$rolesList = $dbContext -> Select($selectStatement);
+									if ($rolesList -> num_rows > 0)
+										while ($rowRoles = $rolesList -> fetch_assoc())
+											$role = $rowRoles["name"];
 									
+									$selectStatement = "SELECT * FROM learningstyles WHERE id = ".$learning_style_id;
+									$learningStylesList = $dbContext -> Select($selectStatement);
+									if ($learningStylesList -> num_rows > 0)
+										while ($rowLearningStyle = $learningStylesList -> fetch_assoc())
+											$learning_style = $rowLearningStyle["name"];	
+									else
+										$learning_style = "Jeszcze nie określono";
+										
                                     echo "<tr>";
                                     echo "<td>" . $row["name"] . "</td>";
                                     echo "<td>" . $row["surname"] . "</td>";
                                     echo "<td>" . $row["email"] . "</td>";
-                                    echo "<td>" . $row["role_id"] . "</td>";
-                                    echo "<td>" . $row["learning_style_id"] . "</td>";
+                                    echo "<td>" . $role  . "</td>";
+                                    echo "<td>". $learning_style . "</td>";
                                     echo "</tr>";
                                 }
                             }
