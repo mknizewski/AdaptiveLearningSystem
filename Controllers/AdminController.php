@@ -38,12 +38,6 @@
 					case ControllerDictionary::ADMIN_VIEW_USERS_ID:
 						$this -> ViewUsers();
 						break;
-					case ControllerDictionary::ADMIN_VIEW_CHECK_ROLE:
-						$this -> CheckRole();
-						break;
-					case ControllerDictionary::ADMIN_VIEW_CHECK_LEARNING_STYLE:
-						$this -> CheckLearningStyle();
-						break;
                     default:
                         return false;
                 }
