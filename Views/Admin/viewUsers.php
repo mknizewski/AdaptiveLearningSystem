@@ -2,6 +2,7 @@
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/User.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
+	include_once 'Dictionaries/LearningStyleDictionary.php';
 
     $session = Session::getInstance();
 	$dbContext = new DbContext();
@@ -89,3 +90,42 @@
 		</div>
     </div>
 </div>
+<script>
+		public function CheckRole(role_id)
+		{
+			var roleText = "";
+			
+			if(role_id == 1)
+				roleText = UserRolesDictionary::ADMIN_TEXT;
+			
+			if(role_id == 2)
+				roleText = UserRolesDictionary::STUDENT_TEXT;
+		
+			if(role_id == 3)
+				roleText = UserRolesDictionary::GUEST_TEXT;
+			
+			return roleText;
+		}
+		
+		public function CheckLearningStyle(learning_style_id)
+		{
+			var learingText = "";
+			
+			if(learning_style_id == 0)
+				learingText = "Brak";
+			
+			if(learning_style_id == 1)
+				learingText = LearningStyleDictionary::VISUAL_TEXT;
+			
+			if(learning_style_id == 2)
+				learingText = LearningStyleDictionary::AURAL_TEXT;
+			
+			if(learning_style_id == 3)
+				learingText = LearningStyleDictionary::READING_TEXT;
+			
+			if(learning_style_id == 4)
+				learingText = LearningStyleDictionary::KINESTHETIC_TEXT;
+			
+			return learingText;		
+		}
+</script>
