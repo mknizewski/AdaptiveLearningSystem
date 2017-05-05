@@ -1,3 +1,8 @@
+.container-about
+{
+	margin-top: 20px;
+}
+
 ul.contact-container
 {
 	margin: 0;
@@ -22,8 +27,8 @@ ul.contact-container li
 
 ul.contact-container li img
 {
-	width: 100px;
-	height: 100px;
+	width: 125px;
+	height: 125px;
 	background-size: cover;
 	border-radius: 50px;
 	box-shadow: 0 0 8px rgba(0, 0, 0, .5);
@@ -48,6 +53,7 @@ ul.contact-container li .about-info
 	text-align: left;
 	padding-top: 10px;
 	padding-bottom: 70px;
+	font-size: 110%;
 	
 	max-width: 350px;
 }
@@ -80,8 +86,10 @@ ul.contact-container li:last-child
 	/* background-size: cover; */
 }
 
+
 footer
 {
+	margin-top: 300px;
 	z-index: 9999999;
 	background: white;
 }

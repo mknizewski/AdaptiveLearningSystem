@@ -21,6 +21,7 @@
     <link href="Content/css/bootstrap.css" rel="stylesheet">
     <link href="Content/css/footer.css" rel="stylesheet">
     <link href="Content/css/override-bootstrap.css" rel="stylesheet">
+    <link href="Content/css/animate.css" rel="stylesheet">
   </head>
   <body>
  	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -201,9 +202,9 @@
 				</ul>
 			</div>
             -->
-			
-            <br />
-            <br />
+			<br />
+			<br />
+			<br />
             <footer class="footer navbar-fixed-bottom">
                 <hr />
 				<h6>&copy; Wszystkie prawa zastrzeżone - 2017</h6>
@@ -216,5 +217,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="Content/js/bootstrap.js"></script>
     <script src="Content/js/jq_footer.js"></script>
+    <script src="Content/js/admin_DeleteUserFromCourse.js"></script>
   </body>
 </html>

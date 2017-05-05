@@ -2,6 +2,7 @@
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/User.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
+    include_once 'Controllers/AdminController.php';
 
     $session = Session::getInstance();
 	$dbContext = new DbContext();
@@ -92,10 +93,11 @@
                                     echo "<td>". $learning_style . "</td>";
 									
                                     echo "<td>";
-													
+														$idToDelete[] = "";
 														$selectStatement = "SELECT * FROM courses_users WHERE id_user = ".$id;
 														$signToCourseList = $dbContext -> Select($selectStatement);
 														if ($signToCourseList -> num_rows > 0)
+														{
 															while ($rowIdCourses = $signToCourseList -> fetch_assoc())
 															{
 																$id_course = $rowIdCourses["id_course"];
@@ -107,15 +109,16 @@
 																	echo '<div class="dropdown disabled">
 																			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Zapisany do ...
 																			<span class="caret disabled"></span></button>
-																			<ul class="dropdown-menu " >';
+																			<ul id="dropDownMenu_Courses" class="dropdown-menu" >';
 																	while ($rowCourses = $coursesList -> fetch_assoc())
 																	{
 																		$courseName = $rowCourses["title"];
 																		
-																		echo '<li><a style="display:inline;" href="#">'. $courseName .'</a><a href="#" style="display:inline;">Usuń</a></li>';
+																		echo '<li><a style="display:inline;" href="#">'. $courseName .'</a><a id="goout" deleteID="'.$number.'" style="display:inline;">Wypisz</a></li>';
 																	}
 																}
 															}
+														}
 														else
 															echo 'Jeszcze nie zapisany...';
 														
@@ -132,3 +135,4 @@
 		</div>
     </div>
 </div>
+
