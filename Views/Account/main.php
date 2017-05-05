@@ -9,7 +9,7 @@
     echo "<h2> Twoje Konto - " . $user -> Name . " " . $user -> Surname . "</h2>";
 ?>
 <hr />
-<div class="row">
+<div class="row animated fadeIn">
   <div class="col-sm-3">
     <div class="panel panel-primary">
         <div class="panel-heading">Nawigacja</div>
