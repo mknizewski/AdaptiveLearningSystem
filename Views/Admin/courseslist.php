@@ -74,6 +74,7 @@
                                     $desc = "'" . $row["description"] . "'";
                                     $desc = trim(preg_replace('/\s+/', ' ', $desc));
                                     $onClick = 'onclick="ShowCourseDesc(' . $title . ', ' . $desc . ')"';
+                                    $onDelete = 'onclick="DeleteCourse(' . $id . ')"'; 
 
                                     echo "<tr>";
                                     echo "<td>" . $row["title"] . "</td>";
@@ -81,7 +82,7 @@
                                     echo '<td> <a href="#" class="btn btn-success">Dodaj</a> </td>';
                                     echo '<td> <a href="#" ' . $onClick . ' class="btn btn-primary">Opis</a> </td>';
                                     echo '<td> <a href="index.php?con=5&page=4&edit=' . $id . '" class="btn btn-warning">Edycja</a> </td>';
-                                    echo '<td> <a href="index.php?con=5&page=5&delete=' . $id . '" class="btn btn-danger">Usun</a> </td>';
+                                    echo '<td> <a href="#" class="btn btn-danger"' . $onDelete . '>Usun</a> </td>';
                                     echo "</tr>";
                                 }
                             }
@@ -110,5 +111,21 @@
         courseDiv.style.display = "inline";
         courseTitle.innerHTML = title;
         courseDesc.innerHTML = description;
+    }
+
+    function DeleteCourse(courseId)
+    {
+        if (confirm('Czy na pewno chcesz usunąć kurs?'))
+        {
+            $.ajax(
+                { 
+                    url: "index.php?con=5&page=5",
+                    data: { id: courseId },
+                    type: "POST",
+                    success: function(){
+                        location.reload(true);
+                    }}
+                );
+        }
     }
 </script>

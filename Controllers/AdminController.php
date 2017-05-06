@@ -158,7 +158,20 @@
 
         public function DeleteCourse()
         {
+            $alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+            $courseId = $_POST["id"];
 
+            $deleteStatement = "DELETE FROM courses WHERE id=" . $courseId;
+            $result = $dbContext -> MakeStatement($deleteStatement, DbContext::DELETE_STATEMENT);
+
+            if ($result)
+            {
+                $alert -> Message = "Poprawnie usunięto kurs!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+            }
         }
 
         public function CheckAuth()
