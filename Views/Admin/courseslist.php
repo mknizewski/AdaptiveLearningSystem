@@ -69,6 +69,7 @@
                             {
                                 while ($row = $coursesList -> fetch_assoc())
                                 {
+                                    $id = $row["id"];
                                     $title = "'" . $row["title"] . "'";
                                     $desc = "'" . $row["description"] . "'";
                                     $desc = trim(preg_replace('/\s+/', ' ', $desc));
@@ -79,8 +80,8 @@
                                     echo "<td>" . $row["insert_time"] . "</td>";
                                     echo '<td> <a href="#" class="btn btn-success">Dodaj</a> </td>';
                                     echo '<td> <a href="#" ' . $onClick . ' class="btn btn-primary">Opis</a> </td>';
-                                    echo '<td> <a href="#" class="btn btn-warning">Edycja</a> </td>';
-                                    echo '<td> <a href="#" class="btn btn-danger">Usun</a> </td>';
+                                    echo '<td> <a href="index.php?con=5&page=4&edit=' . $id . '" class="btn btn-warning">Edycja</a> </td>';
+                                    echo '<td> <a href="index.php?con=5&page=5&delete=' . $id . '" class="btn btn-danger">Usun</a> </td>';
                                     echo "</tr>";
                                 }
                             }

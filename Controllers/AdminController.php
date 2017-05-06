@@ -29,6 +29,9 @@
                     case ControllerDictionary::ADMIN_COURSE_EDIT_ID:
                         $this -> EditCourse();
                         break;
+                    case ControllerDictionary::ADMIN_COURSE_EDIT_POST_ID:
+                        $this -> EditCoursePost();
+                        break;
                     case ControllerDictionary::ADMIN_COURSE_DELETE_ID:
                         $this -> DeleteCourse();
                         break;
@@ -104,6 +107,11 @@
         }
 
         public function EditCourse()
+        {
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_COURSE_EDIT_PAGE);
+        }
+
+        public function EditCoursePost()
         {
 
         }
