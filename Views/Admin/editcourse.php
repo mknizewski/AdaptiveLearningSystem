@@ -53,7 +53,7 @@
                 <?php echo 'Edycja kursu: <b>' . $result["title"] . '</b>'; ?>
             </div>
             <div class="panel-body">
-                <from method="POST" action="index.php&con5&page=7">
+                <form method="POST" action="index.php?con=5&page=7">
                     <?php
                         echo '<input type="hidden" name="courseId" value="' . $courseId . '">';
                     ?>
@@ -75,7 +75,7 @@
 
                     <button type="submit" class="btn btn-success" style="float: right; margin-left: 10px;">Edytuj</button>
                     <a href="index.php?con=5&page=3" style="float: right;" class="btn btn-default">Cofnij</a>
-                </from>
+                </form>
             </div>
         </div>
     </div>
