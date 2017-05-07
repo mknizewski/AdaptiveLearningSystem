@@ -2,7 +2,7 @@
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/User.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
-    include_once 'Controllers/AdminController.php';
+    //include_once 'Controllers/AdminController.php';
 
     $session = Session::getInstance();
 	$dbContext = new DbContext();
@@ -116,7 +116,7 @@
 														
 														$courseName = $rowCourses["title"];
 														
-														echo '<li><a style="display:inline;" href="#">'. $courseName .'</a><a id="goout" deleteID="'.$id_courses_users.'" style="display:inline;cursor:pointer;">Wypisz</a></li>';
+														echo '<li><a style="" href="#">'. $courseName .'</a><a id="goout" deleteID="'.$id_courses_users.'" style="">Wypisz</a></li>';
 													}	
 												}
 											}

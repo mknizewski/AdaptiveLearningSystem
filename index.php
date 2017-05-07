@@ -22,6 +22,7 @@
     <link href="Content/css/footer.css" rel="stylesheet">
     <link href="Content/css/override-bootstrap.css" rel="stylesheet">
     <link href="Content/css/animate.css" rel="stylesheet">
+    <link href="Content/css/viewUsers.css" rel="stylesheet">
   </head>
   <body>
  	<nav class="navbar navbar-inverse navbar-fixed-top">
