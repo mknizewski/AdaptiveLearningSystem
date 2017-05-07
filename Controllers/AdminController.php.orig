@@ -161,11 +161,19 @@
 
         public function DeleteCourse()
         {
+<<<<<<< HEAD
+			
+        }
+		
+		public function ViewUsers()
+        {
+			echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_VIEW_USERS_PAGE);
+=======
             $alert = new Alert();
             $dbContext = new DbContext();
             $session = Session::getInstance();
             $courseId = $_POST["id"];
-			
+
             $deleteStatement = "DELETE FROM courses WHERE id=" . $courseId;
             $result = $dbContext -> MakeStatement($deleteStatement, DbContext::DELETE_STATEMENT);
 
@@ -175,13 +183,9 @@
                 $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
                 $session -> __set("alert", serialize($alert));
             }
+>>>>>>> 3daf51af7171102b2b8891cd8f70f3b4809bcc26
         }
-        
-	public function ViewUsers()
-        {
-		echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_VIEW_USERS_PAGE);
-        }
-        
+
         public function CheckAuth()
         {
             $session = Session::getInstance();
