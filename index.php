@@ -218,6 +218,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="Content/js/bootstrap.js"></script>
     <script src="Content/js/jq_footer.js"></script>
-    <script src="Content/js/admin_DeleteUserFromCourse.js"></script>
   </body>
 </html>
