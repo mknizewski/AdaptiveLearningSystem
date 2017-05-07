@@ -54,6 +54,7 @@
         const ADMIN_COURSE_ADD_PAGE = "Views/Admin/addcourse.php";
 
         const ADMIN_COURSE_LIST_ID = 3;
+        const ADMIN_COURSE_LIST_ADD_USER_TO_COURSE_ID = 11;
         const ADMIN_COURSE_LIST_PAGE = "Views/Admin/courseslist.php";
 
         const ADMIN_COURSE_EDIT_ID = 4;

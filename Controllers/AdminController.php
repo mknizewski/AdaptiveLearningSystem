@@ -44,6 +44,9 @@
                     case ControllerDictionary::ADMIN_VIEW_USERS_DELETE_USER_FROM_COURSE_POST_ID:
                         $this -> DeleteUserFromCourse();
                         break;
+                    case ControllerDictionary::ADMIN_COURSE_LIST_ADD_USER_TO_COURSE_ID:
+                        $this -> AddUserToCourse();
+                        break;
                     default:
                         return false;
                 }
@@ -180,6 +183,38 @@
             }
         }
         
+        public function AddUserToCourse()
+        {
+            $alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+            $currentDate = date('Y-m-d');
+
+            $userId = $_POST["userId"];
+            $courseId = $_POST["courseId"];
+            $roleId = $_POST["roleId"];
+            $insertStatement = "INSERT INTO courses_users (id_user, id_course, id_role, insert_time) VALUES('$userId', '$courseId', '$roleId', '$currentDate')";
+            $selectStatement = "SELECT * FROM courses_users WHERE id_course=" . $courseId . " AND id_user=" . $userId;
+            $selectResult = $dbContext -> Select($selectStatement) -> num_rows == 0;
+
+            if ($selectResult)
+            {
+                $result = $dbContext -> MakeStatement($insertStatement, DbContext::INSERT_STATEMENT);
+                if ($result)
+                {
+                    $alert -> Message = "Poprawnie dodano użytkownika!";
+                    $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                    $session -> __set("alert", serialize($alert));
+                }
+            }
+            else
+            {
+                $alert -> Message = "Użytkownik jest już zapisany do tego kursu.";
+                $alert -> TYPE_OF_ALERT = Alert::WARNING_ALERT;
+                $session -> __set("alert", serialize($alert));
+            }
+        }
+
 	    public function ViewUsers()
         {
 		    echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_VIEW_USERS_PAGE);
