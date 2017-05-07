@@ -131,42 +131,12 @@
                             }
 							
 							
-							/*
-							                                    echo "<td>";
-														$selectStatement = "SELECT * FROM courses_users WHERE id_user = ".$id;
-														$signToCourseList = $dbContext -> Select($selectStatement);
-														if ($signToCourseList -> num_rows > 0)
-														{
-															while ($rowIdCourses = $signToCourseList -> fetch_assoc())
-															{
-																$id_course = $rowIdCourses["id_course"];
-																$number = $rowIdCourses["insert_time"];
-																
-																$selectStatement = "SELECT * FROM courses WHERE id = ".$id_course;
-																$coursesList = $dbContext -> Select($selectStatement);
-																if ($coursesList -> num_rows > 0)
-																{
-																	echo '<div class="dropdown disabled">
-																			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Zapisany do ...
-																			<span class="caret disabled"></span></button>
-																			<ul id="dropDownMenu_Courses" class="dropdown-menu" >';
-																	while ($rowCourses = $coursesList -> fetch_assoc())
-																	{
-																		$courseName = $rowCourses["title"];
-																		
-																		echo '<li><a style="display:inline;" href="#">'. $number .'</a><a id="goout" deleteID="'.$number.'" style="display:inline;">Wypisz</a></li>';
-																	}
-																}
-															}
-														}
-														else
-															echo 'Jeszcze nie zapisany...';
-														
-									echo'			</ul>
-												  </div>'. 
-												  
-										"</td>";
-							*/
+								if(isset($_POST['id_coursesusers']))
+									echo  $_POST['id_coursesusers'];
+								else
+									echo "Brak postow";
+							
+							
                         ?>
 						
 						
