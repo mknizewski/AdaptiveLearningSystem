@@ -1,0 +1,16 @@
+#dropDownMenu_Courses li a:first-child
+{
+	display: inline;
+}
+
+#dropDownMenu_Courses li #goout
+{
+	display: inline;
+	cursor: pointer;
+}
+
+#dropDownMenu_Courses li #goout:hover
+{
+	color: red;
+	background: none;
+}

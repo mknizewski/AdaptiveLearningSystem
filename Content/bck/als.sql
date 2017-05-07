@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 20 Kwi 2017, 20:56
+-- Czas generowania: 24 Kwi 2017, 20:24
 -- Wersja serwera: 10.1.21-MariaDB
 -- Wersja PHP: 5.6.30
 
@@ -19,6 +19,27 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `als`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `learningstyles`
+--
+
+CREATE TABLE `learningstyles` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+  `insert_time` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci;
+
+--
+-- Zrzut danych tabeli `learningstyles`
+--
+
+INSERT INTO `learningstyles` (`id`, `name`, `insert_time`) VALUES
+(1, 'Visual', '2017-04-20'),
+(2, 'Aural', '2017-04-20'),
+(3, 'Kinesthetic', '2017-04-20');
 
 -- --------------------------------------------------------
 
@@ -66,6 +87,12 @@ CREATE TABLE `users` (
 --
 
 --
+-- Indexes for table `learningstyles`
+--
+ALTER TABLE `learningstyles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -82,6 +109,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT dla tabeli `learningstyles`
+--
+ALTER TABLE `learningstyles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --

@@ -42,5 +42,31 @@
         const ACCOUNT_FORM_POST_ID = 4;
         const ACCOUNT_FORM_PAGE = "Views/Account/form.php";
         //-------------------------//
+
+        //-------------------------//
+        const ADMIN_CONTROLLER_ID = 5;
+
+        const ADMIN_MAIN_ID = 1;
+        const ADMIN_MAIN_PAGE = "Views/Admin/main.php";
+
+        const ADMIN_COURSE_ADD_ID = 2;
+        const ADMIN_COURSE_ADD_POST_ID = 6;
+        const ADMIN_COURSE_ADD_PAGE = "Views/Admin/addcourse.php";
+
+        const ADMIN_COURSE_LIST_ID = 3;
+        const ADMIN_COURSE_LIST_PAGE = "Views/Admin/courseslist.php";
+
+        const ADMIN_COURSE_EDIT_ID = 4;
+        const ADMIN_COURSE_EDIT_POST_ID = 7;
+        const ADMIN_COURSE_EDIT_PAGE = "Views/Admin/editcourse.php";
+
+        const ADMIN_COURSE_DELETE_ID = 5;
+        const ADMIN_COURSE_DELETE_POST_ID = 8;
+        const ADMIN_COURSE_DELETE_PAGE = "Views/Admin/deletecourse.php";
+		
+		const ADMIN_VIEW_USERS_ID = 9;
+        const ADMIN_VIEW_USERS_DELETE_USER_FROM_COURSE_POST_ID = 10;
+		const ADMIN_VIEW_USERS_PAGE = "Views/Admin/viewusers.php";
+        //-------------------------//
     }
 ?>
