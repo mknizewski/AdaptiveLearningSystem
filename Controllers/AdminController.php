@@ -29,6 +29,9 @@
                     case ControllerDictionary::ADMIN_COURSE_EDIT_ID:
                         $this -> EditCourse();
                         break;
+                    case ControllerDictionary::ADMIN_COURSE_EDIT_POST_ID:
+                        $this -> EditCoursePost();
+                        break;
                     case ControllerDictionary::ADMIN_COURSE_DELETE_ID:
                         $this -> DeleteCourse();
                         break;
@@ -105,12 +108,70 @@
 
         public function EditCourse()
         {
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_COURSE_EDIT_PAGE);
+        }
 
+        public function EditCoursePost()
+        {
+            $alert = new Alert();
+            $courseModel = new CourseModel();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+
+            $courseId = $_POST["courseId"];
+            $courseTitle = $_POST["courseName"];
+            $courseDesc = $_POST["courseDetails"];
+
+            $courseModel -> SetCourseModel($courseTitle, $courseDesc);
+
+            if ($courseModel -> ValidateData())
+            {
+                $updateStatement = "UPDATE courses SET title='$courseTitle', description='$courseDesc' WHERE id=$courseId";
+                $result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+
+                if ($result)
+                {
+                    $alert -> Message = "Poprawnie zedytowano kurs!";
+                    $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                    $session -> __set("alert", serialize($alert));
+
+                    ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_COURSE_LIST_ID);
+                }
+                else
+                {
+                    $alert -> Message = ExceptionDictionary::DB_FAILED;
+                    $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+                    $session -> __set("alert", serialize($alert));
+
+                    ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_COURSE_ADD_ID);
+                }
+            }
+            else
+            {
+                $alert -> Message = ExceptionDictionary::ADD_COURSE_FAILED;
+                $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_COURSE_EDIT_ID);
+            }
         }
 
         public function DeleteCourse()
         {
+            $alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+            $courseId = $_POST["id"];
 
+            $deleteStatement = "DELETE FROM courses WHERE id=" . $courseId;
+            $result = $dbContext -> MakeStatement($deleteStatement, DbContext::DELETE_STATEMENT);
+
+            if ($result)
+            {
+                $alert -> Message = "Poprawnie usunięto kurs!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+            }
         }
 
         public function CheckAuth()
