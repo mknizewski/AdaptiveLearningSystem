@@ -65,7 +65,8 @@
         const ADMIN_COURSE_DELETE_PAGE = "Views/Admin/deletecourse.php";
 		
 		const ADMIN_VIEW_USERS_ID = 9;
-		const ADMIN_VIEW_USERS_PAGE = "Views/Admin/viewUsers.php";
+        const ADMIN_VIEW_USERS_DELETE_USER_POST_ID = 10;
+		const ADMIN_VIEW_USERS_PAGE = "Views/Admin/viewusers.php";
         //-------------------------//
     }
 ?>

@@ -110,12 +110,9 @@
 												$coursesList = $dbContext -> Select($selectStatement);
 												if ($coursesList -> num_rows > 0)
 												{
-
 													while ($rowCourses = $coursesList -> fetch_assoc())
-													{
-														
-														$courseName = $rowCourses["title"];
-														
+													{														
+														$courseName = $rowCourses["title"];														
 														echo '<li><a style="" href="#">'. $courseName .'</a><a id="goout" deleteID="'.$id_courses_users.'" style="">Wypisz</a></li>';
 													}	
 												}
@@ -134,16 +131,11 @@
 								if(isset($_POST['id_coursesusers']))
 									echo  $_POST['id_coursesusers'];
 								else
-									echo "Brak postow";
-							
-							
-                        ?>
-						
-						
+									echo "Brak postow";						
+                        ?>							
 					</tbody>
 				</table>
 			</div>
 		</div>
     </div>
 </div>
-

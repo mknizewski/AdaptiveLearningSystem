@@ -41,6 +41,9 @@
 					case ControllerDictionary::ADMIN_VIEW_USERS_ID:
 						$this -> ViewUsers();
 						break;
+                    case ControllerDictionary::ADMIN_VIEW_USERS_DELETE_USER_POST_ID:
+                        $this -> DeleteUser();
+                        break;
                     default:
                         return false;
                 }
@@ -177,11 +180,16 @@
             }
         }
         
-	public function ViewUsers()
+	    public function ViewUsers()
         {
-		echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_VIEW_USERS_PAGE);
+		    echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_VIEW_USERS_PAGE);
         }
         
+        public function DeleteUser()
+        {
+
+        }
+
         public function CheckAuth()
         {
             $session = Session::getInstance();
