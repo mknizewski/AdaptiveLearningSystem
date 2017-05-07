@@ -41,8 +41,8 @@
 					case ControllerDictionary::ADMIN_VIEW_USERS_ID:
 						$this -> ViewUsers();
 						break;
-                    case ControllerDictionary::ADMIN_VIEW_USERS_DELETE_USER_POST_ID:
-                        $this -> DeleteUser();
+                    case ControllerDictionary::ADMIN_VIEW_USERS_DELETE_USER_FROM_COURSE_POST_ID:
+                        $this -> DeleteUserFromCourse();
                         break;
                     default:
                         return false;
@@ -185,9 +185,23 @@
 		    echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_VIEW_USERS_PAGE);
         }
         
-        public function DeleteUser()
-        {
+        public function DeleteUserFromCourse()
+        {   
+            $alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+            $userId = $_POST["userId"];
+            $courseId = $_POST["courseId"];
 
+            $deleteStatement = "DELETE FROM courses_users WHERE id_user=" . $userId . " AND id_course=" . $courseId;
+            $result = $dbContext -> MakeStatement($deleteStatement, DbContext::DELETE_STATEMENT);
+
+            if ($result)
+            {
+                $alert -> Message = "Poprawnie usunięto użytkownika z kursu!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+            }
         }
 
         public function CheckAuth()

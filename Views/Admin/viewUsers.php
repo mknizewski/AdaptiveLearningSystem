@@ -113,7 +113,7 @@
 													while ($rowCourses = $coursesList -> fetch_assoc())
 													{														
 														$courseName = $rowCourses["title"];														
-														echo '<li><a style="" href="#">'. $courseName .'</a><a id="goout" deleteID="'.$id_courses_users.'" style="">Wypisz</a></li>';
+														echo '<li><a style="" href="#">'. $courseName .'</a><a href="#" id="goout" onclick="DeleteUser(' . $id . ', ' . $id_course . ')" style="">Wypisz</a></li>';
 													}	
 												}
 											}
@@ -135,7 +135,24 @@
                         ?>							
 					</tbody>
 				</table>
+                <a href="index.php?con=5&page=1" style="float: right;" class="btn btn-default">Cofnij</a>
 			</div>
 		</div>
     </div>
 </div>
+<script>
+    function DeleteUser(uId, cId)
+    {
+	    if (confirm('Czy na pewno chcesz usunąć danego użytkownika z kursu?'))
+	    {
+		    $.ajax({
+		        url: "index.php?con=5&page=10",
+		        data: { userId: uId, courseId: cId },
+		        type: "POST",
+		        success: function() {
+			        location.reload(true);
+		        }
+	        });
+	    }
+    }
+</script>
