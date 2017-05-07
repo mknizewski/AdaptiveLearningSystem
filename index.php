@@ -16,15 +16,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="Shortcut icon" href="Content/img/learning.png" />
     <title>Adaptacyjny system uczący</title>
     <link href="Content/css/bootstrap.css" rel="stylesheet">
     <link href="Content/css/footer.css" rel="stylesheet">
+    <link href="Content/css/override-bootstrap.css" rel="stylesheet">
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+ 	<nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#naviagtion" aria-expanded="false">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				</button>
+				<span class="navbar-brand" >ALS</span>
+			</div>
 
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse" id="naviagtion">
                 <ul class="nav navbar-nav">
                     <li>
                         <?php
@@ -73,7 +83,7 @@
                 ?>
             </div>
         </div>
-    </div>
+    </nav>
 
     <br />
     <br />
@@ -129,7 +139,7 @@
             </div>
         </div>
 		
-						<!-- editor -->
+				<!--
 				<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 				<script>
 					tinymce.init({ selector:'textarea',  
@@ -147,9 +157,10 @@
 						alert(tinyMCE.get('getText').getContent());
 				}
 				</script>
+                
 
 			<hr/>
-			<div>
+			<div class="container-about">
 				<ul class="contact-container">
 					<li>
 						<img src="Content/img/grafik.jpg">
@@ -189,7 +200,10 @@
 					</li>
 				</ul>
 			</div>
-				
+            -->
+			
+            <br />
+            <br />
             <footer class="footer navbar-fixed-bottom">
                 <hr />
 				<h6>&copy; Wszystkie prawa zastrzeżone - 2017</h6>
@@ -201,23 +215,6 @@
     <script src="Content/js/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="Content/js/bootstrap.js"></script>
-	
-	<script>
-		$( "ul.contact-container li img" ).click(function() 
-		{
-			$("ul.contact-container li img").css("opacity", 0.7);
-			$(this).css("opacity", 1);
-			
-			$(this).parent().parent().find("li").find(".about-info").css("display", "none");		
-			$(this).parent().find(".about-info").fadeIn( "slow" ).css("display", "block");		
-			jumpToPageBottom();
-		});
-		
-		
-		function jumpToPageBottom() 
-		{
-			$('html, body').scrollTop( $(document).height() - $(window).height() );	
-		}
-	</script>
+    <script src="Content/js/jq_footer.js"></script>
   </body>
 </html>
