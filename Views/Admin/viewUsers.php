@@ -142,6 +142,7 @@
 						
 					</tbody>
 				</table>
+				<div id="result2">Wynik</div>
 			</div>
 		</div>
     </div>

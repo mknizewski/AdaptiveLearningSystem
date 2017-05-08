@@ -13,6 +13,6 @@ function post($id)
 	$.post('index.php?con=5&page=9', {id_coursesusers:id_coursesusers},
 	function(data)
 	{
-		alert( "Data Loaded: " + data );
+		//$('#result2').html(data);
 	});
 }
