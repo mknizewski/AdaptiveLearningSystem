@@ -247,12 +247,39 @@
 
         public function AddLesson()
         {
-
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_ADD_LESSON_PAGE);
         }
 
         public function AddLessonPost()
         {
+            $alert = new Alert();
+            $dbContext = new DbContext();
+            $currentDate = date('Y-m-d');
+            $session = Session::getInstance();
 
+            $lessonName = $_POST["lessonName"];
+            $courseId = $_POST["forCourse"];
+            $countOfModules = $_POST["countOfModules"];
+
+            $insertStatement = "INSERT INTO lessons (course_id, title, count_of_modules, insert_time) VALUES($courseId, '$lessonName', $countOfModules, '$currentDate')";
+            $result = $dbContext -> MakeStatement($insertStatement, DbContext::INSERT_STATEMENT);
+
+            if ($result)
+            {
+                $alert -> Message = "Poprawnie dodano lekcję!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_MAIN_ID);
+            }
+            else
+            {
+                $alert -> Message = ExceptionDictionary::DB_FAILED;
+                $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_ADD_LESSON_ID);
+            }
         }
 
         public function CheckAuth()

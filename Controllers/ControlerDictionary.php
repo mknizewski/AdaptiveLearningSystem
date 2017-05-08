@@ -69,8 +69,8 @@
         const ADMIN_VIEW_USERS_DELETE_USER_FROM_COURSE_POST_ID = 10;
 		const ADMIN_VIEW_USERS_PAGE = "Views/Admin/viewusers.php";
 
-        const ADMIN_ADD_LESSON_ID = 11;
-        const ADMIN_ADD_LESSON_POST_ID = 12;
+        const ADMIN_ADD_LESSON_ID = 12;
+        const ADMIN_ADD_LESSON_POST_ID = 13;
         const ADMIN_ADD_LESSON_PAGE = "Views/Admin/addlesson.php";
         //-------------------------//
     }

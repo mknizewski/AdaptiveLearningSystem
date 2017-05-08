@@ -1,10 +1,16 @@
 <?php
+    include_once 'Enviroment/DbContext.php';
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/User.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
 
     $session = Session::getInstance();
     $user = unserialize($session -> __get("user"));
+
+    $context = new DbContext();
+    $courseStatement = "SELECT * FROM courses";
+
+    $courseList = $context -> Select($courseStatement);
 ?>
 <h2>Panel Administracyjny</h2>
 <hr />
@@ -47,19 +53,37 @@
                 Dodanie nowej lekcji
             </div>
             <div class="panel-body">
-                <div class="row">
-                    <form method="POST" action="index.php?con=5&page=12">
+                <form method="POST" action="index.php?con=5&page=13">
                         <div class="form-group">
-                            <label class="control-label" for="courseName">Nazwa:</label>
-                            <input type="courseName" class="form-control" name="courseName" id="courseName" placeholder="Wprowadź nazwę kursu">
+                            <label class="control-label" for="lessonName">Nazwa:</label>
+                            <input class="form-control" name="lessonName" placeholder="Wprowadź nazwę lekcji">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="forCourse">Kurs:</label>
+                            <select class="form-control" name="forCourse">
+                                <option value="-1"></option>
+                                <?php
+                                    while ($row = $courseList -> fetch_assoc())
+                                    {
+                                        $courseId = $row["id"];
+                                        $courseTitle = $row["title"];
+                                        echo "<option value='$courseId'>$courseTitle</option>";
+                                    }
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="countOfModules">Liczba modułów:</label>
+                            <input class="form-control" name="countOfModules" placeholder="Wprowadź liczbę modułów">
                         </div>
 
                         <div class="form-group">
                             <button type="submit" style="float: right;" class="btn btn-primary">Dodaj lekcję</button> 
                             <a href="index.php?con=5&page=1" type="button" style="float: right; margin-right: 5px;" class="btn btn-default">Cofnij</a> 
                         </div> 
-                    </form>          
-                </div>
+                    </form>  
             </div>
     </div>
 </div>
