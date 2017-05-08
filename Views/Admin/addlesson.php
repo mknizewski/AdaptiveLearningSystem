@@ -44,35 +44,21 @@
     <div class="col-md-9">
         <div class="panel panel-info">
             <div class="panel-heading">
-                Zarządzanie systemem e-learningowym
+                Dodanie nowej lekcji
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-6">
-                        <h4><span class="glyphicon glyphicon-book"></span> Kursy</h4>
-                        <hr />
-                        <ul>
-                            <li><a href='index.php?con=5&page=2'>Dodaj kurs</a></li>
-                            <li><a href='index.php?con=5&page=3'>Zarządzanie kursami</a></li>
-                        </ul>
-                        <br />
-                        <h4><span class="glyphicon glyphicon-tasks"></span> Lekcje</h4>
-                        <hr />
-                        <ul>
-                            <li><a href='index.php?con=5&page=11'>Dodaj lekcje</a></li>
-                            <li><a href='#'>Dodaj moduł</a></li>
-                            <li><a href='#'>Zarządzanie lekcjami</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <h4><span class="glyphicon glyphicon-user"></span> Użytkownicy</h4>
-                        <hr />
-                        <ul>
-                            <li><a href='index.php?con=5&page=9'>Przeglądaj użytkowników</a></li>
-                        </ul>
-                        <br />
-                        <br />
-                    </div>
+                    <form method="POST" action="index.php?con=5&page=12">
+                        <div class="form-group">
+                            <label class="control-label" for="courseName">Nazwa:</label>
+                            <input type="courseName" class="form-control" name="courseName" id="courseName" placeholder="Wprowadź nazwę kursu">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" style="float: right;" class="btn btn-primary">Dodaj lekcję</button> 
+                            <a href="index.php?con=5&page=1" type="button" style="float: right; margin-right: 5px;" class="btn btn-default">Cofnij</a> 
+                        </div> 
+                    </form>          
                 </div>
             </div>
     </div>

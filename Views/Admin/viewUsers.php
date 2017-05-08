@@ -126,8 +126,7 @@
                                     echo "</tr>";
                                 }
                             }
-							
-							
+														
 								if(isset($_POST['id_coursesusers']))
 									echo  $_POST['id_coursesusers'];
 								else

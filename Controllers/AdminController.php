@@ -47,6 +47,12 @@
                     case ControllerDictionary::ADMIN_COURSE_LIST_ADD_USER_TO_COURSE_ID:
                         $this -> AddUserToCourse();
                         break;
+                    case ControllerDictionary::ADMIN_ADD_LESSON_ID:
+                        $this -> AddLesson();
+                        break;
+                    case ControllerDictionary::ADMIN_ADD_LESSON_POST_ID:
+                        $this -> AddLessonPost();
+                        break;
                     default:
                         return false;
                 }
@@ -237,6 +243,16 @@
                 $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
                 $session -> __set("alert", serialize($alert));
             }
+        }
+
+        public function AddLesson()
+        {
+
+        }
+
+        public function AddLessonPost()
+        {
+
         }
 
         public function CheckAuth()
