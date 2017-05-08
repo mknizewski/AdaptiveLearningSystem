@@ -49,7 +49,7 @@
     <div class="col-md-9">
 		<div class="panel panel-info">
             <div class="panel-heading">Użytkownicy w serwisie</div>
-            <div class="panel-body">
+            <div class="panel-body table-responsive">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -126,17 +126,12 @@
                                     echo "</tr>";
                                 }
                             }
-							
-							
-								if(isset($_POST['id_coursesusers']))
-									echo  $_POST['id_coursesusers'];
-								else
-									echo "Brak postow";						
+										
                         ?>							
 					</tbody>
 				</table>
 
-                <a href="index.php?con=5&page=1" style="float: right;" class="btn btn-default">Cofnij</a>
+                <a href="index.php?con=5&page=1" style="float: right; margin-top: 5px" class="btn btn-default">Cofnij</a>
 
 			</div>
 		</div>

@@ -221,5 +221,11 @@
 	
 	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 	<script src="Content/js/tinymceFull.js"></script>
+    <script>
+	function goBack() 
+	{
+		window.history.back();
+	}
+	</script>
   </body>
 </html>

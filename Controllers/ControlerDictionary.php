@@ -41,6 +41,10 @@
         const ACCOUNT_FORM_ID = 3;
         const ACCOUNT_FORM_POST_ID = 4;
         const ACCOUNT_FORM_PAGE = "Views/Account/form.php";
+		
+		const ACCOUNT_CHANGE_PASSWORD_ID = 5;
+		const ACCOUNT_CHANGE_PASSWORD_POST_ID = 6;
+		const ACCOUNT_CHANGE_PASSWORD_PAGE = "Views/Account/changePass.php";
         //-------------------------//
 
         //-------------------------//
