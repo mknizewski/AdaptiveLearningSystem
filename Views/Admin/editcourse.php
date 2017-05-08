@@ -80,9 +80,3 @@
         </div>
     </div>
 </div>
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-<script>
-	tinymce.init({ selector:'textarea',  
-	plugins: "textcolor colorpicker link insertdatetime table image media  autoresize autolink wordcount",
-	toolbar: "forecolor backcolor link insertdatetime table image media " });
-</script>

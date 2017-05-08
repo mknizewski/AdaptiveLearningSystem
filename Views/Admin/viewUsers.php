@@ -135,11 +135,9 @@
                         ?>							
 					</tbody>
 				</table>
-<<<<<<< HEAD
-				<div id="result2">Wynik</div>
-=======
+
                 <a href="index.php?con=5&page=1" style="float: right;" class="btn btn-default">Cofnij</a>
->>>>>>> 397b85f90851eb83f88330444609931651f6212d
+
 			</div>
 		</div>
     </div>
