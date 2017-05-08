@@ -54,6 +54,7 @@
         const ADMIN_COURSE_ADD_PAGE = "Views/Admin/addcourse.php";
 
         const ADMIN_COURSE_LIST_ID = 3;
+        const ADMIN_COURSE_LIST_ADD_USER_TO_COURSE_ID = 11;
         const ADMIN_COURSE_LIST_PAGE = "Views/Admin/courseslist.php";
 
         const ADMIN_COURSE_EDIT_ID = 4;
@@ -65,7 +66,8 @@
         const ADMIN_COURSE_DELETE_PAGE = "Views/Admin/deletecourse.php";
 		
 		const ADMIN_VIEW_USERS_ID = 9;
-		const ADMIN_VIEW_USERS_PAGE = "Views/Admin/viewUsers.php";
+        const ADMIN_VIEW_USERS_DELETE_USER_FROM_COURSE_POST_ID = 10;
+		const ADMIN_VIEW_USERS_PAGE = "Views/Admin/viewusers.php";
         //-------------------------//
     }
 ?>

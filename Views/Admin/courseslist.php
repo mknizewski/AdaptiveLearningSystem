@@ -69,18 +69,42 @@
                             {
                                 while ($row = $coursesList -> fetch_assoc())
                                 {
+                                    $selectStatement = "SELECT * FROM users";
+                                    $usersList = $dbContext -> Select($selectStatement);
+
+                                    $id = $row["id"];
                                     $title = "'" . $row["title"] . "'";
                                     $desc = "'" . $row["description"] . "'";
                                     $desc = trim(preg_replace('/\s+/', ' ', $desc));
                                     $onClick = 'onclick="ShowCourseDesc(' . $title . ', ' . $desc . ')"';
+                                    $onDelete = 'onclick="DeleteCourse(' . $id . ')"'; 
 
                                     echo "<tr>";
                                     echo "<td>" . $row["title"] . "</td>";
                                     echo "<td>" . $row["insert_time"] . "</td>";
-                                    echo '<td> <a href="#" class="btn btn-success">Dodaj</a> </td>';
+                                    echo '<td>';
+                                    if ($usersList -> num_rows > 0)
+                                    {
+                                        echo '<div class="dropdown disabled">
+										<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dodaj użytkownika
+									    <span class="caret disabled"></span></button>
+										<ul id="dropDownMenu_Courses" class="dropdown-menu">';
+
+                                        while ($user = $usersList -> fetch_assoc())
+                                        {
+                                            $userInitials = $user["name"] . " " . $user["surname"];
+                                            $userId = $user["id"];
+                                            $roleId = $user["role_id"];
+
+                                            echo '<li><a href="#" onclick="AddUserToCourse(' . $userId . ', ' . $id . ', ' . $roleId . ')">'. $userInitials .'</a>';
+                                        }
+
+                                        echo '</ul> </div>';
+                                    }
+                                    echo '</td>';
                                     echo '<td> <a href="#" ' . $onClick . ' class="btn btn-primary">Opis</a> </td>';
-                                    echo '<td> <a href="#" class="btn btn-warning">Edycja</a> </td>';
-                                    echo '<td> <a href="#" class="btn btn-danger">Usun</a> </td>';
+                                    echo '<td> <a href="index.php?con=5&page=4&edit=' . $id . '" class="btn btn-warning">Edycja</a> </td>';
+                                    echo '<td> <a href="#" class="btn btn-danger" ' . $onDelete . '>Usun</a> </td>';
                                     echo "</tr>";
                                 }
                             }
@@ -109,5 +133,36 @@
         courseDiv.style.display = "inline";
         courseTitle.innerHTML = title;
         courseDesc.innerHTML = description;
+    }
+
+    function AddUserToCourse(uId, cId, rId)
+    {
+        if (confirm('Czy na pewno chcesz dodać użytkownika do kursu?'))
+        {
+            $.ajax({
+                url: "index.php?con=5&page=11",
+                data: { userId: uId, courseId: cId, roleId: rId },
+                type: "POST",
+                success: function() {
+                    location.reload(true);
+                }
+            });
+        }
+    }
+
+    function DeleteCourse(courseId)
+    {
+        if (confirm('Czy na pewno chcesz usunąć kurs?'))
+        {
+            $.ajax(
+                { 
+                    url: "index.php?con=5&page=5",
+                    data: { id: courseId },
+                    type: "POST",
+                    success: function(){
+                        location.reload(true);
+                    }}
+                );
+        }
     }
 </script>

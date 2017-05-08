@@ -41,6 +41,11 @@
             return $this -> connection -> multi_query($insert_statement) === TRUE;
         }
 
+        public function LastError()
+        {
+            return mysql_error($this -> connection);
+        }
+
         public function __destruct()
         {
             $this -> connection -> close();
