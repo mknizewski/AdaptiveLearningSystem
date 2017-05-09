@@ -17,6 +17,9 @@
                 case ControllerDictionary::COURSE_SIGN_ID:
                     $this -> SignIn();
                     break;
+                case ControllerDictionary::COURSE_LESSONS_ID:
+                    $this -> Lessons();
+                    break;
                 default:
                     return false;
             }
@@ -25,6 +28,11 @@
         public function Main()
         {
             echo ControllerFactory::GetViewContent(ControllerDictionary::COURSE_MAIN_PAGE);
+        }
+
+        public function Lessons()
+        {
+            echo ControllerFactory::GetViewContent(ControllerDictionary::COURSE_LESSONS_PAGE);
         }
 
         public function SignIn()
