@@ -3,6 +3,7 @@
     include_once 'Enviroment/User.php';
     include_once 'Enviroment/DbContext.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
+    include_once 'Dictionaries/LearningStyleDictionary.php';
 
     $session = Session::getInstance();
     $dbContext = new DbContext();
@@ -61,7 +62,7 @@
         {
             $learningStyle = $row["learningstyle_id"];
 
-            if ($learningStyle == 5 || $learningStyle == $learningStyleId)
+            if ($learningStyle == LearningStyleDictionary::ALL || $learningStyle == $learningStyleId)
             {
                 echo '<div class="panel panel-default">';
                 echo '<div class="panel-heading">' . $row["title"] . '</div>';
