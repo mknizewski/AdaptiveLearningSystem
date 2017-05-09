@@ -72,7 +72,8 @@
 		const ADMIN_VIEW_USERS_ID = 9;
         const ADMIN_VIEW_USERS_DELETE_USER_FROM_COURSE_POST_ID = 10;
 		const ADMIN_VIEW_USERS_PAGE = "Views/Admin/viewusers.php";
-<<<<<<< HEAD
+		
+		const ADMIN_VIEW_USERS_UPDATE_USER_ROLE_POST_ID = 16;
 
         const ADMIN_ADD_LESSON_ID = 12;
         const ADMIN_ADD_LESSON_POST_ID = 13;
@@ -81,10 +82,7 @@
         const ADMIN_ADD_MODULE_ID = 14;
         const ADMIN_ADD_MODULE_POST_ID = 15;
         const ADMIN_ADD_MODULE_PAGE = "Views/Admin/addmodule.php";
-=======
 		
-		const ADMIN_VIEW_USERS_UPDATE_USER_ROLE_POST_ID = 11;
->>>>>>> b8ce2f6d8633e48252945baa1b8ba4ee0b4f0c2a
         //-------------------------//
     }
 ?>

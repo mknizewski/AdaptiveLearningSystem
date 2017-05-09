@@ -44,7 +44,6 @@
                     case ControllerDictionary::ADMIN_VIEW_USERS_DELETE_USER_FROM_COURSE_POST_ID:
                         $this -> DeleteUserFromCourse();
                         break;
-<<<<<<< HEAD
                     case ControllerDictionary::ADMIN_COURSE_LIST_ADD_USER_TO_COURSE_ID:
                         $this -> AddUserToCourse();
                         break;
@@ -58,11 +57,9 @@
                         $this -> AddModule();
                         break;
                     case ControllerDictionary::ADMIN_ADD_MODULE_POST_ID:
-                        $this -> AddModulePost();
-=======
+                        $this -> AddModulePost();					
 					case ControllerDictionary::ADMIN_VIEW_USERS_UPDATE_USER_ROLE_POST_ID:
                         $this -> UpdateRole();
->>>>>>> b8ce2f6d8633e48252945baa1b8ba4ee0b4f0c2a
                         break;
                     default:
                         return false;

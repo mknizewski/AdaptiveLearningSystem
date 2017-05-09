@@ -52,7 +52,7 @@
     <div class="col-md-9">
 		<div class="panel panel-info">
             <div class="panel-heading">Użytkownicy w serwisie</div>
-            <div class="panel-body table-responsive">
+            <div class="panel-body ">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -146,11 +146,6 @@
                                     echo "</tr>";
                                 }
                             }
-<<<<<<< HEAD
-=======
-							
-										
->>>>>>> b8ce2f6d8633e48252945baa1b8ba4ee0b4f0c2a
                         ?>							
 					</tbody>
 				</table>
@@ -183,7 +178,7 @@
 		if (confirm('Czy na pewno chcesz zmienić role użytkownika?'))
 	    {
 		    $.ajax({
-		        url: "index.php?con=5&page=11",
+		        url: "index.php?con=5&page=16",
 		        data: { userId: uId, role_id: rId },
 		        type: "POST",
 		        success: function() {
