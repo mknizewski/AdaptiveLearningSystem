@@ -2,7 +2,10 @@
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/User.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
+
+
     //include_once 'Controllers/AdminController.php';
+
 
     $session = Session::getInstance();
 	$dbContext = new DbContext();
@@ -59,18 +62,20 @@
                             <th>Rola</th>
                             <th>Styl uczenia</th>
                             <th>Kursy</th>
+							<th>Zmień role</th>
                         </tr>
                     </thead>
                     <tbody>
 						<?php
+							error_reporting(E_ALL & ~E_NOTICE);
                             if ($usersList -> num_rows > 0)
                             {
                                 while ($row = $usersList -> fetch_assoc())
                                 {
 									$id = "'" . $row["id"] . "'";
+
                                     $role_id = "'" . $row["role_id"] . "'";
                                     $learning_style_id = "'" . $row["learning_style_id"] . "'";			
-
 									$selectStatement = "SELECT * FROM roles WHERE id = ".$role_id;
 									$rolesList = $dbContext -> Select($selectStatement);
 									if ($rolesList -> num_rows > 0)
@@ -88,8 +93,8 @@
                                     echo "<tr>";
                                     echo "<td>" . $row["name"] . "</td>";
                                     echo "<td>" . $row["surname"] . "</td>";
-                                    echo "<td>" . $row["email"] . "</td>";
-                                    echo "<td>" . $role  . "</td>";
+                                    echo "<td> <a href = 'mailto:". $row["email"] ."'>". $row["email"] ."</a> </td>";
+                                    echo "<td>" . $role  ."</td>"; 
                                     echo "<td>". $learning_style . "</td>";
 									echo "<td>";
 										$selectStatement = "SELECT * FROM courses_users WHERE id_user = ".$id;
@@ -122,10 +127,30 @@
 										}
 										else
 											echo 'Jeszcze nie zapisany...';
-									echo "</td>";	
+									echo "</td>";
+									/*echo '<td>
+										<input type= "text"  size = "1" name ='. $id .'/> 
+										<input type= 'submit' name= 'change_role' size= '2' value= 'Zmień' onclick=".   .' />
+										</td>';*/
+									echo '<td>
+											<div class="dropdown disabled">
+												<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">'. $role .'
+												<span class="caret disabled"></span></button>
+												<ul id="dropDownMenu_Courses" class="dropdown-menu" >
+													<li><a onclick="UpdateRole(' . $row["id"] . ', ' . 1 . ')" href="#">'. admin .'</a></li>
+													<li><a onclick="UpdateRole(' . $row["id"] . ', ' . 2 . ')" href="#">'. student .'</a></li>
+													<li><a onclick="UpdateRole(' . $row["id"] . ', ' . 3 . ')" href="#">'. guest .'</a></li>
+												</ul>
+											</div>
+										  </td>';
                                     echo "</tr>";
                                 }
                             }
+<<<<<<< HEAD
+=======
+							
+										
+>>>>>>> b8ce2f6d8633e48252945baa1b8ba4ee0b4f0c2a
                         ?>							
 					</tbody>
 				</table>
@@ -151,4 +176,20 @@
 	        });
 	    }
     }
+</script>
+<script>
+	function UpdateRole(uId, rId)
+	{
+		if (confirm('Czy na pewno chcesz zmienić role użytkownika?'))
+	    {
+		    $.ajax({
+		        url: "index.php?con=5&page=11",
+		        data: { userId: uId, role_id: rId },
+		        type: "POST",
+		        success: function() {
+			        location.reload(true);
+		        }
+	        });
+	    }
+	}
 </script>
