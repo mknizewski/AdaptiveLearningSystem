@@ -79,8 +79,10 @@
         //-------------------------//
         const COURSE_CONTROLLER_ID = 6;
 
-        const COURSE_LIST_ID = 1;
+        const COURSE_MAIN_ID = 1;
         const COURSE_MAIN_PAGE = "Views/Courses/main.php";
+
+        const COURSE_SIGN_ID = 2;
         //-------------------------//
     }
 ?>
