@@ -83,6 +83,9 @@
         const COURSE_MAIN_PAGE = "Views/Courses/main.php";
 
         const COURSE_SIGN_ID = 2;
+
+        const COURSE_LESSONS_ID = 3;
+        const COURSE_LESSONS_PAGE = "Views/Courses/lessons.php";
         //-------------------------//
     }
 ?>
