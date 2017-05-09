@@ -77,5 +77,10 @@
         const ADMIN_ADD_MODULE_POST_ID = 15;
         const ADMIN_ADD_MODULE_PAGE = "Views/Admin/addmodule.php";
         //-------------------------//
+        const COURSE_CONTROLLER_ID = 6;
+
+        const COURSE_LIST_ID = 1;
+        const COURSE_MAIN_PAGE = "Views/Courses/main.php";
+        //-------------------------//
     }
 ?>

@@ -5,6 +5,7 @@
     include_once 'SignController.php';
     include_once 'AccountController.php';
     include_once 'AdminController.php';
+    include_once 'CourseController.php';
 
     class ControllerFactory
     {
@@ -22,6 +23,8 @@
                     return new AccountController();
                 case ControllerDictionary::ADMIN_CONTROLLER_ID:
                     return new AdminController();
+                case ControllerDictionary::COURSE_CONTROLLER_ID:
+                    return new CourseController();
                 default:
                     return false;
             }
