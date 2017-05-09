@@ -16,7 +16,7 @@
               <ul>
                 <li><a href="index.php?con=4&page=1">Główna</a></li>
                 <li><a href="#">Dostępne kursy</a></li>
-                <li><a href="#">Kontakt</a></li>
+                <li><a href="index.php?con=2&page=1">Kontakt</a></li>
                 <?php
                     if ($user -> RoleId == UserRolesDictionary::ADMIN)
                     {
@@ -35,7 +35,7 @@
         <div class="panel-heading">Ustawienia konta</div>
         <div class="panel-body">
             <ul>
-                <li><a href="#">Zmiana hasła</a></li>
+                <li><a href="index.php?con=4&page=5">Zmiana hasła</a></li>
                 <li><a href="index.php?con=4&page=2">Sprawdź uprawnienia</a></li>
             </ul> 
         </div>

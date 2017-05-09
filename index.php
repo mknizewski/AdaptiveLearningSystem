@@ -218,5 +218,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="Content/js/bootstrap.js"></script>
     <script src="Content/js/jq_footer.js"></script>
+	
+	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+	<script src="Content/js/tinymceFull.js"></script>
+    <script>
+	function goBack() 
+	{
+		window.history.back();
+	}
+	</script>
   </body>
 </html>

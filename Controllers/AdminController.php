@@ -57,7 +57,9 @@
                         $this -> AddModule();
                         break;
                     case ControllerDictionary::ADMIN_ADD_MODULE_POST_ID:
-                        $this -> AddModulePost();
+                        $this -> AddModulePost();					
+					case ControllerDictionary::ADMIN_VIEW_USERS_UPDATE_USER_ROLE_POST_ID:
+                        $this -> UpdateRole();
                         break;
                     default:
                         return false;
@@ -328,5 +330,24 @@
             
             return false;
         }
+		
+		public function UpdateRole()
+		{			
+			$alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+			$userId = $_POST["userId"];
+			$role_id = $_POST["role_id"];
+			//$updateStatement = "UPDATE users SET role_id = '" . $role_id . "'  WHERE id =" . $userId;
+			$updateStatement = "UPDATE users SET role_id = " . $role_id . "  WHERE id =" . $userId;
+			$result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+			
+			if($result)
+			{
+				$alert -> Message = "Poprawnie zmieniono role użytkownika!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+			}
+		}		
     }
 ?>

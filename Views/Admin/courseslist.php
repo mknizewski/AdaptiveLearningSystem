@@ -51,7 +51,7 @@
             <div class="panel-heading">
                 Lista utworzonych kursów
             </div>
-            <div class="panel-body">
+            <div class="panel-body table-responsive">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -116,8 +116,7 @@
             </div>
         </div>
         <div class="panel panel-info" id="courseDiv" style="display: none;">
-            <div class="panel-heading" id="courseTitle">
-            </div>
+            <div class="panel-heading" id="courseTitle"></div>
             <div class="panel-body" id="courseDesc"></div>
         </div>
     </div>
@@ -130,7 +129,7 @@
         var courseTitle = document.getElementById("courseTitle");
         var courseDesc = document.getElementById("courseDesc");
 
-        courseDiv.style.display = "inline";
+        courseDiv.style.display = "block";
         courseTitle.innerHTML = title;
         courseDesc.innerHTML = description;
     }

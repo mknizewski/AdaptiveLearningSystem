@@ -27,6 +27,12 @@
                     case ControllerDictionary::ACCOUNT_FORM_POST_ID:
                         $this -> FormPost();
                         break;
+					case ControllerDictionary::ACCOUNT_CHANGE_PASSWORD_ID:
+                        $this -> ChangePasswordPage();
+                        break;
+					case ControllerDictionary::ACCOUNT_CHANGE_PASSWORD_POST_ID:
+                        $this -> ChangePasswordRun();
+                        break;
                     default:
                         return false;
                 }
@@ -120,7 +126,55 @@
         {
             echo ControllerFactory::GetViewContent(ControllerDictionary::ACCOUNT_PERMISSIONS_PAGE);
         }
+		
+		public function ChangePasswordPage()
+		{
+			echo ControllerFactory::GetViewContent(ControllerDictionary::ACCOUNT_CHANGE_PASSWORD_PAGE);
+		}
+		
+		public function ChangePasswordRun()
+		{
+			$alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+            $CurrPass = $_POST["piCurrPass"];
+            $NewPass = $_POST["piNewPass"];
+            $NewPassRepeat = $_POST["piNewPassRepeat"];
+			$id = $_POST["userId"];
 
+            
+			$selectStatement = "SELECT id FROM users WHERE id = '". $id ."' AND password = '" . $CurrPass . "'";
+			$usersList = $dbContext -> Select($selectStatement);
+			if ($usersList -> num_rows == 0)
+			{
+				$alert -> Message = "Obecne hasło nie jest poprawne! Popraw to!";
+                $alert -> TYPE_OF_ALERT = Alert::WARNING_ALERT;
+                $session -> __set("alert", serialize($alert));
+				header("Location: index.php?con=4&page=5");
+			}
+			else if($NewPass != $NewPassRepeat)
+			{
+				$alert -> Message = "Hasła nie pokrywają się! Popraw błędy!";
+                $alert -> TYPE_OF_ALERT = Alert::WARNING_ALERT;
+                $session -> __set("alert", serialize($alert));
+				header("Location: index.php?con=4&page=5");
+			}
+			else
+			{
+				$updateStatement = "UPDATE users SET password = '" . $NewPass . "' WHERE id = '" . $id . "'";
+				$result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+				
+				if ($result)
+				{
+					$alert -> Message = "Zmieniono hasło!";
+					$alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+					$session -> __set("alert", serialize($alert));
+					header("Location: index.php?con=4&page=5");
+				}
+			}
+
+		}
+		
         private function CheckAuth()
         {
             $session = Session::getInstance();
