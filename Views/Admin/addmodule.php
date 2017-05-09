@@ -81,7 +81,7 @@
 
                     <div class="form-group">
                         <label class="control-label" for"learningStyle">Styl:</label>
-                        <select class="form-control">
+                        <select class="form-control" name="learningStyle">
                             <option value='-1'></option>
                             <?php
                                 $styleStatement = "SELECT * FROM learningstyles";

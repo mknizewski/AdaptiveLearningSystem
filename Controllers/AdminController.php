@@ -295,7 +295,27 @@
 
         public function AddModulePost()
         {
+            $alert = new Alert();
+            $session = Session::getInstance();
+            $dbContext = new DbContext();
 
+            $moduleTitle = $_POST["moduleName"];
+            $lessonId = $_POST["lesson"];
+            $learningStyleId = $_POST["learningStyle"];
+            $moduleDetails = $_POST["moduleDetails"];
+            $modulePiority = $_POST["modulePiority"];
+            
+            $insertStatement = "INSERT INTO modules (lesson_id, learningstyle_id, title, content, order_num) VALUES ($lessonId, $learningStyleId, '$moduleTitle', '$moduleDetails', $modulePiority)";
+            $result = $dbContext -> MakeStatement($insertStatement, DbContext::INSERT_STATEMENT);
+
+            if ($result)
+            {
+                $alert -> Message = "Poprawnie dodano moduł!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_MAIN_ID);
+            }
         }
 
         public function CheckAuth()
