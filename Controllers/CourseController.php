@@ -20,6 +20,9 @@
                 case ControllerDictionary::COURSE_LESSONS_ID:
                     $this -> Lessons();
                     break;
+                case ControllerDictionary::COURSE_LESSON_MODULES_ID:
+                    $this -> Modules();
+                    break;
                 default:
                     return false;
             }
@@ -33,6 +36,26 @@
         public function Lessons()
         {
             echo ControllerFactory::GetViewContent(ControllerDictionary::COURSE_LESSONS_PAGE);
+        }
+
+        public function Modules()
+        {
+            $alert = new Alert();
+            $session = Session::getInstance();
+            $user = $session -> __get("user");
+            $learningStyleId = $user -> GetLearningStyle();
+
+            if ($learningStyleId == 0)
+            {
+                $alert -> Message = "Wpierw określ swój styl nauczania poprzez wypełnienie ankiety!";
+                $alert -> TYPE_OF_ALERT = Alert::WARNING_ALERT;
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::ACCOUNT_CONTROLLER_ID, ControllerDictionary::ACCOUNT_MAIN_ID);
+                return;
+            }
+
+            echo ControllerFactory::GetViewContent(ControllerDictionary::COURSE_LESSON_MODULES_PAGE);
         }
 
         public function SignIn()

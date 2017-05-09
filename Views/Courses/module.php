@@ -7,15 +7,11 @@
     $session = Session::getInstance();
     $dbContext = new DbContext();
     $user = unserialize($session -> __get("user"));
-    $courseId = $_GET["course"];
 
-    $cStatement = "SELECT * FROM courses WHERE id=" . $courseId;
-    $lStatement = "SELECT * FROM lessons WHERE course_id=" . $courseId;
+    $courseId = $_GET["c"];
+    $lessonId = $_GET["l"];
 
-    $course = $dbContext -> Select($cStatement) -> fetch_assoc();
-    $lessonList = $dbContext -> Select($lStatement);
-
-    echo "<h2> Kurs - " . $course["title"] . "</h2>";
+    echo "<h2> Lekcja: </h2>";
 ?>
 <hr />
 <div class="row">
@@ -58,24 +54,14 @@
         <div class="panel-body">
             <div class="list-group">
             <?php
-                while ($row = $lessonList -> fetch_assoc())
-                {
-                    $lessonId = $row["id"];
-                    $lessonTitle = $row["title"];
-                    $lessonInsertTime = $row["insert_time"];
-
-                    echo '<a href="index.php?con=6&page=4&l=' . $lessonId . '&c=' . $courseId . '" class="list-group-item list-group-item-warning">';
-                    echo '<div class="row">';
-                    echo '<div class="col-md-6"><b>' . $lessonTitle . '</b></div>';
-                    echo '<div class="col-md-6" style="text-align: right;">' . $lessonInsertTime . '</div>';
-                    echo '</div>';
-                    echo '</a>';
-                }
+                
             ?>
             </div>
-            <a href="index.php?con=4&page=1" style="float: right;" class="btn btn-default">Cofnij</a>
         </div>
     </div>
+    <?php
+        echo "<a href='index.php?con=6&page=3&course=$courseId' style='float: right;' class='btn btn-default'>Cofnij</a>";
+    ?>
   </div>
 
   <div class="col-sm-3">
