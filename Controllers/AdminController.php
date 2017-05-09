@@ -44,6 +44,9 @@
                     case ControllerDictionary::ADMIN_VIEW_USERS_DELETE_USER_FROM_COURSE_POST_ID:
                         $this -> DeleteUserFromCourse();
                         break;
+					case ControllerDictionary::ADMIN_VIEW_USERS_UPDATE_USER_ROLE_POST_ID:
+                        $this -> UpdateRole();
+                        break;
                     default:
                         return false;
                 }
@@ -216,9 +219,13 @@
         }
 		
 		public function UpdateRole()
-		{
-			$userId = $_POST["id"];
+		{			
+			$alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+			$userId = $_POST["userId"];
 			$role_id = $_POST["role_id"];
+			//$updateStatement = "UPDATE users SET role_id = '" . $role_id . "'  WHERE id =" . $userId;
 			$updateStatement = "UPDATE users SET role_id = " . $role_id . "  WHERE id =" . $userId;
 			$result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
 			
@@ -227,7 +234,7 @@
 				$alert -> Message = "Poprawnie zmieniono role użytkownika!";
                 $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
                 $session -> __set("alert", serialize($alert));
-			}	
+			}
 		}		
     }
 ?>
