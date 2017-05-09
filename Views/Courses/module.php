@@ -3,18 +3,26 @@
     include_once 'Enviroment/User.php';
     include_once 'Enviroment/DbContext.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
+    include_once 'Dictionaries/LearningStyleDictionary.php';
 
     $session = Session::getInstance();
     $dbContext = new DbContext();
     $user = unserialize($session -> __get("user"));
 
-    $coursesStatement = "SELECT * FROM courses_users WHERE id_user=" . $user -> Id; 
-    $usersCourseList = $dbContext -> Select($coursesStatement);
+    $courseId = $_GET["c"];
+    $lessonId = $_GET["l"];
+    $learningStyleId = $user -> GetLearningStyle();
 
-    echo "<h2> Twoje Konto - " . $user -> Name . " " . $user -> Surname . "</h2>";
+    $mStatement = "SELECT * FROM modules WHERE lesson_id=" . $lessonId . " ORDER BY order_num";
+    $lStatement = "SELECT * FROM lessons WHERE id=" .  $lessonId;
+
+    $modulesList = $dbContext -> Select($mStatement);
+    $lesson = $dbContext -> Select($lStatement) -> fetch_assoc();
+
+    echo "<h2>Lekcja: <b>" . $lesson["title"] . "</b></h2>";
 ?>
 <hr />
-<div class="row animated fadeIn">
+<div class="row">
   <div class="col-sm-3">
     <div class="panel panel-primary">
         <div class="panel-heading">Nawigacja</div>
@@ -49,28 +57,25 @@
   </div>
 
   <div class="col-sm-6">
-    <div class="panel panel-info">
-        <div class="panel-heading">Przegląd moich kursów</div>
-        <div class="panel-body">
-            <?php
-                while ($row = $usersCourseList -> fetch_assoc())
-                {
-                    $courseId = $row["id_course"];
-                    $cSelect = "SELECT * FROM courses WHERE id=" . $courseId;
-                    $course = $dbContext -> Select($cSelect) -> fetch_assoc();
+    <?php
+        while ($row = $modulesList -> fetch_assoc())
+        {
+            $learningStyle = $row["learningstyle_id"];
 
-                    echo '<div class="row">';
-                    echo '<div class="col-md-6"> <p style="margin-top: 5px;"><b>' . $course["title"] . '</b></p></div>';
-                    echo '<div class="col-md-6">';
-                    echo '<a href="index.php?con=6&page=3&course=' . $courseId . '" class="btn btn-primary" style="float: right;">Przejdź</a>';
-                    echo '</div>';
-                    echo '</div>';
-
-                    echo '<br />';
-                }
-            ?>
-        </div>
-    </div>
+            if ($learningStyle == LearningStyleDictionary::ALL || $learningStyle == $learningStyleId)
+            {
+                echo '<div class="panel panel-default">';
+                echo '<div class="panel-heading">' . $row["title"] . '</div>';
+                echo '<div class="panel-body">';
+                echo $row["content"];
+                echo '</div>';
+                echo '</div>';
+            }
+        }
+    ?>
+    <?php
+        echo "<a href='index.php?con=6&page=3&course=$courseId' style='float: right;' class='btn btn-default'>Cofnij</a>";
+    ?>
   </div>
 
   <div class="col-sm-3">

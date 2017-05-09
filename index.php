@@ -51,7 +51,7 @@
                         ?>
                     </li>
                     <li>
-                        <a href="#">Kursy</a>
+                        <a href="index.php?con=6&page=1">Kursy</a>
                     </li>
                     <li>
                         <a href="index.php?con=2&page=1">O nas</a>

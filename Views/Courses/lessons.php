@@ -7,14 +7,18 @@
     $session = Session::getInstance();
     $dbContext = new DbContext();
     $user = unserialize($session -> __get("user"));
+    $courseId = $_GET["course"];
 
-    $coursesStatement = "SELECT * FROM courses_users WHERE id_user=" . $user -> Id; 
-    $usersCourseList = $dbContext -> Select($coursesStatement);
+    $cStatement = "SELECT * FROM courses WHERE id=" . $courseId;
+    $lStatement = "SELECT * FROM lessons WHERE course_id=" . $courseId;
 
-    echo "<h2> Twoje Konto - " . $user -> Name . " " . $user -> Surname . "</h2>";
+    $course = $dbContext -> Select($cStatement) -> fetch_assoc();
+    $lessonList = $dbContext -> Select($lStatement);
+
+    echo "<h2> Kurs - " . $course["title"] . "</h2>";
 ?>
 <hr />
-<div class="row animated fadeIn">
+<div class="row">
   <div class="col-sm-3">
     <div class="panel panel-primary">
         <div class="panel-heading">Nawigacja</div>
@@ -50,25 +54,26 @@
 
   <div class="col-sm-6">
     <div class="panel panel-info">
-        <div class="panel-heading">Przegląd moich kursów</div>
+        <div class="panel-heading">Lekcje w kursie</div>
         <div class="panel-body">
+            <div class="list-group">
             <?php
-                while ($row = $usersCourseList -> fetch_assoc())
+                while ($row = $lessonList -> fetch_assoc())
                 {
-                    $courseId = $row["id_course"];
-                    $cSelect = "SELECT * FROM courses WHERE id=" . $courseId;
-                    $course = $dbContext -> Select($cSelect) -> fetch_assoc();
+                    $lessonId = $row["id"];
+                    $lessonTitle = $row["title"];
+                    $lessonInsertTime = $row["insert_time"];
 
+                    echo '<a href="index.php?con=6&page=4&l=' . $lessonId . '&c=' . $courseId . '" class="list-group-item list-group-item-warning">';
                     echo '<div class="row">';
-                    echo '<div class="col-md-6"> <p style="margin-top: 5px;"><b>' . $course["title"] . '</b></p></div>';
-                    echo '<div class="col-md-6">';
-                    echo '<a href="index.php?con=6&page=3&course=' . $courseId . '" class="btn btn-primary" style="float: right;">Przejdź</a>';
+                    echo '<div class="col-md-6"><b>' . $lessonTitle . '</b></div>';
+                    echo '<div class="col-md-6" style="text-align: right;">' . $lessonInsertTime . '</div>';
                     echo '</div>';
-                    echo '</div>';
-
-                    echo '<br />';
+                    echo '</a>';
                 }
             ?>
+            </div>
+            <a href="index.php?con=4&page=1" style="float: right;" class="btn btn-default">Cofnij</a>
         </div>
     </div>
   </div>

@@ -31,6 +31,15 @@
                 return "Gość";
         }
 
+        public function GetLearningStyle()
+        {
+            $dbContext = new DbContext();
+            $statment = "SELECT * FROM users WHERE id=" . $this -> Id;
+            $userFromDb = $dbContext -> Select($statment) -> fetch_assoc();
+
+            return $userFromDb["learning_style_id"];
+        }
+
         private function RoleStatement()
         {
             $roleStatment = "SELECT * FROM roles WHERE id = " . $this -> RoleId;

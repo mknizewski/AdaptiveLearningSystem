@@ -77,5 +77,18 @@
         const ADMIN_ADD_MODULE_POST_ID = 15;
         const ADMIN_ADD_MODULE_PAGE = "Views/Admin/addmodule.php";
         //-------------------------//
+        const COURSE_CONTROLLER_ID = 6;
+
+        const COURSE_MAIN_ID = 1;
+        const COURSE_MAIN_PAGE = "Views/Courses/main.php";
+
+        const COURSE_SIGN_ID = 2;
+
+        const COURSE_LESSONS_ID = 3;
+        const COURSE_LESSONS_PAGE = "Views/Courses/lessons.php";
+
+        const COURSE_LESSON_MODULES_ID = 4;
+        const COURSE_LESSON_MODULES_PAGE = "Views/Courses/module.php";
+        //-------------------------//
     }
 ?>
