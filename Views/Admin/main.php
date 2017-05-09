@@ -59,7 +59,8 @@
                         <h4><span class="glyphicon glyphicon-tasks"></span> Lekcje</h4>
                         <hr />
                         <ul>
-                            <li><a href='#'>Dodaj lekcje</a></li>
+                            <li><a href='index.php?con=5&page=12'>Dodaj lekcje</a></li>
+                            <li><a href='index.php?con=5&page=14'>Dodaj moduł</a></li>
                             <li><a href='#'>Zarządzanie lekcjami</a></li>
                         </ul>
                     </div>
