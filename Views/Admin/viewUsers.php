@@ -128,20 +128,27 @@
 										else
 											echo 'Jeszcze nie zapisany...';
 									echo "</td>";
-									echo "<td>
-										<input type= 'text'  size = '1' name= ". $id ."/> 
-										<input type= 'submit' name= 'change_role' size= '2' value= 'Zmień' />
-										</td>";
+									/*echo '<td>
+										<input type= "text"  size = "1" name ='. $id .'/> 
+										<input type= 'submit' name= 'change_role' size= '2' value= 'Zmień' onclick=".   .' />
+										</td>';*/
+									echo '<td>
+											<div class="dropdown disabled">
+												<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">'. $role .'
+												<span class="caret disabled"></span></button>
+												<ul id="dropDownMenu_Courses" class="dropdown-menu" >
+													<li><a onclick="UpdateRole(' . $row["id"] . ', ' . 1 . ')" href="#">'. admin .'</a></li>
+													<li><a onclick="UpdateRole(' . $row["id"] . ', ' . 2 . ')" href="#">'. student .'</a></li>
+													<li><a onclick="UpdateRole(' . $row["id"] . ', ' . 3 . ')" href="#">'. guest .'</a></li>
+												</ul>
+											</div>
+										  </td>';
                                     echo "</tr>";
                                 }
                             }
-														
-                        ?>
-						Role użytkowników
-							<li>1 - Admin</li>
-							<li>2 - Student</li>
-							<li>3 - Gość</li>
-						
+							
+										
+                        ?>							
 					</tbody>
 				</table>
                 <a href="index.php?con=5&page=1" style="float: right;" class="btn btn-default">Cofnij</a>
@@ -164,19 +171,20 @@
 	        });
 	    }
     }
-	
+</script>
+<script>
 	function UpdateRole(uId, rId)
 	{
 		if (confirm('Czy na pewno chcesz zmienić role użytkownika?'))
-		{
-			$.ajax({
-				url:  "index.php?con=5&page=11",
-				data: { userId: uId, role_id: rId},
-				type: "POST".
-				success: function() {
+	    {
+		    $.ajax({
+		        url: "index.php?con=5&page=11",
+		        data: { userId: uId, role_id: rId },
+		        type: "POST",
+		        success: function() {
 			        location.reload(true);
 		        }
-			});
-		}
+	        });
+	    }
 	}
 </script>
