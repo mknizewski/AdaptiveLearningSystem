@@ -47,6 +47,18 @@
                     case ControllerDictionary::ADMIN_COURSE_LIST_ADD_USER_TO_COURSE_ID:
                         $this -> AddUserToCourse();
                         break;
+                    case ControllerDictionary::ADMIN_ADD_LESSON_ID:
+                        $this -> AddLesson();
+                        break;
+                    case ControllerDictionary::ADMIN_ADD_LESSON_POST_ID:
+                        $this -> AddLessonPost();
+                        break;
+                    case ControllerDictionary::ADMIN_ADD_MODULE_ID:
+                        $this -> AddModule();
+                        break;
+                    case ControllerDictionary::ADMIN_ADD_MODULE_POST_ID:
+                        $this -> AddModulePost();
+                        break;
                     default:
                         return false;
                 }
@@ -236,6 +248,73 @@
                 $alert -> Message = "Poprawnie usunięto użytkownika z kursu!";
                 $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
                 $session -> __set("alert", serialize($alert));
+            }
+        }
+
+        public function AddLesson()
+        {
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_ADD_LESSON_PAGE);
+        }
+
+        public function AddLessonPost()
+        {
+            $alert = new Alert();
+            $dbContext = new DbContext();
+            $currentDate = date('Y-m-d');
+            $session = Session::getInstance();
+
+            $lessonName = $_POST["lessonName"];
+            $courseId = $_POST["forCourse"];
+            $countOfModules = $_POST["countOfModules"];
+
+            $insertStatement = "INSERT INTO lessons (course_id, title, count_of_modules, insert_time) VALUES($courseId, '$lessonName', $countOfModules, '$currentDate')";
+            $result = $dbContext -> MakeStatement($insertStatement, DbContext::INSERT_STATEMENT);
+
+            if ($result)
+            {
+                $alert -> Message = "Poprawnie dodano lekcję!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_MAIN_ID);
+            }
+            else
+            {
+                $alert -> Message = ExceptionDictionary::DB_FAILED;
+                $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_ADD_LESSON_ID);
+            }
+        }
+
+        public function AddModule()
+        {
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_ADD_MODULE_PAGE);
+        }
+
+        public function AddModulePost()
+        {
+            $alert = new Alert();
+            $session = Session::getInstance();
+            $dbContext = new DbContext();
+
+            $moduleTitle = $_POST["moduleName"];
+            $lessonId = $_POST["lesson"];
+            $learningStyleId = $_POST["learningStyle"];
+            $moduleDetails = $_POST["moduleDetails"];
+            $modulePiority = $_POST["modulePiority"];
+            
+            $insertStatement = "INSERT INTO modules (lesson_id, learningstyle_id, title, content, order_num) VALUES ($lessonId, $learningStyleId, '$moduleTitle', '$moduleDetails', $modulePiority)";
+            $result = $dbContext -> MakeStatement($insertStatement, DbContext::INSERT_STATEMENT);
+
+            if ($result)
+            {
+                $alert -> Message = "Poprawnie dodano moduł!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_MAIN_ID);
             }
         }
 
