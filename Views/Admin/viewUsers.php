@@ -135,14 +135,13 @@
                                     echo "</tr>";
                                 }
                             }
-							
-							
-							
-								if(isset($_POST['id_coursesusers']))
-									echo  $_POST['id_coursesusers'];
-								else
-									echo "Brak postow";						
-                        ?>							
+														
+                        ?>
+						Role użytkowników
+							<li>1 - Admin</li>
+							<li>2 - Student</li>
+							<li>3 - Gość</li>
+						
 					</tbody>
 				</table>
                 <a href="index.php?con=5&page=1" style="float: right;" class="btn btn-default">Cofnij</a>
