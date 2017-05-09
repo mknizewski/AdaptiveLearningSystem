@@ -1,12 +1,18 @@
 <?php
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/User.php';
+    include_once 'Enviroment/DbContext.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
 
     $session = Session::getInstance();
+    $dbContext = new DbContext();
     $user = unserialize($session -> __get("user"));
+
+    $courseId = $_GET["edit"];
+    $selectStatement = "SELECT * FROM courses WHERE id = " . $courseId;
+    $result = $dbContext -> Select($selectStatement) -> fetch_assoc();
 ?>
-<h2>Dodaj nowy kurs</h2>
+<h2>Panel Administracyjny</h2>
 <hr />
 <div class="row">
     <div class="col-sm-3">
@@ -43,39 +49,40 @@
   </div>
     <div class="col-md-9">
         <div class="panel panel-info">
-             <div class="panel-heading">Formularz dodania nowego kursu</div>
-             <div class="panel-body">
-                <form method="POST" action="index.php?con=5&page=6">
+            <div class="panel-heading">
+                <?php echo 'Edycja kursu: <b>' . $result["title"] . '</b>'; ?>
+            </div>
+            <div class="panel-body">
+                <form method="POST" action="index.php?con=5&page=7">
+                    <?php
+                        echo '<input type="hidden" name="courseId" value="' . $courseId . '">';
+                    ?>
                     <div class="form-group">
                         <label class="control-label" for="courseName">Nazwa:</label>
-                        <input type="courseName" class="form-control" name="courseName" id="courseName" placeholder="Wprowadź nazwę kursu">
+                        <?php 
+                            $titleValue = $result["title"];
+                            echo '<input type="courseName" class="form-control" name="courseName" id="courseName" placeholder="Wprowadź nazwę kursu" value="' . $titleValue . '">'; 
+                        ?>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label" for="courseDetails">Opis kursu:</label>
-                        <textarea id="courseDetails" name="courseDetails"></textarea>
+                        <?php
+                            $descValue = $result["description"];
+                            echo '<textarea id="courseDetails" name="courseDetails">' . $descValue . '</textarea>';
+                        ?>
                     </div>
 
-                    <div class="form-group">
-                        <button type="submit" style="float: right;" class="btn btn-primary">Dodaj kurs</button> 
-                        <a href="index.php?con=5&page=1" type="button" style="float: right; margin-right: 5px;" class="btn btn-default">Cofnij</a> 
-                    </div> 
-                </form>  
-             </div>  
+                    <button type="submit" class="btn btn-success" style="float: right; margin-left: 10px;">Edytuj</button>
+                    <a href="index.php?con=5&page=3" style="float: right;" class="btn btn-default">Cofnij</a>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>
 	tinymce.init({ selector:'textarea',  
-	 plugins: [
-        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen",
-        "insertdatetime media nonbreaking save table contextmenu directionality",
-        "emoticons template paste textcolor autoresize"
-    ],
-    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-    toolbar2: "print preview media | forecolor backcolor emoticons",
-    image_advtab: true });
+	plugins: "textcolor colorpicker link insertdatetime table image media  autoresize autolink wordcount",
+	toolbar: "forecolor backcolor link insertdatetime table image media " });
 </script>
-

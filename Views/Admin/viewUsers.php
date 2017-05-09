@@ -2,6 +2,11 @@
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/User.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
+
+
+    //include_once 'Controllers/AdminController.php';
+
+
     $session = Session::getInstance();
 	$dbContext = new DbContext();
     $user = unserialize($session -> __get("user"));
@@ -56,6 +61,8 @@
                             <th>Email</th>
                             <th>Rola</th>
                             <th>Styl uczenia</th>
+                            <th>Kursy</th>
+							<th>Zmień role</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,7 +72,8 @@
                             {
                                 while ($row = $usersList -> fetch_assoc())
                                 {
-									$user_id = "'" . $row["id"] . "'";
+									$id = "'" . $row["id"] . "'";
+
                                     $role_id = "'" . $row["role_id"] . "'";
                                     $learning_style_id = "'" . $row["learning_style_id"] . "'";			
 									$selectStatement = "SELECT * FROM roles WHERE id = ".$role_id;
@@ -86,19 +94,90 @@
                                     echo "<td>" . $row["name"] . "</td>";
                                     echo "<td>" . $row["surname"] . "</td>";
                                     echo "<td> <a href = 'mailto:". $row["email"] ."'>". $row["email"] ."</a> </td>";
-                                    echo "<td> $role"; 
-									echo "</br><b>Zmień:</b>  
-										<input type = 'text'  name = 'role_change' size = '5'> 
-										<input type = 'submit' size = '1' value = 'ok' > 
-										</td>";
+                                    echo "<td>" . $role  ."</td>"; 
                                     echo "<td>". $learning_style . "</td>";
+									echo "<td>";
+										$selectStatement = "SELECT * FROM courses_users WHERE id_user = ".$id;
+										$signToCourseList = $dbContext -> Select($selectStatement);
+										if ($signToCourseList -> num_rows > 0)
+										{
+											echo '<div class="dropdown disabled">
+																			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Zapisany do ...
+																			<span class="caret disabled"></span></button>
+																			<ul id="dropDownMenu_Courses" class="dropdown-menu" >';
+											while ($rowIdCourses = $signToCourseList -> fetch_assoc())
+											{
+												$id_course = $rowIdCourses["id_course"];
+												$id_courses_users = $rowIdCourses["id"];
+												
+												
+												$selectStatement = "SELECT * FROM courses WHERE id = ".$id_course;
+												$coursesList = $dbContext -> Select($selectStatement);
+												if ($coursesList -> num_rows > 0)
+												{
+													while ($rowCourses = $coursesList -> fetch_assoc())
+													{														
+														$courseName = $rowCourses["title"];														
+														echo '<li><a style="" href="#">'. $courseName .'</a><a href="#" id="goout" onclick="DeleteUser(' . $id . ', ' . $id_course . ')" style="">Wypisz</a></li>';
+													}	
+												}
+											}
+												echo'	</ul>
+												  </div>';
+										}
+										else
+											echo 'Jeszcze nie zapisany...';
+									echo "</td>";
+									echo "<td>
+										<input type= 'text'  size = '1' name= ". $id ."/> 
+										<input type= 'submit' name= 'change_role' size= '2' value= 'Zmień' />
+										</td>";
                                     echo "</tr>";
                                 }
                             }
-                        ?>
+							
+							
+							
+								if(isset($_POST['id_coursesusers']))
+									echo  $_POST['id_coursesusers'];
+								else
+									echo "Brak postow";						
+                        ?>							
 					</tbody>
 				</table>
+                <a href="index.php?con=5&page=1" style="float: right;" class="btn btn-default">Cofnij</a>
 			</div>
 		</div>
     </div>
 </div>
+<script>
+    function DeleteUser(uId, cId)
+    {
+	    if (confirm('Czy na pewno chcesz usunąć danego użytkownika z kursu?'))
+	    {
+		    $.ajax({
+		        url: "index.php?con=5&page=10",
+		        data: { userId: uId, courseId: cId },
+		        type: "POST",
+		        success: function() {
+			        location.reload(true);
+		        }
+	        });
+	    }
+    }
+	
+	function UpdateRole(uId, rId)
+	{
+		if (confirm('Czy na pewno chcesz zmienić role użytkownika?'))
+		{
+			$.ajax({
+				url:  "index.php?con=5&page=11",
+				data: { userId: uId, role_id: rId},
+				type: "POST".
+				success: function() {
+			        location.reload(true);
+		        }
+			});
+		}
+	}
+</script>
