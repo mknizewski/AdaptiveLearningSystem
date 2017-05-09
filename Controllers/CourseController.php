@@ -4,6 +4,7 @@
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/DbContext.php';
     include_once 'Enviroment/Alert.php';
+    include_once 'Enviroment/User.php';
 
     class CourseController
     {
@@ -42,7 +43,7 @@
         {
             $alert = new Alert();
             $session = Session::getInstance();
-            $user = $session -> __get("user");
+            $user = unserialize($session -> __get("user"));
             $learningStyleId = $user -> GetLearningStyle();
 
             if ($learningStyleId == 0)

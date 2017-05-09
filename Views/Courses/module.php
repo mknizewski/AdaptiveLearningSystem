@@ -10,8 +10,15 @@
 
     $courseId = $_GET["c"];
     $lessonId = $_GET["l"];
+    $learningStyleId = $user -> GetLearningStyle();
 
-    echo "<h2> Lekcja: </h2>";
+    $mStatement = "SELECT * FROM modules WHERE lesson_id=" . $lessonId . " ORDER BY order_num";
+    $lStatement = "SELECT * FROM lessons WHERE id=" .  $lessonId;
+
+    $modulesList = $dbContext -> Select($mStatement);
+    $lesson = $dbContext -> Select($lStatement) -> fetch_assoc();
+
+    echo "<h2>Lekcja: <b>" . $lesson["title"] . "</b></h2>";
 ?>
 <hr />
 <div class="row">
@@ -49,16 +56,22 @@
   </div>
 
   <div class="col-sm-6">
-    <div class="panel panel-info">
-        <div class="panel-heading">Lekcje w kursie</div>
-        <div class="panel-body">
-            <div class="list-group">
-            <?php
-                
-            ?>
-            </div>
-        </div>
-    </div>
+    <?php
+        while ($row = $modulesList -> fetch_assoc())
+        {
+            $learningStyle = $row["learningstyle_id"];
+
+            if ($learningStyle == 5 || $learningStyle == $learningStyleId)
+            {
+                echo '<div class="panel panel-default">';
+                echo '<div class="panel-heading">' . $row["title"] . '</div>';
+                echo '<div class="panel-body">';
+                echo $row["content"];
+                echo '</div>';
+                echo '</div>';
+            }
+        }
+    ?>
     <?php
         echo "<a href='index.php?con=6&page=3&course=$courseId' style='float: right;' class='btn btn-default'>Cofnij</a>";
     ?>
