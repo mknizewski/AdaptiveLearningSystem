@@ -72,6 +72,10 @@
         const ADMIN_ADD_LESSON_ID = 12;
         const ADMIN_ADD_LESSON_POST_ID = 13;
         const ADMIN_ADD_LESSON_PAGE = "Views/Admin/addlesson.php";
+
+        const ADMIN_ADD_MODULE_ID = 14;
+        const ADMIN_ADD_MODULE_POST_ID = 15;
+        const ADMIN_ADD_MODULE_PAGE = "Views/Admin/addmodule.php";
         //-------------------------//
     }
 ?>

@@ -53,6 +53,12 @@
                     case ControllerDictionary::ADMIN_ADD_LESSON_POST_ID:
                         $this -> AddLessonPost();
                         break;
+                    case ControllerDictionary::ADMIN_ADD_MODULE_ID:
+                        $this -> AddModule();
+                        break;
+                    case ControllerDictionary::ADMIN_ADD_MODULE_POST_ID:
+                        $this -> AddModulePost();
+                        break;
                     default:
                         return false;
                 }
@@ -280,6 +286,16 @@
 
                 ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_ADD_LESSON_ID);
             }
+        }
+
+        public function AddModule()
+        {
+            echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_ADD_MODULE_PAGE);
+        }
+
+        public function AddModulePost()
+        {
+
         }
 
         public function CheckAuth()
