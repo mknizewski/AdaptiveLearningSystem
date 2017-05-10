@@ -62,7 +62,8 @@
                             <th>Rola</th>
                             <th>Styl uczenia</th>
                             <th>Kursy</th>
-							<th>Zmień role</th>
+							<th>Zmień rolę</th>
+							<th>VARK</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -143,6 +144,7 @@
 												</ul>
 											</div>
 										  </td>';
+									echo '<td><button type="submit" class="btn btn-primary" onclick = "ResetVARK('. $row["id"] .')">Resetuj</button></td>';
                                     echo "</tr>";
                                 }
                             }
@@ -180,6 +182,22 @@
 		    $.ajax({
 		        url: "index.php?con=5&page=16",
 		        data: { userId: uId, role_id: rId },
+		        type: "POST",
+		        success: function() {
+			        location.reload(true);
+		        }
+	        });
+	    }
+	}
+</script>
+<script>
+	function ResetVARK(uId)
+	{
+		if (confirm('Czy na pewno chcesz zresetować VARK?'))
+	    {
+		    $.ajax({
+		        url: "index.php?con=5&page=17",
+		        data: { userId: uId },
 		        type: "POST",
 		        success: function() {
 			        location.reload(true);

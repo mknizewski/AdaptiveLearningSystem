@@ -74,6 +74,7 @@
 		const ADMIN_VIEW_USERS_PAGE = "Views/Admin/viewusers.php";
 		
 		const ADMIN_VIEW_USERS_UPDATE_USER_ROLE_POST_ID = 16;
+		const ADMIN_VIEW_USERS_RESET_VARK_POST_ID = 17;
 
         const ADMIN_ADD_LESSON_ID = 12;
         const ADMIN_ADD_LESSON_POST_ID = 13;
