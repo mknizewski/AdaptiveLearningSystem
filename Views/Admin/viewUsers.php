@@ -158,6 +158,41 @@
 		</div>
     </div>
 </div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h2>Przewodnik po środowisku .NET</h1>
+		<h4>Co to jest?</h4>
+		<ul class="list-group">
+			<a class="list-group-item">Poradnik, w którym znajdziesz wszystko na temat .NET i C#</a>
+			<a class="list-group-item">Krótkie i rzetelne treści, które łatwo dotrą do kursanta</a>
+			<a class="list-group-item">Świetne quizy sprawdzające wiedzę</a>
+			<a class="list-group-item">Testy z kodu, które wpływają na przyswajaną wiedzę praktyczna</a>
+			<a class="list-group-item">I... oczywiście tutoriale z Akademii C#</a>
+		</ul>
+		<h4>Czego potrzebujesz?</h4>
+		<ul class="list-group">
+			<a class="list-group-item">Komputer z dostępem do sieci. Tak! Tylko to!</a>
+		</ul>
+		<h4>Z czego składa się kurs?</h4>
+		<ul class="list-group">
+			<a class="list-group-item">Akademia C# - czya tutoriale z kanału YT wykonane przez naszych specjaastów</a>
+			<a class="list-group-item">Uczę się! - są to po prostu rzetelne lekcje, dzięki którym przyswoisz wiedzę</a>
+			<a class="list-group-item">Ja koduję! - tutaj przetestujesz swoje możawości w zadaniach praktycznych z kodu</a>
+			<a class="list-group-item">Sprawdź się! - quizy z pytaniami, które sprawdzą wiedzę z lekcji</a>
+			<a class="list-group-item">Czy wiesz, że...? - sekcja z ciekawostkami o .NET</a>
+			<a class="list-group-item">Oceń nas! - sondy, dzięki którym dowiemy się jakie jest Wasze zdanie na temat różnych kwestii</a>
+		</ul>
+		<img src="http://pioter-test.cba.pl/als/okladka-wymiar2.png" width="600px" class="img img-responsive">
+		<br>
+		<img src="http://pioter-test.cba.pl/als/plytkaPNG2.png" width="500px" class="img img-responsive">
+		<br>
+		<p><h4>Nie zwlekaj!</h4></p>
+		<p><h4>I zacznij już dziś!</h4></p>
+	</div>
+</div>
+
+
 <script>
     function DeleteUser(uId, cId)
     {
