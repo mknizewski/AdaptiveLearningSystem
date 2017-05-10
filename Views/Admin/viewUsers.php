@@ -161,34 +161,50 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<h2>Przewodnik po środowisku .NET</h1>
-		<h4>Co to jest?</h4>
-		<ul class="list-group">
-			<a class="list-group-item">Poradnik, w którym znajdziesz wszystko na temat .NET i C#</a>
-			<a class="list-group-item">Krótkie i rzetelne treści, które łatwo dotrą do kursanta</a>
-			<a class="list-group-item">Świetne quizy sprawdzające wiedzę</a>
-			<a class="list-group-item">Testy z kodu, które wpływają na przyswajaną wiedzę praktyczna</a>
-			<a class="list-group-item">I... oczywiście tutoriale z Akademii C#</a>
-		</ul>
-		<h4>Czego potrzebujesz?</h4>
-		<ul class="list-group">
-			<a class="list-group-item">Komputer z dostępem do sieci. Tak! Tylko to!</a>
-		</ul>
-		<h4>Z czego składa się kurs?</h4>
-		<ul class="list-group">
-			<a class="list-group-item">Akademia C# - czya tutoriale z kanału YT wykonane przez naszych specjaastów</a>
-			<a class="list-group-item">Uczę się! - są to po prostu rzetelne lekcje, dzięki którym przyswoisz wiedzę</a>
-			<a class="list-group-item">Ja koduję! - tutaj przetestujesz swoje możawości w zadaniach praktycznych z kodu</a>
-			<a class="list-group-item">Sprawdź się! - quizy z pytaniami, które sprawdzą wiedzę z lekcji</a>
-			<a class="list-group-item">Czy wiesz, że...? - sekcja z ciekawostkami o .NET</a>
-			<a class="list-group-item">Oceń nas! - sondy, dzięki którym dowiemy się jakie jest Wasze zdanie na temat różnych kwestii</a>
-		</ul>
-		<img src="http://pioter-test.cba.pl/als/okladka-wymiar2.png" width="600px" class="img img-responsive">
-		<br>
-		<img src="http://pioter-test.cba.pl/als/plytkaPNG2.png" width="500px" class="img img-responsive">
-		<br>
-		<p><h4>Nie zwlekaj!</h4></p>
-		<p><h4>I zacznij już dziś!</h4></p>
+		<h2>Wyglad kursu</h1>
+		
+		<!-- 1) VISUAL -->
+		
+		<!-- 2) AURAL -->
+		<div class="row">
+			<div class="col-md-8">
+				<div class="col-md-12 well well-md" style="">
+					<h4>Audiobook - <i>Tytuł</i></h4>
+					<span>Treść opisu.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel ex venenatis, pharetra nulla eget, commodo urna. D
+					uis a felis a velit auctor aliquam quis vitae nibh. Fusce hendrerit cursus ante in congue. Pellentesque ornare libero orci, sed tristique 
+					magna molestie quis. Sed pretium mauris at lectus efficitur, auctor mollis ipsum elementum. Praesent lacinia pharetra ex, nec fringilla dui 
+					imperdiet vitae. Nullam volutpat lobortis massa, sit amet maximus nibh rhoncus nec. Nunc ut sapien felis. Suspendisse libero metus, pharetra 
+					aliquam blandit at, sollicitudin luctus nisi. </span>
+				</div>
+				<audio style="width: 100%;" controls>
+					<source src="http://pioter-test.cba.pl/als/Avici-Levels.mp3" type="audio/mpeg">
+				</audio> 
+			</div>
+		</div>
+
+		<br /><br /><br />
+		
+		<!-- 3) READING -->
+
+		<!-- 4) KINESTETYK -->
+		<div class="row">
+			<div class="col-md-8">
+				<iframe style="width: 100%;" height="460px"
+					src="https://www.youtube.com/embed/5SIiUB4wGRw" frameborder="0" allowfullscreen>
+				</iframe>
+				<div class="well well-md" style="width: 100%;">
+					<h4>Akademia C# - <i>Tytuł</i></h4>
+					<span>Treść opisu.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel ex venenatis, pharetra nulla eget, commodo urna. D
+					uis a felis a velit auctor aliquam quis vitae nibh. Fusce hendrerit cursus ante in congue. Pellentesque ornare libero orci, sed tristique 
+					magna molestie quis. Sed pretium mauris at lectus efficitur, auctor mollis ipsum elementum. Praesent lacinia pharetra ex, nec fringilla dui 
+					imperdiet vitae. Nullam volutpat lobortis massa, sit amet maximus nibh rhoncus nec. Nunc ut sapien felis. Suspendisse libero metus, pharetra 
+					aliquam blandit at, sollicitudin luctus nisi. </span>
+				</div>	
+			</div>	
+		</div>	
+
+<br /><br /><br />		
+
 	</div>
 </div>
 
