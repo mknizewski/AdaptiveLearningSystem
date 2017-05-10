@@ -39,12 +39,13 @@
         <div class="panel-heading">Ustawienia konta</div>
         <div class="panel-body">
             <ul>
-                <li><a href="#">Zmiana hasła</a></li>
+                <li><a href="index.php?con=4&page=5">Zmiana hasła</a></li>
                 <li><a href="index.php?con=4&page=2">Sprawdź uprawnienia</a></li>
             </ul> 
         </div>
     </div>
   </div>
+  
 
   <div class="col-sm-6">
     <div class="panel panel-info">
