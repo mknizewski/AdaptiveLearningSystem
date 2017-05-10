@@ -119,16 +119,20 @@
             $userId = $user -> Id;
 
             $dbContext = new DbContext();
-            $updateStatement = "UPDATE users SET learning_style_id = $learingId WHERE id = $userId";
+            $updateStatement = "UPDATE users SET learning_style_id = ". $learningId ." WHERE id = ". $userId;
             $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
             
-            $alert -> Message = "Dziękujemy za wypełnienie ankiety. Według ankiety jesteś: <b>" . $learingText ." (". $currentStylePercent ."%)</b>
+			if($dbContext)
+			{
+				            $alert -> Message = "Dziękujemy za wypełnienie ankiety. Według ankiety jesteś: <b>" . $learingText ." (". $currentStylePercent ."%)</b>
 									<p>". LearningStyleDictionary::VISUAL_TEXT .": ". $visualPercent ."%</p>
 									<p>". LearningStyleDictionary::AURAL_TEXT .": ". $auralPercent ."%</p>
 									<p>". LearningStyleDictionary::READING_TEXT .": ". $readingPercent ."%</p>
 									<p>". LearningStyleDictionary::KINESTHETIC_TEXT .": ". $kinestheticPercent ."%</p>";
-            $alert -> TYPE_OF_ALERT = Alert::INFO_ALERT;
-            $session -> __set("alert", serialize($alert));
+				$alert -> TYPE_OF_ALERT = Alert::INFO_ALERT;
+				$session -> __set("alert", serialize($alert));
+			}
+
 
             ControllerFactory::Redirect(ControllerDictionary::ACCOUNT_CONTROLLER_ID, ControllerDictionary::ACCOUNT_MAIN_ID);
         }

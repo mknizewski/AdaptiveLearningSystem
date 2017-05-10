@@ -4,13 +4,22 @@
     include_once 'Dictionaries/UserRolesDictionary.php';
 
     $session = Session::getInstance();
+	$dbContext = new DbContext();
     $user = unserialize($session -> __get("user"));
 
     echo "<h2> Ankieta adaptacyjna - " . $user -> Name . " " . $user -> Surname . "</h2>";
 ?>
 <hr />
 <div class="alert alert-info animated fadeIn">
-    Przed zaczęciem kursu prosimy o wypełnienie krótkiej ankiety. Pozwoli to sytemowi spersonalizować kurs specjalnie pod Ciebie.
+	<?php
+		$userId = $user -> Id;
+		$selectStatement = "SELECT * FROM users WHERE id = ". $userId ." AND learning_style_id NOT LIKE 0";
+		$usersList = $dbContext -> Select($selectStatement);
+		if ($usersList -> num_rows > 0)
+			echo 'Rozwiązywałeś już test, ale jeśli chcesz, możesz rowiązać go ponownie :)';
+		else
+			echo 'Przed zaczęciem kursu prosimy o wypełnienie krótkiej ankiety. Pozwoli to sytemowi spersonalizować kurs specjalnie pod Ciebie.';
+	?>
 </div>
 <div class="row animated fadeIn">
   <div class="col-sm-3">
