@@ -60,8 +60,8 @@
     <div class="panel panel-info ">
         <div class="panel-heading">Ankieta adaptacyjna</div>
         <div class="panel-body animated fadeInUp" >
-             <form method="POST" action="index.php?con=4&page=4">
-                <div>
+             <form class="form_checkbox" method="POST" action="index.php?con=4&page=4">
+                <div  >
                     <div class="form-group">
                         <b>Gdy spotykasz nieznaną ci osobę, na co zwracasz uwagę w pierwszej kolejności?</b>
                     </div>
