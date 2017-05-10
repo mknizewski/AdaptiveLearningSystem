@@ -227,5 +227,11 @@
 		window.history.back();
 	}
 	</script>
+	<script>
+	$(".checkbox label input").click(function() 
+	{
+		$(this).parent().toggleClass("animated tada");
+	});
+	</script>
   </body>
 </html>

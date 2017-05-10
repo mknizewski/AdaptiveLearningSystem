@@ -82,26 +82,38 @@
             $max = max(array($visualPoints, $auralPoints, $readingPoints, $kinestheticPoints));
             $learningId = "";
             $learingText = "";
+			$currentStylePoints = 0;
+			$currentStylePercent = 0;
+			
+			$visualPercent = round($visualPoints / $numOfQuestions * 100, 2);
+			$auralPercent = round($auralPoints / $numOfQuestions * 100, 2);
+			$readingPercent = round($readingPoints / $numOfQuestions * 100, 2);
+			$kinestheticPercent = round($kinestheticPoints / $numOfQuestions * 100, 2);
             
             switch ($max)
             {
                 case $visualPoints:
                     $learningId = LearningStyleDictionary::VISUAL;
                     $learingText = LearningStyleDictionary::VISUAL_TEXT;
+					$currentStylePoints = $visualPoints;
                     break;
                 case $auralPoints:
                     $learningId = LearningStyleDictionary::AURAL;
                     $learingText = LearningStyleDictionary::AURAL_TEXT;
+					$currentStylePoints = $auralPoints;
                     break;
 				case $readingPoints:
                     $learningId = LearningStyleDictionary::READING;
                     $learingText = LearningStyleDictionary::READING_TEXT;
+					$currentStylePoints = $readingPoints;
                     break;
                 case $kinestheticPoints:
                     $learingId = LearningStyleDictionary::KINESTHETIC;
                     $learingText = LearningStyleDictionary::KINESTHETIC_TEXT;
+					$currentStylePoints = $kinestheticPoints;
                     break;
             }
+			$currentStylePercent = round($currentStylePoints / $numOfQuestions * 100, 2);
 
             $user = unserialize($session -> __get("user"));
             $userId = $user -> Id;
@@ -110,7 +122,11 @@
             $updateStatement = "UPDATE users SET learning_style_id = $learingId WHERE id = $userId";
             $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
             
-            $alert -> Message = "Dziękujemy za wypełnienie ankiety. Według ankiety jesteś: <b>" . $learingText . "</b>";
+            $alert -> Message = "Dziękujemy za wypełnienie ankiety. Według ankiety jesteś: <b>" . $learingText ." (". $currentStylePercent ."%)</b>
+									<p>". LearningStyleDictionary::VISUAL_TEXT .": ". $visualPercent ."%</p>
+									<p>". LearningStyleDictionary::AURAL_TEXT .": ". $auralPercent ."%</p>
+									<p>". LearningStyleDictionary::READING_TEXT .": ". $readingPercent ."%</p>
+									<p>". LearningStyleDictionary::KINESTHETIC_TEXT .": ". $kinestheticPercent ."%</p>";
             $alert -> TYPE_OF_ALERT = Alert::INFO_ALERT;
             $session -> __set("alert", serialize($alert));
 

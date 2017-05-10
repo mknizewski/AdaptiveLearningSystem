@@ -9,10 +9,10 @@
     echo "<h2> Ankieta adaptacyjna - " . $user -> Name . " " . $user -> Surname . "</h2>";
 ?>
 <hr />
-<div class="alert alert-info">
+<div class="alert alert-info animated fadeIn">
     Przed zaczęciem kursu prosimy o wypełnienie krótkiej ankiety. Pozwoli to sytemowi spersonalizować kurs specjalnie pod Ciebie.
 </div>
-<div class="row">
+<div class="row animated fadeIn">
   <div class="col-sm-3">
     <div class="panel panel-primary">
         <div class="panel-heading">Nawigacja</div>
@@ -48,9 +48,9 @@
   
 
   <div class="col-sm-6">
-    <div class="panel panel-info">
+    <div class="panel panel-info ">
         <div class="panel-heading">Ankieta adaptacyjna</div>
-        <div class="panel-body">
+        <div class="panel-body animated fadeInUp" >
              <form method="POST" action="index.php?con=4&page=4">
                 <div>
                     <div class="form-group">
@@ -213,7 +213,6 @@
                         <label><input type="checkbox" name="p8k"> Odtwarzając to słowo w umyśle lub fizycznie.</label>
                     </div>
                 </div>
-				
                 <button type="submit" class="btn btn-default" style="float: right;">Zatwierdź</button>
             </form>
         </div>
