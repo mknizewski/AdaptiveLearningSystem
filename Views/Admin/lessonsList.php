@@ -86,12 +86,7 @@
 
 <script>
 
-	/*function showLessonAndModulsReload()
-	{
-		var warunek = "<?php echo $_SESSION['idCourse_lessonList'];?>";
-		alert(warunek);
-		$('#course').val(warunek).change();
-	}*/
+
 
 	
     function showLessonsAndModuls()
@@ -118,12 +113,13 @@
 		var lessId = lessonId;
 		var lessIdAttr = "#" + lessonId;
 		var newCountOfMudules = $(lessIdAttr).val();
+		var course_id = $("#courseId");
 		
 		// alert("zmiana ilosci modulow dla lekcji o id = " + lessId + " Nowa wartosc: " + newCountOfMudules);        if (confirm('Czy na pewno chcesz dodać użytkownika do kursu?'))
         {
             $.ajax({
                 url: "index.php?con=5&page=96",
-                data: { lesson_id: lessId, countOfModules: newCountOfMudules },
+                data: { lesson_id: lessId, countOfModules: newCountOfMudules},
                 type: "POST",
                 success: function() {
 					location.reload(true);

@@ -469,7 +469,7 @@
 				$alert -> Message = "Poprawnie zmieniono ilość modułów w lekcji!";
                 $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
                 $session -> __set("alert", serialize($alert));
-				//$session -> __set("idCourse_lessonList", $test);
+				$session -> __set("idCourse_lessonList", $courseId);
 				//$_SESSION["idCourse_lessonList"] = '"' + $courseId + '"';
 			}
 		}	

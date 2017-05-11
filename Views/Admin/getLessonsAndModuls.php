@@ -17,6 +17,7 @@
 
         $response = $response . '<div class="well well-md">
 									<h4 >Lekcja - <i>'. $lessonTitle .'</i></h4>
+									<div id="courseId" style="display:none;">'. $courseId .'</div>
 									<table class="table table-hover">
 										<thead>
 											<tr>
