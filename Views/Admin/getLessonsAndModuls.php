@@ -17,12 +17,14 @@
 
         $response = $response . '<div class="well well-md">
 									<h4 >Lekcja - <i>'. $lessonTitle .'</i></h4>
+									<div id="courseId" style="display:none;">'. $courseId .'</div>
 									<table class="table table-hover">
 										<thead>
 											<tr>
 												<th>Tytuł</th>
 												<th>Ilość modułów</th>
 												<th>Data utworzenia</th>
+												<th>Usuń</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -40,6 +42,7 @@
 													</div>
 												</td>
 												<td>'. $insertDate .'</td>
+												<td>'. '<button class="btn btn-danger" onclick="DeleteLesson('. $lessonId .')">Usuń</button>' .'</td>
 											</tr>
 										</tbody>
 									</table>

@@ -10,6 +10,8 @@
 
     $selectStatement = "SELECT * FROM courses";
     $coursesList = $dbContext -> Select($selectStatement);
+	
+	//$idkursu = $GET['idcourse'];
 ?>
 <h2>Panel Administracyjny</h2>
 <hr />
@@ -83,11 +85,15 @@
 </div>
 
 <script>
+
+
+
+	
     function showLessonsAndModuls()
     {
         var courseId = document.getElementById('course').value;
         var notSelected = -1;
-
+		
         if (courseId != notSelected)
         {
             $.ajax({
@@ -107,8 +113,20 @@
 		var lessId = lessonId;
 		var lessIdAttr = "#" + lessonId;
 		var newCountOfMudules = $(lessIdAttr).val();
+		var course_id = $("#courseId");
 		
-		alert("zmiana ilosci modulow dla lekcji o id = " + lessId + " Nowa wartosc: " + newCountOfMudules);
+		// alert("zmiana ilosci modulow dla lekcji o id = " + lessId + " Nowa wartosc: " + newCountOfMudules);        if (confirm('Czy na pewno chcesz dodać użytkownika do kursu?'))
+        {
+            $.ajax({
+                url: "index.php?con=5&page=96",
+                data: { lesson_id: lessId, countOfModules: newCountOfMudules},
+                type: "POST",
+                success: function() {
+					location.reload(true);
+                }
+            });
+        }
+		
 	}
 	
 	function lessonChangeTitle(lessonId)
@@ -117,7 +135,18 @@
 		var lessIdAttr = "#title" + lessonId;
 		var newTitle = $(lessIdAttr).val();
 		
-		alert("zmiana tytulu lekcji o id = " + lessId + " Nowa wartosc: " + newTitle);
+		//alert("zmiana tytulu lekcji o id = " + lessId + " Nowa wartosc: " + newTitle);
+		        {
+            $.ajax({
+                url: "index.php?con=5&page=95",
+                data: { lesson_id: lessId, title: newTitle },
+                type: "POST",
+                success: function() {
+					location.reload(true);
+                    //location.replace('https://developer.mozilla.org/en-US/docs/Web/API/Window/location');
+                }
+            });
+        }
 	}
 	
 	function moduleChangeTitle(moduleId)
@@ -126,7 +155,18 @@
 		var modIdAttr = "#modtitle" + modId;
 		var newTitle = $(modIdAttr).val();
 		
-		alert("zmiana modulu (tytul) o id = " + modId + " Nowa wartosc: " + newTitle);
+		//alert("zmiana modulu (tytul) o id = " + modId + " Nowa wartosc: " + newTitle);
+				        {
+            $.ajax({
+                url: "index.php?con=5&page=94",
+                data: { moduleId: modId, title: newTitle },
+                type: "POST",
+                success: function() {
+					location.reload(true);
+                    //location.replace('https://developer.mozilla.org/en-US/docs/Web/API/Window/location');
+                }
+            });
+        }
 	}
 	
 	function moduleChangeCountOfModules(moduleId)
@@ -135,7 +175,17 @@
 		var modIdAttr = "#modQueue" + modId;
 		var newCountOfMudules = $(modIdAttr).val();
 		
-		alert("zmiana kolejnosci MODUŁ -> id = " + modId + " Nowa wartosc: " + newCountOfMudules);
+		//alert("zmiana kolejnosci MODUŁ -> id = " + modId + " Nowa wartosc: " + newCountOfMudules);
+		        {
+            $.ajax({
+                url: "index.php?con=5&page=93",
+                data: { moduleId: modId, countOfModules: newCountOfMudules},
+                type: "POST",
+                success: function() {
+					location.reload(true);
+                }
+            });
+        }
 	}
 	
 	function UpdateLearningStyleForModule(moduleId, learningStyleId)
@@ -143,17 +193,57 @@
 		var modId = moduleId;
 		var lsId = learningStyleId;
 		
-		alert("Update learning Style. Id modulu: " + modId + "; style nauczania Id: " + lsId);
+		//alert("Update learning Style. Id modulu: " + modId + "; style nauczania Id: " + lsId);
+				        {
+            $.ajax({
+                url: "index.php?con=5&page=92",
+                data: { moduleId: modId, learnid: lsId},
+                type: "POST",
+                success: function() {
+					location.reload(true);
+                }
+            });
+        }
 	}
 	
 	function DeleteModule(moduleId)
-	{
-		var modId = moduleId;
+	{		
+		// var modId = moduleId;
+		// alert("USUWANIE. Id modulu: " + modId );
 		
-		alert("USUWANIE. Id modulu: " + modId );
+		if (confirm('Czy na pewno chcesz usunąć moduł?'))
+        {
+            $.ajax({
+                url: "",
+                data: {  },
+                type: "POST",
+                success: function() {
+                    location.reload(true);
+                }
+            });
+        }
+	}	
+	
+	function DeleteLesson(lessId)
+	{		
+		// var lessId = moduleId;
+		// alert("USUWANIE. Id lekcji: " + lessId );
+		
+		if (confirm('Czy na pewno chcesz usunąć lekcję?'))
+        {
+            $.ajax({
+                url: "",
+                data: {  },
+                type: "POST",
+                success: function() {
+                    location.reload(true);
+                }
+            });
+        }
 	}
 	
 	
+		
     /*function ShowCourseDesc(title, description)
     {
         var courseDiv = document.getElementById("courseDiv");

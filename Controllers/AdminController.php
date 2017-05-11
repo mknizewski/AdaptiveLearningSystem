@@ -70,6 +70,24 @@
 					case ControllerDictionary::ADMIN_MODULE_EDIT_ID:
                         $this -> ViewEdit();
                         break;	
+					case ControllerDictionary::ADMIN_MODULE_EDIT_POST_ID:
+                        $this -> EditModulePost();
+                        break;		
+					case ControllerDictionary::ADMIN_LESSON_CHANGE_COUNT_OF_MODULES_ID:
+                        $this -> lessonChangeCountOfModules();
+                        break;						
+					case ControllerDictionary::ADMIN_LESSON_CHANGE_TITLE_ID:
+                        $this -> lessonChangeTitle();
+                        break;							
+					case ControllerDictionary::ADMIN_MODULE_CHANGE_TITLE_ID:
+                        $this -> moduleChangeTitle();
+                        break;		
+					case ControllerDictionary::ADMIN_MODULE_CHANGE_COUNT_OF_MODULES_ID:
+                        $this -> moduleChangeCountOfModules();
+                        break;							
+					case ControllerDictionary::ADMIN_MODULE_CHANGE_LEARNING_STYLE_ID:
+                        $this -> moduleChangeLearningStyle();
+                        break;		
                     default:
                         return false;
                 }
@@ -386,5 +404,152 @@
         {
 		    echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_MODULE_EDIT_PAGE);
         }
+		
+		public function EditModulePost()
+        {
+            $alert = new Alert();
+            $courseModel = new CourseModel();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+
+            $courseId = $_POST["courseId"];
+            $courseTitle = $_POST["courseName"];
+            $courseDesc = $_POST["courseDetails"];
+
+            $courseModel -> SetCourseModel($courseTitle, $courseDesc);
+
+            if ($courseModel -> ValidateData())
+            {
+                $updateStatement = "UPDATE modules SET title='". $courseTitle. "', content='". $courseDesc ."' WHERE id=".$courseId;
+                $result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+
+                if ($result)
+                {
+                    $alert -> Message = "Poprawnie zedytowano moduł!";
+                    $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                    $session -> __set("alert", serialize($alert));
+
+                    ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_VIEW_LESSONS_LIST_ID);
+                }
+                else
+                {
+                    $alert -> Message = ExceptionDictionary::DB_FAILED;
+                    $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+                    $session -> __set("alert", serialize($alert));
+
+                    ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_MODULE_EDIT_ID);
+                }
+            }
+            else
+            {
+                $alert -> Message = ExceptionDictionary::ADD_COURSE_FAILED;
+                $alert -> TYPE_OF_ALERT = Alert::DANGER_ALERT;
+                $session -> __set("alert", serialize($alert));
+
+                ControllerFactory::Redirect(ControllerDictionary::ADMIN_CONTROLLER_ID, ControllerDictionary::ADMIN_MODULE_EDIT_ID);
+            }
+        }
+		
+		public function lessonChangeCountOfModules()
+		{			
+			$alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+			$order_num = $_POST["countOfModules"];
+			$id_less = $_POST["lesson_id"];
+			$courseId = $_POST["courseId"];
+			//$test = var_dump($courseId);
+			
+			//$updateStatement = "UPDATE users SET role_id = '" . $role_id . "'  WHERE id =" . $userId;
+			$updateStatement = "UPDATE lessons SET count_of_modules = " . $order_num . "  WHERE id =" . $id_less;
+			$result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+			
+			if($result)
+			{
+				$alert -> Message = "Poprawnie zmieniono ilość modułów w lekcji!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+				$session -> __set("idCourse_lessonList", $courseId);
+				//$_SESSION["idCourse_lessonList"] = '"' + $courseId + '"';
+			}
+		}	
+		
+		public function lessonChangeTitle()
+		{			
+			$alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+			$newtitle = $_POST["title"];
+			$id_less = $_POST["lesson_id"];
+			//$updateStatement = "UPDATE users SET role_id = '" . $role_id . "'  WHERE id =" . $userId;
+			$updateStatement = "UPDATE lessons SET title = '" . $newtitle . "'  WHERE id =" . $id_less;
+			$result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+			
+			if($result)
+			{
+				$alert -> Message = "Poprawnie zmieniono tytuł lekcji!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+			}				
+		}
+		
+		public function moduleChangeTitle()
+		{			
+			$alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+			$newtitle = $_POST["title"];
+			$id_less = $_POST["moduleId"];
+			//$updateStatement = "UPDATE users SET role_id = '" . $role_id . "'  WHERE id =" . $userId;
+			$updateStatement = "UPDATE modules SET title = '" . $newtitle . "'  WHERE id =" . $id_less;
+			$result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+			
+			if($result)
+			{
+				$alert -> Message = "Poprawnie zmieniono tytuł modułu!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+			}				
+		}		
+		
+		public function moduleChangeCountOfModules()
+		{			
+			$alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+			$order_num = $_POST["countOfModules"];
+			$id_less = $_POST["moduleId"];
+			//$updateStatement = "UPDATE users SET role_id = '" . $role_id . "'  WHERE id =" . $userId;
+			$updateStatement = "UPDATE modules SET order_num = " . $order_num . "  WHERE id =" . $id_less;
+			$result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+			
+			if($result)
+			{
+				$alert -> Message = "Poprawnie zmieniono kolejność modułu!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+			}				
+		}		
+		
+		public function moduleChangeLearningStyle()
+		{			
+			$alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+			$learnStyeId = $_POST["learnid"];
+			$id_less = $_POST["moduleId"];
+			//$updateStatement = "UPDATE users SET role_id = '" . $role_id . "'  WHERE id =" . $userId;
+			$updateStatement = "UPDATE modules SET learningstyle_id = " . $learnStyeId . "  WHERE id =" . $id_less;
+			$result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+			
+			if($result)
+			{
+				$alert -> Message = "Poprawnie zmieniono styl nauczania dla modułu!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+			}				
+		}
     }
+	
+	
 ?>

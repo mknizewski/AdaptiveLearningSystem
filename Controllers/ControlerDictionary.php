@@ -87,7 +87,14 @@
 		const ADMIN_VIEW_LESSONS_LIST_ID = 99;
 		const ADMIN_VIEW_LESSSONS_LIST_PAGE = "Views/Admin/lessonsList.php";
 		
+		const ADMIN_LESSON_CHANGE_COUNT_OF_MODULES_ID = 96;
+		const ADMIN_LESSON_CHANGE_TITLE_ID = 95;
+		const ADMIN_MODULE_CHANGE_TITLE_ID = 94;
+		const ADMIN_MODULE_CHANGE_COUNT_OF_MODULES_ID = 93;
+		const ADMIN_MODULE_CHANGE_LEARNING_STYLE_ID = 92;
+		
 		const ADMIN_MODULE_EDIT_ID = 98;
+		const ADMIN_MODULE_EDIT_POST_ID = 97;
 		const ADMIN_MODULE_EDIT_PAGE = "Views/Admin/editmodule.php";
 		
         //-------------------------//
