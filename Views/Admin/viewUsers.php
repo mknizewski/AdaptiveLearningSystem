@@ -43,7 +43,7 @@
         <div class="panel-heading">Ustawienia konta</div>
         <div class="panel-body">
             <ul>
-                <li><a href="#">Zmiana hasła</a></li>
+                <li><a href="index.php?con=4&page=5">Zmiana hasła</a></li>
                 <li><a href="index.php?con=4&page=2">Sprawdź uprawnienia</a></li>
             </ul> 
         </div>
@@ -62,7 +62,8 @@
                             <th>Rola</th>
                             <th>Styl uczenia</th>
                             <th>Kursy</th>
-							<th>Zmień role</th>
+							<th>Zmień rolę</th>
+							<th>VARK</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -143,6 +144,7 @@
 												</ul>
 											</div>
 										  </td>';
+									echo '<td><button type="submit" class="btn btn-primary" onclick = "ResetVARK('. $row["id"] .')">Resetuj</button></td>';
                                     echo "</tr>";
                                 }
                             }
@@ -156,6 +158,57 @@
 		</div>
     </div>
 </div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h2>Wyglad kursu</h1>
+		
+		<!-- 1) VISUAL -->
+		
+		<!-- 2) AURAL -->
+		<div class="row">
+			<div class="col-md-8">
+				<div class="col-md-12 well well-md" style="">
+					<h4>Audiobook - <i>Tytuł</i></h4>
+					<span>Treść opisu.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel ex venenatis, pharetra nulla eget, commodo urna. D
+					uis a felis a velit auctor aliquam quis vitae nibh. Fusce hendrerit cursus ante in congue. Pellentesque ornare libero orci, sed tristique 
+					magna molestie quis. Sed pretium mauris at lectus efficitur, auctor mollis ipsum elementum. Praesent lacinia pharetra ex, nec fringilla dui 
+					imperdiet vitae. Nullam volutpat lobortis massa, sit amet maximus nibh rhoncus nec. Nunc ut sapien felis. Suspendisse libero metus, pharetra 
+					aliquam blandit at, sollicitudin luctus nisi. </span>
+				</div>
+				<audio style="width: 100%;" controls>
+					<source src="http://pioter-test.cba.pl/als/Avici-Levels.mp3" type="audio/mpeg">
+				</audio> 
+			</div>
+		</div>
+
+		<br /><br /><br />
+		
+		<!-- 3) READING -->
+
+		<!-- 4) KINESTETYK -->
+		<div class="row">
+			<div class="col-md-8">
+				<iframe style="width: 100%;" height="460px"
+					src="https://www.youtube.com/embed/5SIiUB4wGRw" frameborder="0" allowfullscreen>
+				</iframe>
+				<div class="well well-md" style="width: 100%;">
+					<h4>Akademia C# - <i>Tytuł</i></h4>
+					<span>Treść opisu.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel ex venenatis, pharetra nulla eget, commodo urna. D
+					uis a felis a velit auctor aliquam quis vitae nibh. Fusce hendrerit cursus ante in congue. Pellentesque ornare libero orci, sed tristique 
+					magna molestie quis. Sed pretium mauris at lectus efficitur, auctor mollis ipsum elementum. Praesent lacinia pharetra ex, nec fringilla dui 
+					imperdiet vitae. Nullam volutpat lobortis massa, sit amet maximus nibh rhoncus nec. Nunc ut sapien felis. Suspendisse libero metus, pharetra 
+					aliquam blandit at, sollicitudin luctus nisi. </span>
+				</div>	
+			</div>	
+		</div>	
+
+<br /><br /><br />		
+
+	</div>
+</div>
+
+
 <script>
     function DeleteUser(uId, cId)
     {
@@ -180,6 +233,22 @@
 		    $.ajax({
 		        url: "index.php?con=5&page=16",
 		        data: { userId: uId, role_id: rId },
+		        type: "POST",
+		        success: function() {
+			        location.reload(true);
+		        }
+	        });
+	    }
+	}
+</script>
+<script>
+	function ResetVARK(uId)
+	{
+		if (confirm('Czy na pewno chcesz zresetować VARK?'))
+	    {
+		    $.ajax({
+		        url: "index.php?con=5&page=17",
+		        data: { userId: uId },
 		        type: "POST",
 		        success: function() {
 			        location.reload(true);

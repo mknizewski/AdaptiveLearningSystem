@@ -61,6 +61,15 @@
 					case ControllerDictionary::ADMIN_VIEW_USERS_UPDATE_USER_ROLE_POST_ID:
                         $this -> UpdateRole();
                         break;
+					case ControllerDictionary::ADMIN_VIEW_USERS_RESET_VARK_POST_ID:
+                        $this -> ResetVark();
+                        break;
+					case ControllerDictionary::ADMIN_VIEW_LESSONS_LIST_ID:
+                        $this -> ViewLessons();
+                        break;	
+					case ControllerDictionary::ADMIN_MODULE_EDIT_ID:
+                        $this -> ViewEdit();
+                        break;	
                     default:
                         return false;
                 }
@@ -349,5 +358,33 @@
                 $session -> __set("alert", serialize($alert));
 			}
 		}		
+		
+		public function ResetVark()
+		{			
+			$alert = new Alert();
+            $dbContext = new DbContext();
+            $session = Session::getInstance();
+			$userId = $_POST["userId"];
+			//$updateStatement = "UPDATE users SET role_id = '" . $role_id . "'  WHERE id =" . $userId;
+			$updateStatement = "UPDATE users SET learning_style_id = " . 0 . "  WHERE id =" . $userId;
+			$result = $dbContext -> MakeStatement($updateStatement, DbContext::UPDATE_STATEMENT);
+			
+			if($result)
+			{
+				$alert -> Message = "Poprawnie zresetowano VARK!";
+                $alert -> TYPE_OF_ALERT = Alert::SUCCES_ALERT;
+                $session -> __set("alert", serialize($alert));
+			}
+		}	
+		
+		public function ViewLessons()
+        {
+		    echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_VIEW_LESSSONS_LIST_PAGE);
+        }		
+		
+		public function ViewEdit()
+        {
+		    echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_MODULE_EDIT_PAGE);
+        }
     }
 ?>

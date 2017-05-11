@@ -8,8 +8,8 @@
     $dbContext = new DbContext();
     $user = unserialize($session -> __get("user"));
 
-    $courseId = $_GET["edit"];
-    $selectStatement = "SELECT * FROM courses WHERE id = " . $courseId;
+    $moduleId = $_GET["edit"];
+    $selectStatement = "SELECT * FROM modules WHERE id = " . $moduleId;
     $result = $dbContext -> Select($selectStatement) -> fetch_assoc();
 ?>
 <h2>Panel Administracyjny</h2>
@@ -55,7 +55,7 @@
             <div class="panel-body">
                 <form method="POST" action="index.php?con=5&page=7">
                     <?php
-                        echo '<input type="hidden" name="courseId" value="' . $courseId . '">';
+                        echo '<input type="hidden" name="courseId" value="' . $moduleId . '">';
                     ?>
                     <div class="form-group">
                         <label class="control-label" for="courseName">Nazwa:</label>
@@ -68,7 +68,7 @@
                     <div class="form-group">
                         <label class="control-label" for="courseDetails">Opis kursu:</label>
                         <?php
-                            $descValue = $result["description"];
+                            $descValue = $result["content"];
                             echo '<textarea id="courseDetails" name="courseDetails">' . $descValue . '</textarea>';
                         ?>
                     </div>

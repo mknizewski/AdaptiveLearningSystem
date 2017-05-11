@@ -9,7 +9,7 @@
 
         const VISUAL_TEXT = "Wzrokowiec";
         const AURAL_TEXT = "Słuchowiec";
-		const READING_TEXT = "Tekściarz/Dotykowiec";
+		const READING_TEXT = "Tekściarz";
         const KINESTHETIC_TEXT = "Kinestetyk";
         const ALL_TEXT = "Wszyscy";
     }

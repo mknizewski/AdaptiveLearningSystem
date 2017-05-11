@@ -61,7 +61,7 @@
                         <ul>
                             <li><a href='index.php?con=5&page=12'>Dodaj lekcje</a></li>
                             <li><a href='index.php?con=5&page=14'>Dodaj moduł</a></li>
-                            <li><a href='#'>Zarządzanie lekcjami</a></li>
+                            <li><a href='index.php?con=5&page=99'>Zarządzanie lekcjami</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6">
