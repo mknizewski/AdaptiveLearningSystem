@@ -84,6 +84,9 @@
         const ADMIN_ADD_MODULE_POST_ID = 15;
         const ADMIN_ADD_MODULE_PAGE = "Views/Admin/addmodule.php";
 		
+		const ADMIN_VIEW_LESSONS_LIST_ID = 99;
+		const ADMIN_VIEW_LESSSONS_LIST_PAGE = "Views/Admin/lessonsList.php";
+		
         //-------------------------//
         const COURSE_CONTROLLER_ID = 6;
 

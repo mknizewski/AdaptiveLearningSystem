@@ -64,6 +64,9 @@
 					case ControllerDictionary::ADMIN_VIEW_USERS_RESET_VARK_POST_ID:
                         $this -> ResetVark();
                         break;
+					case ControllerDictionary::ADMIN_VIEW_LESSONS_LIST_ID:
+                        $this -> ViewLessons();
+                        break;	
                     default:
                         return false;
                 }
@@ -370,5 +373,10 @@
                 $session -> __set("alert", serialize($alert));
 			}
 		}	
+		
+		public function ViewLessons()
+        {
+		    echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_VIEW_LESSSONS_LIST_PAGE);
+        }
     }
 ?>
