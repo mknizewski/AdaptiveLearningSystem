@@ -67,6 +67,9 @@
 					case ControllerDictionary::ADMIN_VIEW_LESSONS_LIST_ID:
                         $this -> ViewLessons();
                         break;	
+					case ControllerDictionary::ADMIN_MODULE_EDIT_ID:
+                        $this -> ViewEdit();
+                        break;	
                     default:
                         return false;
                 }
@@ -377,6 +380,11 @@
 		public function ViewLessons()
         {
 		    echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_VIEW_LESSSONS_LIST_PAGE);
+        }		
+		
+		public function ViewEdit()
+        {
+		    echo ControllerFactory::GetViewContent(ControllerDictionary::ADMIN_MODULE_EDIT_PAGE);
         }
     }
 ?>

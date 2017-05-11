@@ -16,7 +16,7 @@
         $insertDate = $row["insert_time"];
 
         $response = $response . '<div class="well well-md">
-									<h4 onclick="fun()">Lekcja - <i>'. $lessonTitle .'</i></h4>
+									<h4 >Lekcja - <i>'. $lessonTitle .'</i></h4>
 									<table class="table table-hover">
 										<thead>
 											<tr>
@@ -27,11 +27,16 @@
 										</thead>
 										<tbody>
 											<tr>
-												<td>'. $lessonTitle .'</td>
+												<td>
+													<div class="form-inline">
+														<input id="title'. $lessonId .'" type="text" value="'. $lessonTitle .'"  class="form-control" >
+														<button class="btn btn-sm btn-primary" onclick=lessonChangeTitle('. $lessonId .')>Zmień</button>
+													</div>
+												</td>
 												<td>
 													<div class="form-inline">
 														<input id="'. $lessonId .'" type="number" value="'. $countOfModules .'" min="1"  class="form-control" >
-														<button class="btn btn-sm btn-primary" onclick=lessonChangeCountOfModules('. $lessonId .')>Zmień</button>
+														<button class="btn btn-sm btn-warning" onclick=lessonChangeCountOfModules('. $lessonId .')>Zmień</button>
 													</div>
 												</td>
 												<td>'. $insertDate .'</td>
@@ -79,11 +84,16 @@
 			//TO-DO : porobic funckje w learning style
 			
 			$response = $response .			'		<tr>
-														<td>'. $titleModul .'</td>
 														<td>
 															<div class="form-inline">
-																<input type="number" value="'. $orderNum_Modul .'" min="1" max="'. $countOfModules .'"  class="form-control" >
-																<button class="btn btn-sm btn-primary">Zmień</button>
+																<input id="modtitle'. $idModul .'" type="text" value="'. $titleModul .'"  class="form-control" >
+																<button class="btn btn-sm btn-primary" onclick=moduleChangeTitle('. $idModul .')>Zmień</button>
+															</div>
+														</td>
+														<td>
+															<div class="form-inline">
+																<input id="modQueue'. $idModul .'" type="number" value="'. $orderNum_Modul .'" min="1" max="'. $countOfModules .'"  class="form-control" >
+																<button class="btn btn-sm btn-warning" onclick=moduleChangeCountOfModules('. $idModul .')>Zmień</button>
 															</div>
 														</td>
 														<td>
@@ -91,16 +101,16 @@
 																<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">'. $learningstyleText .'
 																<span class="caret disabled"></span></button>
 																<ul id="" class="dropdown-menu" >
-																	<li><a onclick="UpdateRole(' . $idModul . ', ' . 1 . ')" href="#">'. 'Wzrokowiec' .'</a></li>
-																	<li><a onclick="UpdateRole(' . $idModul . ', ' . 2 . ')" href="#">'. 'Słuchowiec' .'</a></li>
-																	<li><a onclick="UpdateRole(' . $idModul . ', ' . 3 . ')" href="#">'. 'Tekściarz' .'</a></li>
-																	<li><a onclick="UpdateRole(' . $idModul . ', ' . 4 . ')" href="#">'. 'Kinestetyk' .'</a></li>
-																	<li><a onclick="UpdateRole(' . $idModul . ', ' . 5 . ')" href="#">'. 'Wszyscy' .'</a></li>
+																	<li><a onclick="UpdateLearningStyleForModule(' . $idModul . ', ' . 1 . ')" style="cursor: pointer">'. 'Wzrokowiec' .'</a></li>
+																	<li><a onclick="UpdateLearningStyleForModule(' . $idModul . ', ' . 2 . ')" style="cursor: pointer">'. 'Słuchowiec' .'</a></li>
+																	<li><a onclick="UpdateLearningStyleForModule(' . $idModul . ', ' . 3 . ')" style="cursor: pointer">'. 'Tekściarz' .'</a></li>
+																	<li><a onclick="UpdateLearningStyleForModule(' . $idModul . ', ' . 4 . ')" style="cursor: pointer">'. 'Kinestetyk' .'</a></li>
+																	<li><a onclick="UpdateLearningStyleForModule(' . $idModul . ', ' . 5 . ')" style="cursor: pointer">'. 'Wszyscy' .'</a></li>
 																</ul>
 															</div>
 														</td>
-														<td>'. '<button class="btn btn-warning">Edytuj</button>' .'</td>
-														<td>'. '<button class="btn btn-danger">Usuń</button>' .'</td>
+														<td>'. '<a class="btn btn-warning" href="index.php?con=5&page=98&edit=' . $idModul . '">Edytuj</a>' .'</td>
+														<td>'. '<button class="btn btn-danger" onclick="DeleteModule('. $idModul .')">Usuń</button>' .'</td>
 													</tr>';
 		}
 		

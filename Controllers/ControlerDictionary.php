@@ -87,6 +87,9 @@
 		const ADMIN_VIEW_LESSONS_LIST_ID = 99;
 		const ADMIN_VIEW_LESSSONS_LIST_PAGE = "Views/Admin/lessonsList.php";
 		
+		const ADMIN_MODULE_EDIT_ID = 98;
+		const ADMIN_MODULE_EDIT_PAGE = "Views/Admin/editmodule.php";
+		
         //-------------------------//
         const COURSE_CONTROLLER_ID = 6;
 

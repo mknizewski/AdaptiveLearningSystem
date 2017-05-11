@@ -101,18 +101,59 @@
             });
         }
     }
-	function fun()
-	{
-		alert("dziala?");
-	}
+	
 	function lessonChangeCountOfModules(lessonId)
 	{
 		var lessId = lessonId;
-		var lessIdAttr = '"#' + lessId + '"';
-		alert($(lessId).val());
+		var lessIdAttr = "#" + lessonId;
+		var newCountOfMudules = $(lessIdAttr).val();
 		
-		//alert("zmiana ilosci modulow dla lekcji o id = " + lessId + " Nowa wartosc: " + newCountOfMudules);
+		alert("zmiana ilosci modulow dla lekcji o id = " + lessId + " Nowa wartosc: " + newCountOfMudules);
 	}
+	
+	function lessonChangeTitle(lessonId)
+	{
+		var lessId = lessonId;
+		var lessIdAttr = "#title" + lessonId;
+		var newTitle = $(lessIdAttr).val();
+		
+		alert("zmiana tytulu lekcji o id = " + lessId + " Nowa wartosc: " + newTitle);
+	}
+	
+	function moduleChangeTitle(moduleId)
+	{
+		var modId = moduleId;
+		var modIdAttr = "#modtitle" + modId;
+		var newTitle = $(modIdAttr).val();
+		
+		alert("zmiana modulu (tytul) o id = " + modId + " Nowa wartosc: " + newTitle);
+	}
+	
+	function moduleChangeCountOfModules(moduleId)
+	{
+		var modId = moduleId;
+		var modIdAttr = "#modQueue" + modId;
+		var newCountOfMudules = $(modIdAttr).val();
+		
+		alert("zmiana kolejnosci MODUŁ -> id = " + modId + " Nowa wartosc: " + newCountOfMudules);
+	}
+	
+	function UpdateLearningStyleForModule(moduleId, learningStyleId)
+	{
+		var modId = moduleId;
+		var lsId = learningStyleId;
+		
+		alert("Update learning Style. Id modulu: " + modId + "; style nauczania Id: " + lsId);
+	}
+	
+	function DeleteModule(moduleId)
+	{
+		var modId = moduleId;
+		
+		alert("USUWANIE. Id modulu: " + modId );
+	}
+	
+	
     /*function ShowCourseDesc(title, description)
     {
         var courseDiv = document.getElementById("courseDiv");
