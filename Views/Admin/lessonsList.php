@@ -108,9 +108,10 @@
 	function lessonChangeCountOfModules(lessonId)
 	{
 		var lessId = lessonId;
-		var newCountOfMudules = document.getElementById("1");
+		var lessIdAttr = '"#' + lessId + '"';
+		alert($(lessId).val());
 		
-		alert("zmiana ilosci modulow dla lekcji o id = " + lessId + " Nowa wartosc: " + newCountOfMudules);
+		//alert("zmiana ilosci modulow dla lekcji o id = " + lessId + " Nowa wartosc: " + newCountOfMudules);
 	}
     /*function ShowCourseDesc(title, description)
     {
