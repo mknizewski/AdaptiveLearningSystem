@@ -53,7 +53,7 @@
                 <?php echo 'Edycja kursu: <b>' . $result["title"] . '</b>'; ?>
             </div>
             <div class="panel-body">
-                <form method="POST" action="index.php?con=5&page=7">
+                <form method="POST" action="index.php?con=5&page=97">
                     <?php
                         echo '<input type="hidden" name="courseId" value="' . $moduleId . '">';
                     ?>

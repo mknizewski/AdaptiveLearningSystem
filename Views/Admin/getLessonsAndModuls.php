@@ -23,6 +23,7 @@
 												<th>Tytuł</th>
 												<th>Ilość modułów</th>
 												<th>Data utworzenia</th>
+												<th>Usuń</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -40,6 +41,7 @@
 													</div>
 												</td>
 												<td>'. $insertDate .'</td>
+												<td>'. '<button class="btn btn-danger" onclick="DeleteLesson('. $lessonId .')">Usuń</button>' .'</td>
 											</tr>
 										</tbody>
 									</table>

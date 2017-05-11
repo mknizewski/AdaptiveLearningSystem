@@ -259,5 +259,11 @@
 		$(this).find('.checkbox').shuffle();
 	});
 	</script>
+	<script>
+	// $( document ).ready(function() 
+	// {
+	   // showLessonAndModulsReload();
+	// });
+	</script>
   </body>
 </html>
