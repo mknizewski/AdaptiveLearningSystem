@@ -35,7 +35,7 @@
         <div class="panel-heading">Ustawienia konta</div>
         <div class="panel-body">
             <ul>
-                <li><a href="#">Zmiana hasła</a></li>
+                <li><a href="index.php?con=4&page=5">Zmiana hasła</a></li>
                 <li><a href="index.php?con=4&page=2">Sprawdź uprawnienia</a></li>
             </ul> 
         </div>
@@ -65,17 +65,3 @@
         </div>
     </div>
 </div>
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-<script>
-	tinymce.init({ selector:'textarea',  
-	 plugins: [
-        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen",
-        "insertdatetime media nonbreaking save table contextmenu directionality",
-        "emoticons template paste textcolor autoresize"
-    ],
-    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-    toolbar2: "print preview media | forecolor backcolor emoticons",
-    image_advtab: true });
-</script>
-

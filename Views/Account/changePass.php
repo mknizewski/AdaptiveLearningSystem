@@ -45,14 +45,55 @@
 
   <div class="col-sm-6">
     <div class="panel panel-info">
-        <div class="panel-heading">Twoje uprawnienia</div>
+        <div class="panel-heading">Zmiana hasła</div>
         <div class="panel-body">
-            <?php
-                echo '<p>Uprawnienia globalne: <b>' . $user -> GetRole() . '</b></p>';
-            ?>
+			<form action="index.php?con=4&page=6" method="post">
+				<fieldset class="form-horizontal">
+				<!-- Password input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="piCurrPass">Obecne hasło:</label>
+				  <div class="col-md-6">
+					<input id="piCurrPass" name="piCurrPass" type="password" placeholder="" class="form-control input-md" required>		
+				  </div>
+				</div>
+
+				<!-- Password input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="piNewPass">Nowe hasło:</label>
+				  <div class="col-md-6">
+					<input id="piNewPass" name="piNewPass" type="password" placeholder="" class="form-control input-md" required>				
+				  </div>
+				</div>
+
+				<!-- Password input-->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="piNewPassRepeat">Powtórz hasło:</label>
+				  <div class="col-md-6">
+					<input id="piNewPassRepeat" name="piNewPassRepeat" type="password" placeholder="" class="form-control input-md" required>
+				  </div>
+				</div>
+
+				<!-- Button (Double) -->
+				<div class="form-group">
+				  <label class="col-md-4 control-label" for="bCancel"></label>
+				  <div class="col-md-8">
+					<button id="bCancel" onclick="goBack()" name="bCancel" class="btn btn-danger">Anuluj</button>
+					<button type="submit" id="bAccept" name="bAccept"  class="btn btn-success">Zmień hasło</button>
+				  </div>
+				</div>
+				
+				<?php 
+					$userId = $user -> Id;
+					echo '<div style="display:none;"><input id="userId" name="userId" value="'. $userId .'"></div>'; 
+				?>
+				</fieldset>
+			</form>
         </div>
     </div>
   </div>
+  
+  
+  
 
   <div class="col-sm-3">
     <div class="panel panel-primary">
@@ -70,3 +111,4 @@
     </div>
   </div>
 </div>
+

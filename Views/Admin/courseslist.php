@@ -40,7 +40,7 @@
         <div class="panel-heading">Ustawienia konta</div>
         <div class="panel-body">
             <ul>
-                <li><a href="#">Zmiana hasła</a></li>
+                <li><a href="index.php?con=4&page=5">Zmiana hasła</a></li>
                 <li><a href="index.php?con=4&page=2">Sprawdź uprawnienia</a></li>
             </ul> 
         </div>
@@ -51,7 +51,7 @@
             <div class="panel-heading">
                 Lista utworzonych kursów
             </div>
-            <div class="panel-body">
+            <div class="panel-body table-responsive">
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -69,6 +69,9 @@
                             {
                                 while ($row = $coursesList -> fetch_assoc())
                                 {
+                                    $selectStatement = "SELECT * FROM users";
+                                    $usersList = $dbContext -> Select($selectStatement);
+
                                     $id = $row["id"];
                                     $title = "'" . $row["title"] . "'";
                                     $desc = "'" . $row["description"] . "'";
@@ -79,10 +82,29 @@
                                     echo "<tr>";
                                     echo "<td>" . $row["title"] . "</td>";
                                     echo "<td>" . $row["insert_time"] . "</td>";
-                                    echo '<td> <a href="#" class="btn btn-success">Dodaj</a> </td>';
+                                    echo '<td>';
+                                    if ($usersList -> num_rows > 0)
+                                    {
+                                        echo '<div class="dropdown disabled">
+										<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dodaj użytkownika
+									    <span class="caret disabled"></span></button>
+										<ul id="dropDownMenu_Courses" class="dropdown-menu">';
+
+                                        while ($user = $usersList -> fetch_assoc())
+                                        {
+                                            $userInitials = $user["name"] . " " . $user["surname"];
+                                            $userId = $user["id"];
+                                            $roleId = $user["role_id"];
+
+                                            echo '<li><a href="#" onclick="AddUserToCourse(' . $userId . ', ' . $id . ', ' . $roleId . ')">'. $userInitials .'</a>';
+                                        }
+
+                                        echo '</ul> </div>';
+                                    }
+                                    echo '</td>';
                                     echo '<td> <a href="#" ' . $onClick . ' class="btn btn-primary">Opis</a> </td>';
                                     echo '<td> <a href="index.php?con=5&page=4&edit=' . $id . '" class="btn btn-warning">Edycja</a> </td>';
-                                    echo '<td> <a href="#" class="btn btn-danger"' . $onDelete . '>Usun</a> </td>';
+                                    echo '<td> <a href="#" class="btn btn-danger" ' . $onDelete . '>Usun</a> </td>';
                                     echo "</tr>";
                                 }
                             }
@@ -94,8 +116,7 @@
             </div>
         </div>
         <div class="panel panel-info" id="courseDiv" style="display: none;">
-            <div class="panel-heading" id="courseTitle">
-            </div>
+            <div class="panel-heading" id="courseTitle"></div>
             <div class="panel-body" id="courseDesc"></div>
         </div>
     </div>
@@ -108,9 +129,24 @@
         var courseTitle = document.getElementById("courseTitle");
         var courseDesc = document.getElementById("courseDesc");
 
-        courseDiv.style.display = "inline";
+        courseDiv.style.display = "block";
         courseTitle.innerHTML = title;
         courseDesc.innerHTML = description;
+    }
+
+    function AddUserToCourse(uId, cId, rId)
+    {
+        if (confirm('Czy na pewno chcesz dodać użytkownika do kursu?'))
+        {
+            $.ajax({
+                url: "index.php?con=5&page=11",
+                data: { userId: uId, courseId: cId, roleId: rId },
+                type: "POST",
+                success: function() {
+                    location.reload(true);
+                }
+            });
+        }
     }
 
     function DeleteCourse(courseId)

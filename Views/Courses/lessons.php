@@ -1,12 +1,21 @@
 <?php 
     include_once 'Enviroment/Session.php';
     include_once 'Enviroment/User.php';
+    include_once 'Enviroment/DbContext.php';
     include_once 'Dictionaries/UserRolesDictionary.php';
 
     $session = Session::getInstance();
+    $dbContext = new DbContext();
     $user = unserialize($session -> __get("user"));
+    $courseId = $_GET["course"];
 
-    echo "<h2> Twoje Uprawnienia - " . $user -> Name . " " . $user -> Surname . "</h2>";
+    $cStatement = "SELECT * FROM courses WHERE id=" . $courseId;
+    $lStatement = "SELECT * FROM lessons WHERE course_id=" . $courseId;
+
+    $course = $dbContext -> Select($cStatement) -> fetch_assoc();
+    $lessonList = $dbContext -> Select($lStatement);
+
+    echo "<h2> Kurs - " . $course["title"] . "</h2>";
 ?>
 <hr />
 <div class="row">
@@ -45,11 +54,26 @@
 
   <div class="col-sm-6">
     <div class="panel panel-info">
-        <div class="panel-heading">Twoje uprawnienia</div>
+        <div class="panel-heading">Lekcje w kursie</div>
         <div class="panel-body">
+            <div class="list-group">
             <?php
-                echo '<p>Uprawnienia globalne: <b>' . $user -> GetRole() . '</b></p>';
+                while ($row = $lessonList -> fetch_assoc())
+                {
+                    $lessonId = $row["id"];
+                    $lessonTitle = $row["title"];
+                    $lessonInsertTime = $row["insert_time"];
+
+                    echo '<a href="index.php?con=6&page=4&l=' . $lessonId . '&c=' . $courseId . '" class="list-group-item list-group-item-warning">';
+                    echo '<div class="row">';
+                    echo '<div class="col-md-6"><b>' . $lessonTitle . '</b></div>';
+                    echo '<div class="col-md-6" style="text-align: right;">' . $lessonInsertTime . '</div>';
+                    echo '</div>';
+                    echo '</a>';
+                }
             ?>
+            </div>
+            <a href="index.php?con=4&page=1" style="float: right;" class="btn btn-default">Cofnij</a>
         </div>
     </div>
   </div>

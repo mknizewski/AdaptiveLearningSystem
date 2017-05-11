@@ -4,15 +4,24 @@
     include_once 'Dictionaries/UserRolesDictionary.php';
 
     $session = Session::getInstance();
+	$dbContext = new DbContext();
     $user = unserialize($session -> __get("user"));
 
     echo "<h2> Ankieta adaptacyjna - " . $user -> Name . " " . $user -> Surname . "</h2>";
 ?>
 <hr />
-<div class="alert alert-info">
-    Przed zaczęciem kursu prosimy o wypełnienie krótkiej ankiety. Pozwoli to sytemowi spersonalizować kurs specjalnie pod Ciebie.
+<div class="alert alert-info animated fadeIn">
+	<?php
+		$userId = $user -> Id;
+		$selectStatement = "SELECT * FROM users WHERE id = ". $userId ." AND learning_style_id NOT LIKE 0";
+		$usersList = $dbContext -> Select($selectStatement);
+		if ($usersList -> num_rows > 0)
+			echo 'Rozwiązywałeś już test, ale jeśli chcesz, możesz rowiązać go ponownie :)';
+		else
+			echo 'Przed zaczęciem kursu prosimy o wypełnienie krótkiej ankiety. Pozwoli to sytemowi spersonalizować kurs specjalnie pod Ciebie.';
+	?>
 </div>
-<div class="row">
+<div class="row animated fadeIn">
   <div class="col-sm-3">
     <div class="panel panel-primary">
         <div class="panel-heading">Nawigacja</div>
@@ -39,19 +48,20 @@
         <div class="panel-heading">Ustawienia konta</div>
         <div class="panel-body">
             <ul>
-                <li><a href="#">Zmiana hasła</a></li>
+                <li><a href="index.php?con=4&page=5">Zmiana hasła</a></li>
                 <li><a href="index.php?con=4&page=2">Sprawdź uprawnienia</a></li>
             </ul> 
         </div>
     </div>
   </div>
+  
 
   <div class="col-sm-6">
-    <div class="panel panel-info">
+    <div class="panel panel-info ">
         <div class="panel-heading">Ankieta adaptacyjna</div>
-        <div class="panel-body">
-             <form method="POST" action="index.php?con=4&page=4">
-                <div>
+        <div class="panel-body animated fadeInUp" >
+             <form class="form_checkbox" method="POST" action="index.php?con=4&page=4">
+                <div  >
                     <div class="form-group">
                         <b>Gdy spotykasz nieznaną ci osobę, na co zwracasz uwagę w pierwszej kolejności?</b>
                     </div>
@@ -212,7 +222,6 @@
                         <label><input type="checkbox" name="p8k"> Odtwarzając to słowo w umyśle lub fizycznie.</label>
                     </div>
                 </div>
-				
                 <button type="submit" class="btn btn-default" style="float: right;">Zatwierdź</button>
             </form>
         </div>
