@@ -1,5 +1,5 @@
 <?php
-    include_once($_SERVER['DOCUMENT_ROOT'] . '/AdaptiveLearningSystem/Enviroment/DbContext.php');
+    include_once($_SERVER['DOCUMENT_ROOT'] . '/als/Enviroment/DbContext.php');
 
     $response = "";
     $dbContext = new DbContext();
