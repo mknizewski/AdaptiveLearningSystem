@@ -58,7 +58,6 @@
                             <th>Tytuł</th>
                             <th>Data utworzenia</th>
                             <th>Dodaj użytkownika</th>
-                            <th>Opis</th>
                             <th>Edycja</th>
                             <th>Usun</th>
                         </tr>
@@ -76,7 +75,6 @@
                                     $title = "'" . $row["title"] . "'";
                                     $desc = "'" . $row["description"] . "'";
                                     $desc = trim(preg_replace('/\s+/', ' ', $desc));
-                                    $onClick = 'onclick="ShowCourseDesc(' . $title . ', ' . $desc . ')"';
                                     $onDelete = 'onclick="DeleteCourse(' . $id . ')"'; 
 
                                     echo "<tr>";
@@ -102,7 +100,6 @@
                                         echo '</ul> </div>';
                                     }
                                     echo '</td>';
-                                    echo '<td> <a href="#" ' . $onClick . ' class="btn btn-primary">Opis</a> </td>';
                                     echo '<td> <a href="index.php?con=5&page=4&edit=' . $id . '" class="btn btn-warning">Edycja</a> </td>';
                                     echo '<td> <a href="#" class="btn btn-danger" ' . $onDelete . '>Usun</a> </td>';
                                     echo "</tr>";
